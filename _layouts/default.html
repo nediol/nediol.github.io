@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="/">Main page</a>
+        <a href="/about">About</a>
+    </nav>
+</header>
+
+<main>
+    <article>
+        {{ content }}
+    </article>
+</main>
+
+<footer>
+    <p>© {{ site.time | date: "%Y" }} DevOps Tools Cheat Sheet</p>
+</footer>
+
+</body>
+</html>

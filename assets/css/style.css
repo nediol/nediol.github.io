@@ -1,0 +1,265 @@
+/* Общие стили для сайта */
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #e0e0e0;
+    background-color: #1e1e1e;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #61dafb;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Шапка сайта */
+nav {
+    background-color: #282c34;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav a {
+    margin: 0 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #282c34;
+    color: #e0e0e0;
+    margin-top: 50px;
+}
+
+/* Стили для заголовков */
+h1, h2, h3, h4, h5, h6 {
+    color: #61dafb;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+/* Стили для текста */
+p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+/* Подсветка синтаксиса с использованием Rouge */
+pre {
+    background-color: #282c34;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 14px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+code {
+    background-color: #282c34;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #ffcc00;
+}
+
+pre code {
+    color: #dcdcaa;
+}
+
+code, pre code {
+    font-family: "Source Code Pro", monospace;
+}
+
+/* Подсветка синтаксиса для блоков кода */
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: #1e1e1e;
+    color: #dcdcdc;
+}
+
+.hljs-comment,
+.hljs-quote {
+    color: #6a9955;
+    font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+    color: #569cd6;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+    color: #b5cea8;
+}
+
+.hljs-string,
+.hljs-doctag {
+    color: #ce9178;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+    color: #dcdcaa;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+    color: #4ec9b0;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+    color: #9cdcfe;
+}
+
+.hljs-regexp,
+.hljs-link {
+    color: #d16969;
+}
+
+/* Стили для кнопок */
+.button {
+    background-color: #61dafb;
+    color: #282c34;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.button:hover {
+    background-color: #21a1f1;
+    color: white;
+}
+
+/* Стили для сетки плиток на главной странице */
+.grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.tile {
+    background-color: #333;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    width: 150px;
+    margin: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.tile img {
+    max-width: 60px;
+    margin-bottom: 10px;
+}
+
+.tile span {
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.tile:hover {
+    transform: scale(1.05);
+}
+
+/* Дополнительные стили для улучшения интерфейса */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+header, footer {
+    background-color: #282c34;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    color: #61dafb;
+}
+
+footer {
+    color: #61dafb;
+}
+
+footer a {
+    color: #61dafb;
+}
+
+footer a:hover {
+    color: #ffffff;
+}
+
+/* Стили для ссылок */
+a.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #61dafb;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+a.button:hover {
+    background-color: #21a1f1;
+}
+
+.copy-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Общий стиль для контента */
+article {
+    padding: 20px;
+    background-color: #20232a;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 40px;
+}
