@@ -167,15 +167,15 @@ forks = 100 # maximum number of threads
 
 ## Parallel execution strategies
 
-### Linear
+Linear
 
-### Debug
+Debug
 
-### Free - the fastest (the hosts are not waiting for each other)
+Free - the fastest (the hosts are not waiting for each other)
 
-### Host pinned
+Host pinned
 
-### P.S. These are plugins, you can write your own strategies.
+P.S. These are plugins, you can write your own strategies.
 
 ## Two ways to configure strategies (and import plugins)
 ### In ansible.cfg
