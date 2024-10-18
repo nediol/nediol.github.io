@@ -62,89 +62,6 @@ p {
     font-size: 16px;
 }
 
-/* Подсветка синтаксиса с использованием Rouge */
-pre {
-    background-color: #282c34;
-    padding: 15px;
-    border-radius: 8px;
-    overflow-x: auto;
-    font-size: 14px;
-    color: #ffffff;
-    margin-bottom: 20px;
-}
-
-code {
-    background-color: #282c34;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 14px;
-    color: #ffcc00;
-}
-
-pre code {
-    color: #dcdcaa;
-}
-
-code, pre code {
-    font-family: "Source Code Pro", monospace;
-}
-
-/* Подсветка синтаксиса для блоков кода */
-.hljs {
-    display: block;
-    overflow-x: auto;
-    padding: 0.5em;
-    background: #1e1e1e;
-    color: #dcdcdc;
-}
-
-.hljs-comment,
-.hljs-quote {
-    color: #6a9955;
-    font-style: italic;
-}
-
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-subst {
-    color: #569cd6;
-}
-
-.hljs-number,
-.hljs-literal,
-.hljs-variable,
-.hljs-template-variable,
-.hljs-tag .hljs-attr {
-    color: #b5cea8;
-}
-
-.hljs-string,
-.hljs-doctag {
-    color: #ce9178;
-}
-
-.hljs-title,
-.hljs-section,
-.hljs-selector-id {
-    color: #dcdcaa;
-}
-
-.hljs-type,
-.hljs-class .hljs-title {
-    color: #4ec9b0;
-}
-
-.hljs-tag,
-.hljs-name,
-.hljs-attribute {
-    color: #9cdcfe;
-}
-
-.hljs-regexp,
-.hljs-link {
-    color: #d16969;
-}
-
 /* Стили для кнопок */
 .button {
     background-color: #61dafb;
@@ -241,27 +158,6 @@ a.button {
 
 a.button:hover {
     background-color: #21a1f1;
-}
-
-.copy-button {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    background-color: #00bcd4;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-/* Общий стиль для контента */
-article {
-    padding: 20px;
-    background-color: #20232a;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 40px;
 }
 
 /* Стиль для блоков кода */
