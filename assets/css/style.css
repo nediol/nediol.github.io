@@ -263,3 +263,53 @@ article {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin-bottom: 40px;
 }
+
+/* Стиль для блоков кода */
+pre, code {
+    background-color: #f6f8fa; /* Цвет фона */
+    border: 1px solid #d0d7de; /* Граница вокруг блока кода */
+    border-radius: 6px; /* Закругленные углы */
+    padding: 16px; /* Внутренний отступ */
+    font-size: 85%; /* Уменьшенный шрифт */
+    line-height: 1.45;
+    overflow: auto; /* Добавляем прокрутку, если код выходит за пределы блока */
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+/* Стиль для заголовков внутри блоков кода */
+code {
+    color: #24292e; /* Цвет текста */
+}
+
+/* Добавляем тёмную тему */
+pre {
+    background-color: #0d1117; /* Тёмный фон */
+    color: #c9d1d9; /* Цвет текста */
+}
+
+code {
+    background-color: #0d1117; /* Тёмный фон для встроенного кода */
+    color: #e1e4e8; /* Цвет текста для встроенного кода */
+}
+
+/* Добавление подсветки для синтаксиса */
+.token.comment, .token.block-comment, .token.prolog, .token.doctype, .token.cdata {
+    color: #6a737d; /* Цвет для комментариев */
+}
+
+.token.punctuation {
+    color: #393a34; /* Цвет пунктуации */
+}
+
+.token.property, .token.tag, .token.boolean, .token.number, .token.constant, .token.symbol, .token.deleted {
+    color: #e3116c; /* Цвет для ключевых слов */
+}
+
+.token.selector, .token.attr-name, .token.string, .token.char, .token.builtin, .token.inserted {
+    color: #28a745; /* Цвет для строк */
+}
+
+.token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string {
+    color: #d73a49; /* Цвет для операторов */
+}
+
