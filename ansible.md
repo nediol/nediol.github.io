@@ -18,9 +18,7 @@
 ---
 
 <a name="requirements.yml"></a> 
-## requirements.yml
-
-### Examplefile
+### Examplefile of requirements.yml
 
 ```yml
 ---
@@ -51,7 +49,7 @@ ansible-galaxy collection install -r requirements.yml
 ```
 
 <a name="hosts.ini"></a> 
-### Examplefile
+### Examplefile of hosts.ini
 
 ```ini
 [centos]
@@ -68,7 +66,7 @@ centos_python_server ansible_host=192.168.51.5
 ```
 
 <a name="ansible.cfg"></a> 
-### Examplefile
+### Examplefile of ansible.cfg
 
 ```ini
 [default]
