@@ -21,10 +21,3 @@ This site provides cheat sheets for DevOps Tools configurations files. Select a 
     </div>
   </a>
 </div>
-
-<footer>
-  <p>© {{ site.time | date: "%Y" }} DevOps Tools Cheat Sheet</p>
-  <a href="https://www.freecounterstat.com" title="hit counter">
-  <img src="https://counter.freecounterstat.com/count.php?counter=1234567&style=0010" border="0" alt="hit counter">
-    </a>
-</footer>
