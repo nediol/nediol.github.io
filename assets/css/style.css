@@ -163,25 +163,28 @@ a.button:hover {
 }
 
 /* Стиль для блоков кода */
-pre, code {
+pre {
     background-color: #0d1117; /* Темный фон блока */
     border: 1px solid #21262d; /* Темная граница */
     border-radius: 6px; /* Закругленные углы */
     padding: 16px; /* Внутренний отступ */
     font-size: 85%; /* Уменьшенный шрифт */
     line-height: 1.45;
-    overflow: auto; /* Добавляем прокрутку для длинного кода */
+    overflow: auto; /* Прокрутка для длинного кода */
     font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
     color: #c9d1d9; /* Цвет текста */
+    white-space: pre-wrap; /* Разрешает перенос строк для длинного текста */
 }
 
-/* Подсветка встроенного кода */
 code {
-    background-color: #161b22; /* Фон для встроенного кода */
-    color: #e1e4e8; /* Цвет текста для встроенного кода */
+    background-color: transparent; /* Убираем фон для встроенного кода внутри pre */
+    padding: 0; /* Убираем отступы */
+    border-radius: 0; /* Убираем закругленные углы */
+    color: inherit; /* Унаследуем цвет текста */
+    font-size: inherit; /* Унаследуем размер шрифта */
 }
 
-/* Подсветка синтаксиса для разных типов данных */
+/* Подсветка синтаксиса */
 .token.comment, .token.block-comment, .token.prolog, .token.doctype, .token.cdata {
     color: #8b949e; /* Цвет для комментариев */
 }
@@ -209,3 +212,4 @@ code {
 .token.regex, .token.important, .token.variable {
     color: #ff7b72; /* Оранжевый для переменных */
 }
+
