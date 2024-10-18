@@ -6,7 +6,7 @@ layout: default
 # Welcome to DevOps Tools Cheat Sheet!
 
 This site provides cheat sheets for DevOps Tools configurations files. Select a tool below to view detailed configuration examples and best practices.
-  
+<div class="grid">
   <a href="/ansible">
     <div class="tile">
       <img src="/assets/images/ansible.png" alt="Ansible Logo">
@@ -20,3 +20,4 @@ This site provides cheat sheets for DevOps Tools configurations files. Select a 
       <span>Vagrant</span>
     </div>
   </a>
+</div>
