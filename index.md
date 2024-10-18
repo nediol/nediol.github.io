@@ -20,5 +20,3 @@ This site provides cheat sheets for DevOps Tools configurations files. Select a 
       <span>Vagrant</span>
     </div>
   </a>
-
-</div>
