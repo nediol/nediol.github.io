@@ -1,8 +1,6 @@
 # Ansible Cheat Sheet
 
 ![Ansible Version](https://img.shields.io/badge/Ansible-2.10+-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-blue)
 
 ## Table of Contents
 - [requirements.yml](#requirements.yml)
