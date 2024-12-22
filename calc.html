@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Калькуляторы для статистики и машинного обучения</title>
     <style>
-        /* Стиль страницы (как было указано ранее) */
+        /* Стиль страницы */
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f7fc;
@@ -106,8 +106,8 @@
         <!-- Среднее (Mean) -->
         <div class="card">
             <h3>Среднее (Mean)</h3>
-            <p>Введите числа, разделённые запятой:</p>
-            <input type="text" id="meanInput" placeholder="1, 2, 3, 4, 5">
+            <p>Введите числа, разделённые пробелом:</p>
+            <input type="text" id="meanInput" placeholder="1 2 3 4 5">
             <button onclick="calculateMean()">Вычислить</button>
             <p class="result" id="meanResult"></p>
         </div>
@@ -115,8 +115,8 @@
         <!-- Медиана (Median) -->
         <div class="card">
             <h3>Медиана (Median)</h3>
-            <p>Введите числа, разделённые запятой:</p>
-            <input type="text" id="medianInput" placeholder="1, 2, 3, 4, 5">
+            <p>Введите числа, разделённые пробелом:</p>
+            <input type="text" id="medianInput" placeholder="1 2 3 4 5">
             <button onclick="calculateMedian()">Вычислить</button>
             <p class="result" id="medianResult"></p>
         </div>
@@ -124,8 +124,8 @@
         <!-- Мода (Mode) -->
         <div class="card">
             <h3>Мода (Mode)</h3>
-            <p>Введите числа, разделённые запятой:</p>
-            <input type="text" id="modeInput" placeholder="1, 2, 3, 2, 5">
+            <p>Введите числа, разделённые пробелом:</p>
+            <input type="text" id="modeInput" placeholder="1 2 3 2 5">
             <button onclick="calculateMode()">Вычислить</button>
             <p class="result" id="modeResult"></p>
         </div>
@@ -133,8 +133,8 @@
         <!-- Дисперсия (Variance) и Стандартное отклонение (Standard Deviation) -->
         <div class="card">
             <h3>Дисперсия (Variance) и Стандартное отклонение (Standard Deviation)</h3>
-            <p>Введите числа, разделённые запятой:</p>
-            <input type="text" id="varianceInput" placeholder="1, 2, 3, 4, 5">
+            <p>Введите числа, разделённые пробелом:</p>
+            <input type="text" id="varianceInput" placeholder="1 2 3 4 5">
             <button onclick="calculateVariance()">Вычислить</button>
             <p class="result" id="varianceResult"></p>
             <p class="result" id="stdDevResult"></p>
@@ -143,8 +143,8 @@
         <!-- Коэффициент Джини (Gini) -->
         <div class="card">
             <h3>Коэффициент Джини (Gini)</h3>
-            <p>Введите числа, разделённые запятой:</p>
-            <input type="text" id="giniInput" placeholder="1, 2, 3, 4, 5">
+            <p>Введите числа, разделённые пробелом:</p>
+            <input type="text" id="giniInput" placeholder="1 2 3 4 5">
             <button onclick="calculateGini()">Вычислить</button>
             <p class="result" id="giniResult"></p>
         </div>
@@ -153,7 +153,7 @@
         <div class="card">
             <h3>Точность (Accuracy), Прецизионность (Precision), Отзыв (Recall), F1-оценка</h3>
             <p>Введите значения TP, TN, FP, FN:</p>
-            <input type="text" id="confusionInput" placeholder="TP, TN, FP, FN">
+            <input type="text" id="confusionInput" placeholder="TP TN FP FN">
             <button onclick="calculateMetrics()">Вычислить</button>
             <p class="result" id="accuracyResult"></p>
             <p class="result" id="precisionResult"></p>
@@ -165,7 +165,7 @@
         <div class="card">
             <h3>Матрица ошибок (Confusion Matrix)</h3>
             <p>Введите значения TP, TN, FP, FN:</p>
-            <input type="text" id="confusionMatrixInput" placeholder="TP, TN, FP, FN">
+            <input type="text" id="confusionMatrixInput" placeholder="TP TN FP FN">
             <button onclick="generateConfusionMatrix()">Сгенерировать</button>
             <p class="result" id="confusionMatrixResult"></p>
         </div>
@@ -182,8 +182,8 @@
         <!-- MinMax Scaling -->
         <div class="card">
             <h3>MinMax Scaling</h3>
-            <p>Введите числа, разделённые запятой:</p>
-            <input type="text" id="minmaxInput" placeholder="1, 2, 3, 4, 5">
+            <p>Введите числа, разделённые пробелом:</p>
+            <input type="text" id="minmaxInput" placeholder="1 2 3 4 5">
             <button onclick="minMaxScaling()">Масштабировать</button>
             <p class="result" id="minmaxResult"></p>
         </div>
@@ -191,8 +191,8 @@
         <!-- Standard Scaling -->
         <div class="card">
             <h3>Standard Scaling</h3>
-            <p>Введите числа, разделённые запятой:</p>
-            <input type="text" id="standardInput" placeholder="1, 2, 3, 4, 5">
+            <p>Введите числа, разделённые пробелом:</p>
+            <input type="text" id="standardInput" placeholder="1 2 3 4 5">
             <button onclick="standardScaling()">Масштабировать</button>
             <p class="result" id="standardResult"></p>
         </div>
@@ -203,10 +203,10 @@
     </div>
 
     <script>
-        // Функции для всех калькуляторов
+        // Функции для всех калькуляторов с разделением по пробелу
         function calculateMean() {
             const input = document.getElementById("meanInput").value;
-            const numbers = input.split(',').map(num => parseFloat(num.trim()));
+            const numbers = input.split(' ').map(num => parseFloat(num.trim()));
             const sum = numbers.reduce((acc, num) => acc + num, 0);
             const mean = sum / numbers.length;
             document.getElementById("meanResult").textContent = `Среднее: ${mean.toFixed(2)}`;
@@ -214,7 +214,7 @@
 
         function calculateMedian() {
             const input = document.getElementById("medianInput").value;
-            const numbers = input.split(',').map(num => parseFloat(num.trim())).sort((a, b) => a - b);
+            const numbers = input.split(' ').map(num => parseFloat(num.trim())).sort((a, b) => a - b);
             const mid = Math.floor(numbers.length / 2);
             const median = numbers.length % 2 !== 0 ? numbers[mid] : (numbers[mid - 1] + numbers[mid]) / 2;
             document.getElementById("medianResult").textContent = `Медиана: ${median.toFixed(2)}`;
@@ -222,7 +222,7 @@
 
         function calculateMode() {
             const input = document.getElementById("modeInput").value;
-            const numbers = input.split(',').map(num => parseFloat(num.trim()));
+            const numbers = input.split(' ').map(num => parseFloat(num.trim()));
             const frequency = {};
             numbers.forEach(num => frequency[num] = (frequency[num] || 0) + 1);
             const mode = Object.keys(frequency).reduce((a, b) => frequency[a] > frequency[b] ? a : b);
@@ -231,7 +231,7 @@
 
         function calculateVariance() {
             const input = document.getElementById("varianceInput").value;
-            const numbers = input.split(',').map(num => parseFloat(num.trim()));
+            const numbers = input.split(' ').map(num => parseFloat(num.trim()));
             const mean = numbers.reduce((acc, num) => acc + num, 0) / numbers.length;
             const variance = numbers.reduce((acc, num) => acc + Math.pow(num - mean, 2), 0) / numbers.length;
             const stdDev = Math.sqrt(variance);
@@ -241,65 +241,65 @@
 
         function calculateGini() {
             const input = document.getElementById("giniInput").value;
-            const numbers = input.split(',').map(num => parseFloat(num.trim()));
+            const numbers = input.split(' ').map(num => parseFloat(num.trim()));
             const n = numbers.length;
-            let gini = 0;
+            let sum = 0;
             for (let i = 0; i < n; i++) {
                 for (let j = 0; j < n; j++) {
-                    gini += Math.abs(numbers[i] - numbers[j]);
+                    sum += Math.abs(numbers[i] - numbers[j]);
                 }
             }
-            gini /= (2 * n * n);
+            const gini = sum / (2 * n * numbers.reduce((acc, num) => acc + num, 0));
             document.getElementById("giniResult").textContent = `Коэффициент Джини: ${gini.toFixed(2)}`;
         }
 
         function calculateMetrics() {
             const input = document.getElementById("confusionInput").value;
-            const [tp, tn, fp, fn] = input.split(',').map(num => parseInt(num.trim()));
-            const accuracy = (tp + tn) / (tp + tn + fp + fn);
-            const precision = tp / (tp + fp);
-            const recall = tp / (tp + fn);
+            const [TP, TN, FP, FN] = input.split(' ').map(num => parseInt(num.trim()));
+            const accuracy = (TP + TN) / (TP + TN + FP + FN);
+            const precision = TP / (TP + FP);
+            const recall = TP / (TP + FN);
             const f1Score = 2 * (precision * recall) / (precision + recall);
-            document.getElementById("accuracyResult").textContent = `Точность: ${(accuracy * 100).toFixed(2)}%`;
-            document.getElementById("precisionResult").textContent = `Прецизионность: ${(precision * 100).toFixed(2)}%`;
-            document.getElementById("recallResult").textContent = `Отзыв: ${(recall * 100).toFixed(2)}%`;
+
+            document.getElementById("accuracyResult").textContent = `Точность (Accuracy): ${accuracy.toFixed(2)}`;
+            document.getElementById("precisionResult").textContent = `Прецизионность (Precision): ${precision.toFixed(2)}`;
+            document.getElementById("recallResult").textContent = `Отзыв (Recall): ${recall.toFixed(2)}`;
             document.getElementById("f1ScoreResult").textContent = `F1-оценка: ${f1Score.toFixed(2)}`;
         }
 
         function generateConfusionMatrix() {
             const input = document.getElementById("confusionMatrixInput").value;
-            const [tp, tn, fp, fn] = input.split(',').map(num => parseInt(num.trim()));
+            const [TP, TN, FP, FN] = input.split(' ').map(num => parseInt(num.trim()));
+
             const matrix = `
-                [[TP: ${tp}, FP: ${fp}],
-                 [FN: ${fn}, TN: ${tn}]]
+                [[TP: ${TP}, FP: ${FP}],
+                 [FN: ${FN}, TN: ${TN}]]
             `;
             document.getElementById("confusionMatrixResult").textContent = `Матрица ошибок: ${matrix}`;
         }
 
         function crossValidation() {
             const folds = document.getElementById("foldsInput").value;
-            const result = `Перекрестная проверка с ${folds} фолдами выполнена.`;
-            document.getElementById("crossValidationResult").textContent = result;
+            document.getElementById("crossValidationResult").textContent = `Перекрёстная проверка с ${folds} фолдами завершена.`;
         }
 
         function minMaxScaling() {
             const input = document.getElementById("minmaxInput").value;
-            const numbers = input.split(',').map(num => parseFloat(num.trim()));
+            const numbers = input.split(' ').map(num => parseFloat(num.trim()));
             const min = Math.min(...numbers);
             const max = Math.max(...numbers);
             const scaled = numbers.map(num => (num - min) / (max - min));
-            document.getElementById("minmaxResult").textContent = `Масштабированные значения: ${scaled.join(', ')}`;
+            document.getElementById("minmaxResult").textContent = `Масштабированные данные (MinMax): ${scaled.join(', ')}`;
         }
 
         function standardScaling() {
             const input = document.getElementById("standardInput").value;
-            const numbers = input.split(',').map(num => parseFloat(num.trim()));
+            const numbers = input.split(' ').map(num => parseFloat(num.trim()));
             const mean = numbers.reduce((acc, num) => acc + num, 0) / numbers.length;
             const stdDev = Math.sqrt(numbers.reduce((acc, num) => acc + Math.pow(num - mean, 2), 0) / numbers.length);
             const scaled = numbers.map(num => (num - mean) / stdDev);
-            document.getElementById("standardResult").textContent = `Масштабированные значения: ${scaled.join(', ')}`;
+            document.getElementById("standardResult").textContent = `Масштабированные данные (Standard): ${scaled.join(', ')}`;
         }
     </script>
-
 </body>
 </html>
