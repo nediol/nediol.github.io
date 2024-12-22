@@ -1,5 +1,6 @@
 - [Формулы](#formula)
 - [Теория](#theory)
+- [Калькуляторы](#calc)
 
 <a name="formula"></a> 
 ### Формулы
@@ -145,3 +146,142 @@
 2. **Метод локтя**: Помогает определить оптимальное число кластеров, наблюдая за снижением внутрикластерной дисперсии.
 
 ---
+
+<a name="calculators"></a>
+### Калькуляторы
+
+#### 1. Среднее (Mean)
+Среднее (или арифметическое) — это сумма всех чисел, деленная на их количество.
+
+**Формула**:  
+\[
+\text{Среднее} = \frac{\sum_{i=1}^{n} x_i}{n}
+\]
+
+<form id="mean-form">
+  <label for="mean-input">Введите числа (через запятую): </label>
+  <input type="text" id="mean-input" placeholder="1, 2, 3, 4">
+  <button type="submit">Вычислить</button>
+  <p id="mean-result"></p>
+</form>
+
+#### 2. Медиана (Median)
+Медиана — это срединное значение в отсортированном наборе данных.
+
+**Формула**:
+- Для нечетного числа элементов медианой будет центральное значение.
+- Для четного числа элементов медианой будет среднее значение двух центральных чисел.
+
+<form id="median-form">
+  <label for="median-input">Введите числа (через запятую): </label>
+  <input type="text" id="median-input" placeholder="1, 2, 3, 4">
+  <button type="submit">Вычислить</button>
+  <p id="median-result"></p>
+</form>
+
+#### 3. Мода (Mode)
+Мода — это число, которое встречается наиболее часто.
+
+<form id="mode-form">
+  <label for="mode-input">Введите числа (через запятую): </label>
+  <input type="text" id="mode-input" placeholder="1, 2, 2, 3">
+  <button type="submit">Вычислить</button>
+  <p id="mode-result"></p>
+</form>
+
+#### 4. Дисперсия (Variance)
+Дисперсия измеряет, как сильно значения отклоняются от среднего.
+
+**Формула**:
+\[
+\text{Дисперсия} = \frac{1}{n} \sum_{i=1}^{n} (x_i - \mu)^2
+\]
+
+<form id="variance-form">
+  <label for="variance-input">Введите числа (через запятую): </label>
+  <input type="text" id="variance-input" placeholder="1, 2, 3, 4">
+  <button type="submit">Вычислить</button>
+  <p id="variance-result"></p>
+</form>
+
+#### 5. Стандартное отклонение (Standard Deviation)
+Стандартное отклонение — это квадратный корень из дисперсии.
+
+**Формула**:
+\[
+\text{Стандартное отклонение} = \sqrt{\text{Дисперсия}}
+\]
+
+<form id="std-deviation-form">
+  <label for="std-deviation-input">Введите числа (через запятую): </label>
+  <input type="text" id="std-deviation-input" placeholder="1, 2, 3, 4">
+  <button type="submit">Вычислить</button>
+  <p id="std-deviation-result"></p>
+</form>
+
+#### Скрипт JavaScript для расчетов
+
+```html
+<script>
+  // Среднее
+  document.getElementById('mean-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    let input = document.getElementById('mean-input').value.split(',').map(Number);
+    let sum = input.reduce((a, b) => a + b, 0);
+    let mean = sum / input.length;
+    document.getElementById('mean-result').innerText = `Среднее: ${mean}`;
+  });
+
+  // Медиана
+  document.getElementById('median-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    let input = document.getElementById('median-input').value.split(',').map(Number);
+    input.sort((a, b) => a - b);
+    let median;
+    if (input.length % 2 === 0) {
+      median = (input[input.length / 2 - 1] + input[input.length / 2]) / 2;
+    } else {
+      median = input[Math.floor(input.length / 2)];
+    }
+    document.getElementById('median-result').innerText = `Медиана: ${median}`;
+  });
+
+  // Мода
+  document.getElementById('mode-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    let input = document.getElementById('mode-input').value.split(',').map(Number);
+    let frequency = {};
+    let maxCount = 0;
+    let mode = [];
+    input.forEach(num => {
+      frequency[num] = (frequency[num] || 0) + 1;
+      if (frequency[num] > maxCount) {
+        maxCount = frequency[num];
+        mode = [num];
+      } else if (frequency[num] === maxCount) {
+        mode.push(num);
+      }
+    });
+    document.getElementById('mode-result').innerText = `Мода: ${mode.join(', ')}`;
+  });
+
+  // Дисперсия
+  document.getElementById('variance-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    let input = document.getElementById('variance-input').value.split(',').map(Number);
+    let mean = input.reduce((a, b) => a + b, 0) / input.length;
+    let variance = input.reduce((acc, num) => acc + Math.pow(num - mean, 2), 0) / input.length;
+    document.getElementById('variance-result').innerText = `Дисперсия: ${variance}`;
+  });
+
+  // Стандартное отклонение
+  document.getElementById('std-deviation-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    let input = document.getElementById('std-deviation-input').value.split(',').map(Number);
+    let mean = input.reduce((a, b) => a + b, 0) / input.length;
+    let variance = input.reduce((acc, num) => acc + Math.pow(num - mean, 2), 0) / input.length;
+    let stdDeviation = Math.sqrt(variance);
+    document.getElementById('std-deviation-result').innerText = `Стандартное отклонение: ${stdDeviation}`;
+  });
+</script>
+
