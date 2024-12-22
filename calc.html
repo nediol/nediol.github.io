@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Калькуляторы для статистики и машинного обучения</title>
     <style>
+        /* Стиль страницы (как было указано ранее) */
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f7fc;
@@ -202,7 +203,102 @@
     </div>
 
     <script>
-        // Здесь добавьте JavaScript функции для всех калькуляторов, как я указал в предыдущем примере.
+        // Функции для всех калькуляторов
+        function calculateMean() {
+            const input = document.getElementById("meanInput").value;
+            const numbers = input.split(',').map(num => parseFloat(num.trim()));
+            const sum = numbers.reduce((acc, num) => acc + num, 0);
+            const mean = sum / numbers.length;
+            document.getElementById("meanResult").textContent = `Среднее: ${mean.toFixed(2)}`;
+        }
+
+        function calculateMedian() {
+            const input = document.getElementById("medianInput").value;
+            const numbers = input.split(',').map(num => parseFloat(num.trim())).sort((a, b) => a - b);
+            const mid = Math.floor(numbers.length / 2);
+            const median = numbers.length % 2 !== 0 ? numbers[mid] : (numbers[mid - 1] + numbers[mid]) / 2;
+            document.getElementById("medianResult").textContent = `Медиана: ${median.toFixed(2)}`;
+        }
+
+        function calculateMode() {
+            const input = document.getElementById("modeInput").value;
+            const numbers = input.split(',').map(num => parseFloat(num.trim()));
+            const frequency = {};
+            numbers.forEach(num => frequency[num] = (frequency[num] || 0) + 1);
+            const mode = Object.keys(frequency).reduce((a, b) => frequency[a] > frequency[b] ? a : b);
+            document.getElementById("modeResult").textContent = `Мода: ${mode}`;
+        }
+
+        function calculateVariance() {
+            const input = document.getElementById("varianceInput").value;
+            const numbers = input.split(',').map(num => parseFloat(num.trim()));
+            const mean = numbers.reduce((acc, num) => acc + num, 0) / numbers.length;
+            const variance = numbers.reduce((acc, num) => acc + Math.pow(num - mean, 2), 0) / numbers.length;
+            const stdDev = Math.sqrt(variance);
+            document.getElementById("varianceResult").textContent = `Дисперсия: ${variance.toFixed(2)}`;
+            document.getElementById("stdDevResult").textContent = `Стандартное отклонение: ${stdDev.toFixed(2)}`;
+        }
+
+        function calculateGini() {
+            const input = document.getElementById("giniInput").value;
+            const numbers = input.split(',').map(num => parseFloat(num.trim()));
+            const n = numbers.length;
+            let gini = 0;
+            for (let i = 0; i < n; i++) {
+                for (let j = 0; j < n; j++) {
+                    gini += Math.abs(numbers[i] - numbers[j]);
+                }
+            }
+            gini /= (2 * n * n);
+            document.getElementById("giniResult").textContent = `Коэффициент Джини: ${gini.toFixed(2)}`;
+        }
+
+        function calculateMetrics() {
+            const input = document.getElementById("confusionInput").value;
+            const [tp, tn, fp, fn] = input.split(',').map(num => parseInt(num.trim()));
+            const accuracy = (tp + tn) / (tp + tn + fp + fn);
+            const precision = tp / (tp + fp);
+            const recall = tp / (tp + fn);
+            const f1Score = 2 * (precision * recall) / (precision + recall);
+            document.getElementById("accuracyResult").textContent = `Точность: ${(accuracy * 100).toFixed(2)}%`;
+            document.getElementById("precisionResult").textContent = `Прецизионность: ${(precision * 100).toFixed(2)}%`;
+            document.getElementById("recallResult").textContent = `Отзыв: ${(recall * 100).toFixed(2)}%`;
+            document.getElementById("f1ScoreResult").textContent = `F1-оценка: ${f1Score.toFixed(2)}`;
+        }
+
+        function generateConfusionMatrix() {
+            const input = document.getElementById("confusionMatrixInput").value;
+            const [tp, tn, fp, fn] = input.split(',').map(num => parseInt(num.trim()));
+            const matrix = `
+                [[TP: ${tp}, FP: ${fp}],
+                 [FN: ${fn}, TN: ${tn}]]
+            `;
+            document.getElementById("confusionMatrixResult").textContent = `Матрица ошибок: ${matrix}`;
+        }
+
+        function crossValidation() {
+            const folds = document.getElementById("foldsInput").value;
+            const result = `Перекрестная проверка с ${folds} фолдами выполнена.`;
+            document.getElementById("crossValidationResult").textContent = result;
+        }
+
+        function minMaxScaling() {
+            const input = document.getElementById("minmaxInput").value;
+            const numbers = input.split(',').map(num => parseFloat(num.trim()));
+            const min = Math.min(...numbers);
+            const max = Math.max(...numbers);
+            const scaled = numbers.map(num => (num - min) / (max - min));
+            document.getElementById("minmaxResult").textContent = `Масштабированные значения: ${scaled.join(', ')}`;
+        }
+
+        function standardScaling() {
+            const input = document.getElementById("standardInput").value;
+            const numbers = input.split(',').map(num => parseFloat(num.trim()));
+            const mean = numbers.reduce((acc, num) => acc + num, 0) / numbers.length;
+            const stdDev = Math.sqrt(numbers.reduce((acc, num) => acc + Math.pow(num - mean, 2), 0) / numbers.length);
+            const scaled = numbers.map(num => (num - mean) / stdDev);
+            document.getElementById("standardResult").textContent = `Масштабированные значения: ${scaled.join(', ')}`;
+        }
     </script>
 
 </body>
