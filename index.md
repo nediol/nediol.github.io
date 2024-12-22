@@ -9,9 +9,16 @@
 
 ![image](https://github.com/user-attachments/assets/9f6d9991-bf0b-455c-9e1e-5b3cfc61c84d)
 
+Дисперсия: Средний квадрат отклонений значений от их среднего.
+
 ![image](https://github.com/user-attachments/assets/7e662101-bc67-42dd-911d-0dab948af51b)
 
+Стандартное отклонение: Квадратный корень из дисперсии, показывает разброс данных.
+
 ![image](https://github.com/user-attachments/assets/f6d4f597-6fb3-40c8-bf1c-ee7180abbbd5)
+
+Квартиль: Значения, которые делят данные на четыре равные части.
+Межквартильный размах: Разница между третьим (Q3) и первым (Q1) квартилями, показывает разброс средней половины данных.
 
 ![image](https://github.com/user-attachments/assets/9cfb74a6-0a6c-4633-a0e1-8e2e6f2caffb)
 
@@ -26,6 +33,8 @@
 ![image](https://github.com/user-attachments/assets/38bf04e2-ca72-4448-8739-503e9790bfd5)
 
 ![image](https://github.com/user-attachments/assets/9d0ecece-56d1-4304-a6f4-e88080037e6f)
+
+Коэффициент Джини: Мера неравномерности распределения, где 0 — полное равенство, 1 — полное неравенство.
 
 ![image](https://github.com/user-attachments/assets/f4890640-5619-4878-bb6b-be81b9d101c6)
 
