@@ -1,6 +1,3 @@
-# Machine Learning
-
-## Table of Contents
 - [Формулы](#formula)
 - [Теория](#theory)
 
