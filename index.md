@@ -3,28 +3,31 @@
 
 <a name="formula"></a> 
 ### Формулы
+![image](https://github.com/user-attachments/assets/d6b3b396-6a9e-49d4-a414-04e867c9fa3f)
 
-![image](https://github.com/user-attachments/assets/453bb478-a92a-425f-8881-cc81827a4233)
+![image](https://github.com/user-attachments/assets/122afef1-a7b6-4dd6-a7f2-b2c5ba5cd20d)
 
-![image](https://github.com/user-attachments/assets/70357dff-c5d4-4650-ba6e-67fff8074aef)
+![image](https://github.com/user-attachments/assets/9f6d9991-bf0b-455c-9e1e-5b3cfc61c84d)
 
-![image](https://github.com/user-attachments/assets/db758695-ef2d-4d8c-80a0-9f304b1defe8)
+![image](https://github.com/user-attachments/assets/7e662101-bc67-42dd-911d-0dab948af51b)
 
-![image](https://github.com/user-attachments/assets/9bc4fb63-ce62-483e-b063-184374486ca0)
+![image](https://github.com/user-attachments/assets/f6d4f597-6fb3-40c8-bf1c-ee7180abbbd5)
 
-![image](https://github.com/user-attachments/assets/51201e94-a015-4d99-bb8c-e2c1b79f2596)
+![image](https://github.com/user-attachments/assets/9cfb74a6-0a6c-4633-a0e1-8e2e6f2caffb)
 
-![image](https://github.com/user-attachments/assets/35fa191d-d300-43cf-b430-f1bac7d94968)
+![image](https://github.com/user-attachments/assets/156dcefc-1a46-4ceb-bb6c-75b3abf170e5)
 
-![image](https://github.com/user-attachments/assets/fefb15e0-6c2b-4e08-b884-acb9ad13fded)
+![image](https://github.com/user-attachments/assets/22e5c7e2-6054-4979-a505-a6ef9cecd3ef)
 
-![image](https://github.com/user-attachments/assets/305086ce-9406-4f7e-ae84-cdb3d34125ca)
+![image](https://github.com/user-attachments/assets/01a9eada-6b65-480f-8b7b-568bbf868b5b)
 
-![image](https://github.com/user-attachments/assets/72fcdb0e-4c5b-4419-abd7-169a0b1d42de)
+![image](https://github.com/user-attachments/assets/fed792fd-ef9d-4a8f-9b79-609f256fe47e)
 
-![image](https://github.com/user-attachments/assets/7afd0b5a-3260-4177-b7ad-ad15218ed244)
+![image](https://github.com/user-attachments/assets/9d0ecece-56d1-4304-a6f4-e88080037e6f)
 
-![image](https://github.com/user-attachments/assets/2b979a89-88f9-4675-a24c-23843b8f1556)
+![image](https://github.com/user-attachments/assets/f4890640-5619-4878-bb6b-be81b9d101c6)
+
+
 
 <a name="theory"></a> 
 ### Теория
