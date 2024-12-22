@@ -3,27 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} - {{ site.title }}</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>{{ page.title }}</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    {{ content }}
 </head>
 <body>
-
-<header>
-    <nav>
-        <a href="/">Main page</a>
-        <a href="/about">About</a>
-    </nav>
-</header>
-
-<main>
-    <article>
+    <header>
+        <h1>{{ site.title }}</h1>
+    </header>
+    <main>
         {{ content }}
-    </article>
-</main>
-
-<footer>
-    <p>© {{ site.time | date: "%Y" }} DevOps Tools Cheat Sheet</p>
-</footer>
-
+    </main>
+    <footer>
+        <p>© {{ site.time | date: "%Y" }}</p>
+    </footer>
 </body>
 </html>
