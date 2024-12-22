@@ -1,31 +1,22 @@
 ---
 layout: default
-title: "Шпаргалка Machine Learning"
+title: Home
 ---
 
-# Шпаргалка по Machine Learning
+# Welcome to My Site
 
-## Среднее (Mean)
-**Формула**:  
+This is a demonstration of how to use MathJax for rendering mathematical formulas.
+
+## Inline Formula
+
+Here is an inline formula: \( E = mc^2 \).
+
+## Block Formula
+
+Below is a block formula:
+
 $$
-\text{Mean} = \frac{\sum_{i=1}^n x_i}{n}
-$$  
-
-**Пример**: Найти среднее для $ [1, 3, 5, 7, 9] $:  
-$$
-\text{Mean} = \frac{1 + 3 + 5 + 7 + 9}{5} = \frac{25}{5} = 5
+\int_a^b f(x) \, dx = F(b) - F(a)
 $$
 
-## Медиана (Median)
-- Если количество элементов **нечетное**: центральное значение.  
-- Если **четное**: среднее двух центральных значений.  
-
-**Пример**:  
-Для $ [1, 3, 5, 7, 9] $: медиана = $ 5 $.  
-Для $ [1, 3, 5, 7] $: медиана = $ \frac{3 + 5}{2} = 4 $.
-
-## Мода (Mode)
-**Формула**: Наиболее часто встречающееся значение.  
-
-**Пример**:  
-Для $ [1, 2, 2, 3, 4] $: мода = $ 2 $.
+You can use the above syntax to write any mathematical equations you need!
