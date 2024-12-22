@@ -159,6 +159,25 @@
             <p class="result" id="stdDevResult"></p>
         </div>
 
+        <!-- Квартиль и Межквартильный размах -->
+        <div class="card">
+            <h3>Квартиль (Q1, Q3) и Межквартильный размах (IQR)</h3>
+            <p>Введите числа, разделённые пробелом:</p>
+            <input type="text" id="quartileInput" placeholder="1 2 3 4 5">
+            <button onclick="calculateQuartiles()">Вычислить</button>
+            <p class="result" id="quartilesResult"></p>
+            <p class="result" id="iqrResult"></p>
+        </div>
+
+        <!-- Медиана (Median) -->
+        <div class="card">
+            <h3>Медиана (Median)</h3>
+            <p>Введите числа, разделённые пробелом:</p>
+            <input type="text" id="medianInput" placeholder="1 2 3 4 5">
+            <button onclick="calculateMedian()">Вычислить</button>
+            <p class="result" id="medianResult"></p>
+        </div>
+        
         <!-- Коэффициент Джини (Gini) -->
         <div class="card">
             <h3>Коэффициент Джини (Gini)</h3>
@@ -300,6 +319,29 @@
             const stdDev = Math.sqrt(numbers.reduce((acc, num) => acc + Math.pow(num - mean, 2), 0) / numbers.length);
             const scaled = numbers.map(num => (num - mean) / stdDev);
             document.getElementById("standardResult").textContent = `Масштабированные данные (Standard): ${scaled.join(', ')}`;
+        }
+
+        function calculateQuartiles() {
+            const input = document.getElementById("quartileInput").value;
+            const numbers = input.split(' ').map(num => parseFloat(num.trim())).sort((a, b) => a - b);
+
+            const q1 = getQuartile(numbers, 0.25);
+            const q3 = getQuartile(numbers, 0.75);
+            const iqr = q3 - q1;
+
+            document.getElementById("quartilesResult").textContent = `Первый квартиль (Q1): ${q1.toFixed(2)}, Третий квартиль (Q3): ${q3.toFixed(2)}`;
+            document.getElementById("iqrResult").textContent = `Межквартильный размах (IQR): ${iqr.toFixed(2)}`;
+        }
+
+        function getQuartile(arr, q) {
+            const pos = (arr.length - 1) * q;
+            const base = Math.floor(pos);
+            const rest = pos - base;
+            if (arr[base + 1] !== undefined) {
+                return arr[base] + rest * (arr[base + 1] - arr[base]);
+            } else {
+                return arr[base];
+            }
         }
     </script>
 </body>
