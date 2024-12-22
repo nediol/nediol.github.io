@@ -3,21 +3,165 @@ title: Main
 layout: default
 ---
 
-# Welcome to DevOps Tools Cheat Sheet!
+# Шпаргалка по базовым понятиям Machine Learning
 
-This site provides cheat sheets for DevOps Tools configurations files. Select a tool below to view detailed configuration examples and best practices.
-<div class="grid">
-  <a href="/ansible">
-    <div class="tile">
-      <img src="/assets/images/ansible.png" alt="Ansible Logo">
-      <span>Ansible</span>
-    </div>
-  </a>
+## 1. Среднее (Mean)
+**Формула**:  
+\[
+\text{Mean} = \frac{\sum_{i=1}^n x_i}{n}
+\]  
 
-  <a href="/vagrant">
-    <div class="tile">
-      <img src="/assets/images/vagrant.png" alt="Vagrant Logo">
-      <span>Vagrant</span>
-    </div>
-  </a>
-</div>
+**Пример**:  
+Найти среднее для \( [1, 3, 5, 7, 9] \):  
+\[
+\text{Mean} = \frac{1 + 3 + 5 + 7 + 9}{5} = \frac{25}{5} = 5
+\]
+
+---
+
+## 2. Медиана (Median)
+- Если количество элементов **нечетное**: центральное значение.  
+- Если **четное**: среднее двух центральных значений.  
+
+**Пример**:  
+Для \( [1, 3, 5, 7, 9] \): медиана = \( 5 \).  
+Для \( [1, 3, 5, 7] \): медиана = \( \frac{3 + 5}{2} = 4 \).
+
+---
+
+## 3. Мода (Mode)
+**Формула**: Наиболее часто встречающееся значение.  
+
+**Пример**:  
+Для \( [1, 2, 2, 3, 4] \): мода = \( 2 \).
+
+---
+
+## 4. Дисперсия (Variance)
+**Формула**:  
+\[
+\text{Variance} = \frac{\sum_{i=1}^n (x_i - \mu)^2}{n}
+\]  
+Где \( \mu \) — среднее.  
+
+**Пример**:  
+Для \( [1, 2, 3] \):  
+Среднее \( \mu = 2 \),  
+\[
+\text{Variance} = \frac{(1-2)^2 + (2-2)^2 + (3-2)^2}{3} = \frac{1 + 0 + 1}{3} = 0.67
+\]
+
+---
+
+## 5. Стандартное отклонение (Standard Deviation)
+**Формула**:  
+\[
+\text{Std} = \sqrt{\text{Variance}}
+\]  
+
+**Пример**:  
+Для \( [1, 2, 3] \), дисперсия = \( 0.67 \):  
+\[
+\text{Std} = \sqrt{0.67} \approx 0.82
+\]
+
+---
+
+## 6. Квартиль и межквартильный размах
+- **Q1**: 25% данных ниже этой точки.  
+- **Q3**: 75% данных ниже этой точки.  
+- **Межквартильный размах (IQR)**:  
+\[
+\text{IQR} = Q3 - Q1
+\]  
+
+**Пример**:  
+Для \( [1, 2, 3, 4, 5, 6, 7, 8, 9] \):  
+\( Q1 = 3, Q3 = 7 \),  
+\[
+\text{IQR} = 7 - 3 = 4
+\]
+
+---
+
+## 7. Accuracy, Precision, Recall, F1-score
+- **Accuracy**:  
+\[
+\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+\]  
+- **Precision**:  
+\[
+\text{Precision} = \frac{TP}{TP + FP}
+\]  
+- **Recall**:  
+\[
+\text{Recall} = \frac{TP}{TP + FN}
+\]  
+- **F1-score**:  
+\[
+\text{F1} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+\]  
+
+**Пример**:  
+\( TP = 50, FP = 10, FN = 5, TN = 35 \):  
+\[
+\text{Accuracy} = \frac{50 + 35}{50 + 35 + 10 + 5} = 0.85
+\]  
+\[
+\text{Precision} = \frac{50}{50 + 10} = 0.83, \text{Recall} = \frac{50}{50 + 5} = 0.91
+\]  
+\[
+\text{F1} = 2 \cdot \frac{0.83 \cdot 0.91}{0.83 + 0.91} = 0.87
+\]
+
+---
+
+## 8. Матрица ошибок (Confusion Matrix)
+|                  | Предсказано: Да | Предсказано: Нет |  
+|------------------|-----------------|------------------|  
+| **Истинно Да**   | TP (True Positive)  | FN (False Negative) |  
+| **Истинно Нет**  | FP (False Positive) | TN (True Negative)  |  
+
+---
+
+## 9. Перекрестная проверка (Cross-validation)
+- Деление данных на \( k \) частей (folds).  
+- Модель обучается на \( k-1 \) частях, тестируется на оставшейся.  
+- Повторяется \( k \) раз, метрики усредняются.  
+
+**Пример**:  
+\( k = 5 \), данные делятся на 5 блоков, каждый используется как тестовая выборка по очереди.
+
+---
+
+## 10. Масштабирование данных
+- **MinMax Scaling**:  
+\[
+X_{scaled} = \frac{X - X_{min}}{X_{max} - X_{min}}
+\]  
+- **Standard Scaling**:  
+\[
+X_{scaled} = \frac{X - \mu}{\sigma}
+\]  
+Где \( \mu \) — среднее, \( \sigma \) — стандартное отклонение.  
+
+**Пример MinMax**:  
+Для \( [10, 20, 30] \), \( X_{min} = 10, X_{max} = 30 \):  
+\[
+X_{scaled} = \frac{X - 10}{30 - 10} = [0, 0.5, 1]
+\]
+
+---
+
+## 11. Неопределенность Gini
+**Формула**:  
+\[
+Gini = 1 - \sum_{i=1}^n p_i^2
+\]  
+Где \( p_i \) — доля объектов класса \( i \).  
+
+**Пример**:  
+Для узла с \( p_A = 0.4, p_B = 0.6 \):  
+\[
+Gini = 1 - (0.4^2 + 0.6^2) = 1 - (0.16 + 0.36) = 0.48
+\]
