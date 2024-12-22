@@ -147,7 +147,7 @@
 
 ---
 
-<a name="calculators"></a>
+<a name="calc"></a>
 ### Калькуляторы
 
 #### 1. Среднее (Mean)
