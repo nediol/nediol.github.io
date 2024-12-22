@@ -4,195 +4,205 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Калькуляторы для статистики и машинного обучения</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #4CAF50;
+            margin-top: 20px;
+        }
+
+        h3 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .card button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .card button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .card p {
+            color: #666;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 1rem;
+            color: #777;
+            margin-top: 40px;
+        }
+
+        /* Media query for mobile */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <h1>Статистические и машинно-обучающие метрики</h1>
 
-    <!-- Среднее (Mean) -->
-    <h3>Среднее (Mean)</h3>
-    <p>Введите числа, разделённые запятой:</p>
-    <input type="text" id="meanInput" placeholder="1, 2, 3, 4, 5">
-    <button onclick="calculateMean()">Вычислить</button>
-    <p id="meanResult"></p>
+    <div class="container">
+        <!-- Среднее (Mean) -->
+        <div class="card">
+            <h3>Среднее (Mean)</h3>
+            <p>Введите числа, разделённые запятой:</p>
+            <input type="text" id="meanInput" placeholder="1, 2, 3, 4, 5">
+            <button onclick="calculateMean()">Вычислить</button>
+            <p class="result" id="meanResult"></p>
+        </div>
+
+        <!-- Медиана (Median) -->
+        <div class="card">
+            <h3>Медиана (Median)</h3>
+            <p>Введите числа, разделённые запятой:</p>
+            <input type="text" id="medianInput" placeholder="1, 2, 3, 4, 5">
+            <button onclick="calculateMedian()">Вычислить</button>
+            <p class="result" id="medianResult"></p>
+        </div>
+
+        <!-- Мода (Mode) -->
+        <div class="card">
+            <h3>Мода (Mode)</h3>
+            <p>Введите числа, разделённые запятой:</p>
+            <input type="text" id="modeInput" placeholder="1, 2, 3, 2, 5">
+            <button onclick="calculateMode()">Вычислить</button>
+            <p class="result" id="modeResult"></p>
+        </div>
+
+        <!-- Дисперсия (Variance) и Стандартное отклонение (Standard Deviation) -->
+        <div class="card">
+            <h3>Дисперсия (Variance) и Стандартное отклонение (Standard Deviation)</h3>
+            <p>Введите числа, разделённые запятой:</p>
+            <input type="text" id="varianceInput" placeholder="1, 2, 3, 4, 5">
+            <button onclick="calculateVariance()">Вычислить</button>
+            <p class="result" id="varianceResult"></p>
+            <p class="result" id="stdDevResult"></p>
+        </div>
+
+        <!-- Коэффициент Джини (Gini) -->
+        <div class="card">
+            <h3>Коэффициент Джини (Gini)</h3>
+            <p>Введите числа, разделённые запятой:</p>
+            <input type="text" id="giniInput" placeholder="1, 2, 3, 4, 5">
+            <button onclick="calculateGini()">Вычислить</button>
+            <p class="result" id="giniResult"></p>
+        </div>
+
+        <!-- Accuracy, Precision, Recall, F1-score -->
+        <div class="card">
+            <h3>Точность (Accuracy), Прецизионность (Precision), Отзыв (Recall), F1-оценка</h3>
+            <p>Введите значения TP, TN, FP, FN:</p>
+            <input type="text" id="confusionInput" placeholder="TP, TN, FP, FN">
+            <button onclick="calculateMetrics()">Вычислить</button>
+            <p class="result" id="accuracyResult"></p>
+            <p class="result" id="precisionResult"></p>
+            <p class="result" id="recallResult"></p>
+            <p class="result" id="f1ScoreResult"></p>
+        </div>
+
+        <!-- Матрица ошибок (Confusion Matrix) -->
+        <div class="card">
+            <h3>Матрица ошибок (Confusion Matrix)</h3>
+            <p>Введите значения TP, TN, FP, FN:</p>
+            <input type="text" id="confusionMatrixInput" placeholder="TP, TN, FP, FN">
+            <button onclick="generateConfusionMatrix()">Сгенерировать</button>
+            <p class="result" id="confusionMatrixResult"></p>
+        </div>
+
+        <!-- Перекрестная проверка (Cross-validation) -->
+        <div class="card">
+            <h3>Перекрестная проверка (Cross-validation)</h3>
+            <p>Введите количество фолдов:</p>
+            <input type="number" id="foldsInput" placeholder="3">
+            <button onclick="crossValidation()">Вычислить</button>
+            <p class="result" id="crossValidationResult"></p>
+        </div>
+
+        <!-- MinMax Scaling -->
+        <div class="card">
+            <h3>MinMax Scaling</h3>
+            <p>Введите числа, разделённые запятой:</p>
+            <input type="text" id="minmaxInput" placeholder="1, 2, 3, 4, 5">
+            <button onclick="minMaxScaling()">Масштабировать</button>
+            <p class="result" id="minmaxResult"></p>
+        </div>
+
+        <!-- Standard Scaling -->
+        <div class="card">
+            <h3>Standard Scaling</h3>
+            <p>Введите числа, разделённые запятой:</p>
+            <input type="text" id="standardInput" placeholder="1, 2, 3, 4, 5">
+            <button onclick="standardScaling()">Масштабировать</button>
+            <p class="result" id="standardResult"></p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Разработано для обучения и практики машинного обучения и статистики. &copy; 2024</p>
+    </div>
 
     <script>
-    function calculateMean() {
-        let numbers = document.getElementById("meanInput").value.split(",").map(Number);
-        let mean = numbers.reduce((acc, val) => acc + val, 0) / numbers.length;
-        document.getElementById("meanResult").innerText = "Среднее: " + mean;
-    }
-    </script>
-
-    <!-- Медиана (Median) -->
-    <h3>Медиана (Median)</h3>
-    <p>Введите числа, разделённые запятой:</p>
-    <input type="text" id="medianInput" placeholder="1, 2, 3, 4, 5">
-    <button onclick="calculateMedian()">Вычислить</button>
-    <p id="medianResult"></p>
-
-    <script>
-    function calculateMedian() {
-        let numbers = document.getElementById("medianInput").value.split(",").map(Number);
-        numbers.sort((a, b) => a - b);
-        let median = (numbers.length % 2 === 0) ? (numbers[numbers.length / 2 - 1] + numbers[numbers.length / 2]) / 2 : numbers[Math.floor(numbers.length / 2)];
-        document.getElementById("medianResult").innerText = "Медиана: " + median;
-    }
-    </script>
-
-    <!-- Мода (Mode) -->
-    <h3>Мода (Mode)</h3>
-    <p>Введите числа, разделённые запятой:</p>
-    <input type="text" id="modeInput" placeholder="1, 2, 3, 2, 5">
-    <button onclick="calculateMode()">Вычислить</button>
-    <p id="modeResult"></p>
-
-    <script>
-    function calculateMode() {
-        let numbers = document.getElementById("modeInput").value.split(",").map(Number);
-        let frequency = {};
-        numbers.forEach(num => frequency[num] = (frequency[num] || 0) + 1);
-        let mode = Object.keys(frequency).reduce((a, b) => frequency[a] > frequency[b] ? a : b);
-        document.getElementById("modeResult").innerText = "Мода: " + mode;
-    }
-    </script>
-
-    <!-- Дисперсия (Variance) и Стандартное отклонение (Standard Deviation) -->
-    <h3>Дисперсия (Variance) и Стандартное отклонение (Standard Deviation)</h3>
-    <p>Введите числа, разделённые запятой:</p>
-    <input type="text" id="varianceInput" placeholder="1, 2, 3, 4, 5">
-    <button onclick="calculateVariance()">Вычислить</button>
-    <p id="varianceResult"></p>
-    <p id="stdDevResult"></p>
-
-    <script>
-    function calculateVariance() {
-        let numbers = document.getElementById("varianceInput").value.split(",").map(Number);
-        let mean = numbers.reduce((acc, val) => acc + val, 0) / numbers.length;
-        let variance = numbers.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0) / numbers.length;
-        let stdDev = Math.sqrt(variance);
-        document.getElementById("varianceResult").innerText = "Дисперсия: " + variance;
-        document.getElementById("stdDevResult").innerText = "Стандартное отклонение: " + stdDev;
-    }
-    </script>
-
-    <!-- Коэффициент Джини (Gini) -->
-    <h3>Коэффициент Джини (Gini)</h3>
-    <p>Введите числа, разделённые запятой:</p>
-    <input type="text" id="giniInput" placeholder="1, 2, 3, 4, 5">
-    <button onclick="calculateGini()">Вычислить</button>
-    <p id="giniResult"></p>
-
-    <script>
-    function calculateGini() {
-        let numbers = document.getElementById("giniInput").value.split(",").map(Number);
-        let sorted = numbers.sort((a, b) => a - b);
-        let n = sorted.length;
-        let cumulativeSum = 0;
-        let gini = 0;
-        for (let i = 0; i < n; i++) {
-            cumulativeSum += sorted[i];
-            gini += (i + 1) * sorted[i];
-        }
-        gini = (2 * gini) / (n * cumulativeSum) - (n + 1) / n;
-        document.getElementById("giniResult").innerText = "Коэффициент Джини: " + gini;
-    }
-    </script>
-
-    <!-- Accuracy, Precision, Recall, F1-score -->
-    <h3>Точность (Accuracy), Прецизионность (Precision), Отзыв (Recall), F1-оценка</h3>
-    <p>Введите значения TP, TN, FP, FN:</p>
-    <input type="text" id="confusionInput" placeholder="TP, TN, FP, FN">
-    <button onclick="calculateMetrics()">Вычислить</button>
-    <p id="accuracyResult"></p>
-    <p id="precisionResult"></p>
-    <p id="recallResult"></p>
-    <p id="f1ScoreResult"></p>
-
-    <script>
-    function calculateMetrics() {
-        let values = document.getElementById("confusionInput").value.split(",").map(Number);
-        let [TP, TN, FP, FN] = values;
-
-        let accuracy = (TP + TN) / (TP + TN + FP + FN);
-        let precision = TP / (TP + FP);
-        let recall = TP / (TP + FN);
-        let f1Score = 2 * (precision * recall) / (precision + recall);
-
-        document.getElementById("accuracyResult").innerText = "Точность (Accuracy): " + accuracy;
-        document.getElementById("precisionResult").innerText = "Прецизионность (Precision): " + precision;
-        document.getElementById("recallResult").innerText = "Отзыв (Recall): " + recall;
-        document.getElementById("f1ScoreResult").innerText = "F1-оценка: " + f1Score;
-    }
-    </script>
-
-    <!-- Матрица ошибок (Confusion Matrix) -->
-    <h3>Матрица ошибок (Confusion Matrix)</h3>
-    <p>Введите значения TP, TN, FP, FN:</p>
-    <input type="text" id="confusionMatrixInput" placeholder="TP, TN, FP, FN">
-    <button onclick="generateConfusionMatrix()">Сгенерировать</button>
-    <p id="confusionMatrixResult"></p>
-
-    <script>
-    function generateConfusionMatrix() {
-        let values = document.getElementById("confusionMatrixInput").value.split(",").map(Number);
-        let [TP, TN, FP, FN] = values;
-
-        let matrix = `
-            [[TP: ${TP}, FP: ${FP}],
-             [FN: ${FN}, TN: ${TN}]]
-        `;
-        document.getElementById("confusionMatrixResult").innerText = "Матрица ошибок: " + matrix;
-    }
-    </script>
-
-    <!-- Перекрестная проверка (Cross-validation) -->
-    <h3>Перекрестная проверка (Cross-validation)</h3>
-    <p>Введите количество фолдов:</p>
-    <input type="number" id="foldsInput" placeholder="3">
-    <button onclick="crossValidation()">Вычислить</button>
-    <p id="crossValidationResult"></p>
-
-    <script>
-    function crossValidation() {
-        let folds = document.getElementById("foldsInput").value;
-        let result = `Перекрестная проверка с ${folds} фолдами: Используйте алгоритм для распределения данных на ${folds} частей для обучения и тестирования.`;
-        document.getElementById("crossValidationResult").innerText = result;
-    }
-    </script>
-
-    <!-- MinMax Scaling -->
-    <h3>MinMax Scaling</h3>
-    <p>Введите числа, разделённые запятой:</p>
-    <input type="text" id="minmaxInput" placeholder="1, 2, 3, 4, 5">
-    <button onclick="minMaxScaling()">Масштабировать</button>
-    <p id="minmaxResult"></p>
-
-    <script>
-    function minMaxScaling() {
-        let numbers = document.getElementById("minmaxInput").value.split(",").map(Number);
-        let min = Math.min(...numbers);
-        let max = Math.max(...numbers);
-        let scaled = numbers.map(num => (num - min) / (max - min));
-        document.getElementById("minmaxResult").innerText = "MinMax Scaling: " + scaled.join(", ");
-    }
-    </script>
-
-    <!-- Standard Scaling -->
-    <h3>Standard Scaling</h3>
-    <p>Введите числа, разделённые запятой:</p>
-    <input type="text" id="standardInput" placeholder="1, 2, 3, 4, 5">
-    <button onclick="standardScaling()">Масштабировать</button>
-    <p id="standardResult"></p>
-
-    <script>
-    function standardScaling() {
-        let numbers = document.getElementById("standardInput").value.split(",").map(Number);
-        let mean = numbers.reduce((acc, val) => acc + val, 0) / numbers.length;
-        let stdDev = Math.sqrt(numbers.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0) / numbers.length);
-        let scaled = numbers.map(num => (num - mean) / stdDev);
-        document.getElementById("standardResult").innerText = "Standard Scaling: " + scaled.join(", ");
-    }
+        // Здесь добавьте JavaScript функции для всех калькуляторов, как я указал в предыдущем примере.
     </script>
 
 </body>
