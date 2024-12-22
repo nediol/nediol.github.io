@@ -1,215 +1,108 @@
-/* Общие стили для сайта */
+/* Основной стиль страницы */
 body {
-    font-family: 'Roboto', sans-serif;
-    color: #c9d1d9;
-    background-color: #0d1117; /* Темный фон */
-    line-height: 1.6;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
     margin: 0;
     padding: 0;
+    color: #333;
 }
 
+/* Заголовки */
+h1, h2 {
+    font-size: 1.5rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Таблицы */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Кнопки */
+button, .button {
+    display: inline-block;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+button:hover, .button:hover {
+    background-color: #d6d6d6;
+}
+
+/* Выравнивание текста */
+.text-center {
+    text-align: center;
+}
+
+/* Контейнер для общей информации */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.summary {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.grade {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Ограничение попыток */
+.attempt-info {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Ссылки */
 a {
-    color: #58a6ff;
+    color: #0066cc;
     text-decoration: none;
 }
 
 a:hover {
     text-decoration: underline;
 }
-
-/* Шапка сайта */
-nav {
-    background-color: #161b22;
-    padding: 10px 0;
-    text-align: center;
-}
-
-nav a {
-    margin: 0 15px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #c9d1d9;
-}
-
-footer {
-    text-align: center;
-    padding: 20px 0;
-    background-color: #161b22;
-    color: #c9d1d9;
-    margin-top: 50px;
-}
-
-/* Стили для заголовков */
-h1, h2, h3, h4, h5, h6 {
-    color: #58a6ff;
-    margin-bottom: 20px;
-}
-
-h1 {
-    font-size: 32px;
-}
-
-h2 {
-    font-size: 24px;
-}
-
-h3 {
-    font-size: 20px;
-}
-
-/* Стили для текста */
-p {
-    margin: 10px 0;
-    font-size: 16px;
-    color: #c9d1d9;
-}
-
-/* Стили для кнопок */
-.button {
-    background-color: #238636; /* Зеленая кнопка */
-    color: #ffffff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    display: inline-block;
-    margin-top: 20px;
-}
-
-.button:hover {
-    background-color: #2ea043; /* Темнее при наведении */
-    color: white;
-}
-
-/* Стили для сетки плиток на главной странице */
-.grid {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-top: 40px;
-}
-
-.tile {
-    background-color: #21262d;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    width: 150px;
-    margin: 10px;
-    transition: transform 0.2s ease-in-out;
-}
-
-.tile img {
-    max-width: 60px;
-    margin-bottom: 10px;
-}
-
-.tile span {
-    display: block;
-    margin-top: 10px;
-    font-size: 18px;
-    color: #ffffff;
-}
-
-.tile:hover {
-    transform: scale(1.05);
-}
-
-/* Дополнительные стили для улучшения интерфейса */
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding-top: 30px;
-}
-
-header, footer {
-    background-color: #161b22;
-    padding: 20px;
-    text-align: center;
-}
-
-header h1 {
-    margin: 0;
-    color: #58a6ff;
-}
-
-footer {
-    color: #58a6ff;
-}
-
-footer a {
-    color: #58a6ff;
-}
-
-footer a:hover {
-    color: #ffffff;
-}
-
-/* Стили для ссылок */
-a.button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #ffffff;
-    background-color: #238636;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-a.button:hover {
-    background-color: #2ea043;
-}
-
-/* Стиль для блоков кода */
-pre {
-    background-color: #0d1117; /* Темный фон блока */
-    border: 1px solid #21262d; /* Темная граница */
-    border-radius: 6px; /* Закругленные углы */
-    padding: 16px; /* Внутренний отступ */
-    font-size: 85%; /* Уменьшенный шрифт */
-    line-height: 1.45;
-    overflow: auto; /* Прокрутка для длинного кода */
-    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    color: #c9d1d9; /* Цвет текста */
-    white-space: pre-wrap; /* Разрешает перенос строк для длинного текста */
-}
-
-code {
-    background-color: transparent; /* Убираем фон для встроенного кода внутри pre */
-    padding: 0; /* Убираем отступы */
-    border-radius: 0; /* Убираем закругленные углы */
-    color: inherit; /* Унаследуем цвет текста */
-    font-size: inherit; /* Унаследуем размер шрифта */
-}
-
-/* Подсветка синтаксиса */
-.token.comment, .token.block-comment, .token.prolog, .token.doctype, .token.cdata {
-    color: #8b949e; /* Цвет для комментариев */
-}
-
-.token.punctuation {
-    color: #c9d1d9; /* Цвет для пунктуации */
-}
-
-.token.property, .token.tag, .token.boolean, .token.number, .token.constant, .token.symbol, .token.deleted {
-    color: #f85149; /* Красный для ключевых слов */
-}
-
-.token.selector, .token.attr-name, .token.string, .token.char, .token.builtin, .token.inserted {
-    color: #a5d6ff; /* Голубой для строк */
-}
-
-.token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string {
-    color: #79c0ff; /* Синий для операторов */
-}
-
-.token.function, .token.class-name {
-    color: #d2a8ff; /* Фиолетовый для функций */
-}
-
-.token.regex, .token.important, .token.variable {
-    color: #ff7b72; /* Оранжевый для переменных */
-}
-
