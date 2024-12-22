@@ -5,88 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Калькуляторы для статистики и машинного обучения</title>
     <style>
-        /* Стиль страницы */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f7fc;
+    <style>
+        /* Общие стили */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f7f9fc;
             color: #333;
+            line-height: 1.6;
+            padding-top: 30px;
         }
 
         h1 {
-            text-align: center;
             font-size: 2.5rem;
             color: #4CAF50;
-            margin-top: 20px;
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         h3 {
+            font-size: 1.8rem;
             color: #333;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
+        /* Карточки */
         .card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
         .card input {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            color: #333;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease;
+        }
+
+        .card input:focus {
+            border-color: #4CAF50;
+            outline: none;
         }
 
         .card button {
-            padding: 10px 20px;
             background-color: #4CAF50;
             color: white;
             border: none;
-            border-radius: 5px;
-            font-size: 1rem;
+            border-radius: 8px;
+            padding: 15px 25px;
+            font-size: 1.2rem;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .card button:hover {
             background-color: #45a049;
+            transform: scale(1.05);
         }
 
         .result {
             margin-top: 20px;
-            font-size: 1.2rem;
-            color: #333;
+            font-size: 1.3rem;
             font-weight: bold;
-        }
-
-        .card p {
-            color: #666;
+            color: #333;
         }
 
         .footer {
             text-align: center;
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: #777;
-            margin-top: 40px;
+            margin-top: 50px;
+            padding-bottom: 30px;
         }
 
-        /* Media query for mobile */
+        /* Media queries */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
