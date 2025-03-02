@@ -39,11 +39,19 @@
             font-size: 20px;
             margin-top: 20px;
         }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <h1>DevOps Quiz</h1>
-    <div class="quiz-container" id="quiz"></div>
+    <div class="quiz-container" id="quiz">
+        <div id="question-container" class="question"></div>
+        <button id="next-button" class="option hidden">Next</button>
+        <button id="finish-button" class="option hidden">Finish</button>
+    </div>
+
     <script>
         // База данных с 1000 вопросами
         const questionsPool = [
@@ -54,7 +62,6 @@
             { question: "Which command lists running Docker containers?", options: ["docker ps", "docker images", "docker run", "docker start"], answer: "docker ps" },
             { question: "Which CI/CD tool is written in Groovy?", options: ["GitLab CI", "Jenkins", "Travis CI", "CircleCI"], answer: "Jenkins" },
             { question: "What is the default port for SSH?", options: ["80", "22", "443", "8080"], answer: "22" },
-            // Добавьте еще вопросы...
             { question: "Which protocol is used for secure communication over the internet?", options: ["HTTP", "FTP", "HTTPS", "SMTP"], answer: "HTTPS" },
             { question: "Which tool is used for version control?", options: ["Git", "SVN", "Mercurial", "Perforce"], answer: "Git" },
             { question: "What is the main purpose of Ansible?", options: ["Containerization", "Configuration Management", "Monitoring", "Logging"], answer: "Configuration Management" },
@@ -68,61 +75,102 @@
             { question: "Which tool is used for secrets management?", options: ["Vault", "Jenkins", "Docker", "Kubernetes"], answer: "Vault" },
             { question: "What is the default port for HTTPS?", options: ["80", "22", "443", "8080"], answer: "443" },
             { question: "Which tool is used for load balancing?", options: ["HAProxy", "Docker", "Kubernetes", "Jenkins"], answer: "HAProxy" },
-            // Продолжайте добавлять вопросы до 1000...
         ];
 
-        let questions = [];
-        let answers = {};
-        let score = null;
+        let currentQuestionIndex = 0;
+        let selectedAnswers = [];
+        let shuffledQuestions = [];
 
-        function generateQuiz() {
-            // Перемешиваем вопросы и выбираем первые 10 (или другое количество)
-            questions = questionsPool.sort(() => Math.random() - 0.5).slice(0, 10);
+        function startQuiz() {
+            // Перемешиваем вопросы и выбираем первые 10
+            shuffledQuestions = questionsPool.sort(() => Math.random() - 0.5).slice(0, 10);
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const quizContainer = document.getElementById('quiz');
+            const questionContainer = document.getElementById('question-container');
+            const nextButton = document.getElementById('next-button');
+            const finishButton = document.getElementById('finish-button');
+
+            // Очищаем контейнер
+            questionContainer.innerHTML = '';
+
+            if (currentQuestionIndex >= shuffledQuestions.length) {
+                // Если вопросы закончились, показываем результаты
+                showResults();
+                return;
+            }
+
+            // Показываем текущий вопрос
+            const currentQuestion = shuffledQuestions[currentQuestionIndex];
+            questionContainer.innerHTML = `<p>${currentQuestion.question}</p>`;
+
+            currentQuestion.options.forEach(option => {
+                const button = document.createElement('button');
+                button.className = 'option';
+                button.textContent = option;
+                button.onclick = () => selectAnswer(currentQuestion, option);
+                questionContainer.appendChild(button);
+            });
+
+            // Показываем кнопки "Next" или "Finish"
+            nextButton.classList.add('hidden');
+            finishButton.classList.add('hidden');
+            if (currentQuestionIndex === shuffledQuestions.length - 1) {
+                finishButton.classList.remove('hidden');
+            } else {
+                nextButton.classList.remove('hidden');
+            }
+        }
+
+        function selectAnswer(question, answer) {
+            // Сохраняем выбранный ответ
+            selectedAnswers[currentQuestionIndex] = answer;
+
+            // Делаем кнопки неактивными
+            document.querySelectorAll('.option').forEach(button => button.disabled = true);
+
+            // Показываем кнопку "Next" или "Finish"
+            document.getElementById('next-button').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            showQuestion();
+        }
+
+        function showResults() {
             const quizContainer = document.getElementById('quiz');
             quizContainer.innerHTML = '';
 
-            questions.forEach((q, index) => {
-                const questionElem = document.createElement('div');
-                questionElem.className = 'question';
-                questionElem.innerHTML = `<p>${q.question}</p>`;
-
-                q.options.forEach(option => {
-                    const button = document.createElement('button');
-                    button.className = 'option';
-                    button.textContent = option;
-                    button.onclick = () => selectAnswer(q.question, option, button);
-                    questionElem.appendChild(button);
-                });
-
-                quizContainer.appendChild(questionElem);
-            });
-
-            const checkButton = document.createElement('button');
-            checkButton.textContent = 'Check Answers';
-            checkButton.className = 'option';
-            checkButton.onclick = checkResults;
-            quizContainer.appendChild(checkButton);
-        }
-
-        function selectAnswer(question, answer, button) {
-            answers[question] = answer;
-            document.querySelectorAll('.option').forEach(btn => btn.style.background = '#0f3460');
-            button.style.background = '#e94560';
-        }
-
-        function checkResults() {
             let correct = 0;
-            questions.forEach(q => {
-                if (answers[q.question] === q.answer) correct++;
-            });
+            const resultsHTML = shuffledQuestions.map((q, index) => {
+                const userAnswer = selectedAnswers[index];
+                const isCorrect = userAnswer === q.answer;
+                if (isCorrect) correct++;
 
-            const result = document.createElement('div');
-            result.className = 'result';
-            result.textContent = `Your score: ${correct} out of ${questions.length}`;
-            document.getElementById('quiz').appendChild(result);
+                return `
+                    <div>
+                        <p><strong>${q.question}</strong></p>
+                        <p>Your answer: ${userAnswer || 'Not answered'}</p>
+                        <p>Correct answer: ${q.answer}</p>
+                        <p style="color: ${isCorrect ? 'green' : 'red'};">${isCorrect ? 'Correct!' : 'Incorrect!'}</p>
+                    </div>
+                `;
+            }).join('');
+
+            quizContainer.innerHTML = `
+                <h2>Quiz Results</h2>
+                <p>Your score: ${correct} out of ${shuffledQuestions.length}</p>
+                ${resultsHTML}
+            `;
         }
 
-        generateQuiz();
+        document.getElementById('next-button').onclick = nextQuestion;
+        document.getElementById('finish-button').onclick = showResults;
+
+        startQuiz();
     </script>
 </body>
 </html>
