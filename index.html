@@ -3,95 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>DevOps Quiz</title>
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #121212;
-            color: #E0E0E0;
-            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #1a1a2e;
+            color: white;
             text-align: center;
-        }
-        header {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            background: #1E1E1E;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-        }
-        .welcome-section {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
             padding: 20px;
         }
-        .cheatsheet-section {
-            transform: translateY(100vh);
-            transition: transform 1s ease-in-out;
-            background: #1E1E1E;
-            padding: 40px;
-            border-radius: 15px 15px 0 0;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-        }
-        .cheatsheet-section h2 {
-            margin-bottom: 20px;
-        }
-        .categories {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .category {
-            background: #FF9800;
-            padding: 15px 25px;
+        .quiz-container {
+            max-width: 600px;
+            margin: auto;
+            background: #16213e;
+            padding: 20px;
             border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
         }
-        .category:hover {
-            background: #E68900;
+        .question {
+            margin: 20px 0;
+        }
+        .option {
+            display: block;
+            padding: 10px;
+            margin: 5px 0;
+            background: #0f3460;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .option:hover {
+            background: #e94560;
+        }
+        .result {
+            font-size: 20px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>test</h1>
-    </header>
-    <div class="welcome-section">
-        <h2>test</h2>
-        <p>test</p>
-        <p>test</p>
-    </div>
-    <div class="cheatsheet-section" id="cheatsheet">
-        <h2>test</h2>
-        <div class="categories">
-            <div class="category" onclick="location.href='#docker'">test</div>
-            <div class="category" onclick="location.href='#kubernetes'">test</div>
-            <div class="category" onclick="location.href='#ansible'">test</div>
-        </div>
-    </div>
+    <h1>DevOps Quiz</h1>
+    <div class="quiz-container" id="quiz"></div>
     <script>
-        window.addEventListener('scroll', function() {
-            let cheatsheet = document.getElementById('cheatsheet');
-            if (window.scrollY > 100) {
-                cheatsheet.style.transform = 'translateY(0)';
-            }
-        });
+        // База данных с 1000 вопросами
+        const questionsPool = [
+            { question: "Which tool is used for container management?", options: ["Ansible", "Docker", "Terraform", "Jenkins"], answer: "Docker" },
+            { question: "Which command creates a new pod in Kubernetes?", options: ["kubectl run", "kubectl create pod", "kubectl new pod", "kubectl deploy"], answer: "kubectl run" },
+            { question: "Which tool is used for infrastructure as code?", options: ["Jenkins", "Terraform", "Docker", "Prometheus"], answer: "Terraform" },
+            { question: "Which monitoring tool is widely used in DevOps?", options: ["Grafana", "Jenkins", "Ansible", "Terraform"], answer: "Grafana" },
+            { question: "Which command lists running Docker containers?", options: ["docker ps", "docker images", "docker run", "docker start"], answer: "docker ps" },
+            { question: "Which CI/CD tool is written in Groovy?", options: ["GitLab CI", "Jenkins", "Travis CI", "CircleCI"], answer: "Jenkins" },
+            { question: "What is the default port for SSH?", options: ["80", "22", "443", "8080"], answer: "22" },
+            // Добавьте еще вопросы...
+            { question: "Which protocol is used for secure communication over the internet?", options: ["HTTP", "FTP", "HTTPS", "SMTP"], answer: "HTTPS" },
+            { question: "Which tool is used for version control?", options: ["Git", "SVN", "Mercurial", "Perforce"], answer: "Git" },
+            { question: "What is the main purpose of Ansible?", options: ["Containerization", "Configuration Management", "Monitoring", "Logging"], answer: "Configuration Management" },
+            { question: "Which cloud provider offers AWS services?", options: ["Google Cloud", "Microsoft Azure", "Amazon Web Services", "Oracle Cloud"], answer: "Amazon Web Services" },
+            { question: "Which tool is used for log aggregation?", options: ["ELK Stack", "Prometheus", "Grafana", "Jenkins"], answer: "ELK Stack" },
+            { question: "What is the default port for HTTP?", options: ["22", "80", "443", "8080"], answer: "80" },
+            { question: "Which tool is used for continuous integration?", options: ["Jenkins", "Docker", "Kubernetes", "Terraform"], answer: "Jenkins" },
+            { question: "Which command deletes a Kubernetes pod?", options: ["kubectl delete pod", "kubectl remove pod", "kubectl destroy pod", "kubectl erase pod"], answer: "kubectl delete pod" },
+            { question: "Which tool is used for service mesh?", options: ["Istio", "Kubernetes", "Docker", "Jenkins"], answer: "Istio" },
+            { question: "What is the main purpose of Prometheus?", options: ["Monitoring", "Logging", "Version Control", "CI/CD"], answer: "Monitoring" },
+            { question: "Which tool is used for secrets management?", options: ["Vault", "Jenkins", "Docker", "Kubernetes"], answer: "Vault" },
+            { question: "What is the default port for HTTPS?", options: ["80", "22", "443", "8080"], answer: "443" },
+            { question: "Which tool is used for load balancing?", options: ["HAProxy", "Docker", "Kubernetes", "Jenkins"], answer: "HAProxy" },
+            // Продолжайте добавлять вопросы до 1000...
+        ];
+
+        let questions = [];
+        let answers = {};
+        let score = null;
+
+        function generateQuiz() {
+            // Перемешиваем вопросы и выбираем первые 10 (или другое количество)
+            questions = questionsPool.sort(() => Math.random() - 0.5).slice(0, 10);
+            const quizContainer = document.getElementById('quiz');
+            quizContainer.innerHTML = '';
+
+            questions.forEach((q, index) => {
+                const questionElem = document.createElement('div');
+                questionElem.className = 'question';
+                questionElem.innerHTML = `<p>${q.question}</p>`;
+
+                q.options.forEach(option => {
+                    const button = document.createElement('button');
+                    button.className = 'option';
+                    button.textContent = option;
+                    button.onclick = () => selectAnswer(q.question, option, button);
+                    questionElem.appendChild(button);
+                });
+
+                quizContainer.appendChild(questionElem);
+            });
+
+            const checkButton = document.createElement('button');
+            checkButton.textContent = 'Check Answers';
+            checkButton.className = 'option';
+            checkButton.onclick = checkResults;
+            quizContainer.appendChild(checkButton);
+        }
+
+        function selectAnswer(question, answer, button) {
+            answers[question] = answer;
+            document.querySelectorAll('.option').forEach(btn => btn.style.background = '#0f3460');
+            button.style.background = '#e94560';
+        }
+
+        function checkResults() {
+            let correct = 0;
+            questions.forEach(q => {
+                if (answers[q.question] === q.answer) correct++;
+            });
+
+            const result = document.createElement('div');
+            result.className = 'result';
+            result.textContent = `Your score: ${correct} out of ${questions.length}`;
+            document.getElementById('quiz').appendChild(result);
+        }
+
+        generateQuiz();
     </script>
 </body>
 </html>
