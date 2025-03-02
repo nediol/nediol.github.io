@@ -3,69 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>quick config</title>
+    <title>DevOps Resources</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1><span class="highlight">quick config</span>!</h1>
+            <h1>DevOps <span class="highlight">Resources</span></h1>
         </div>
     </header>
 
-
+    <!-- GitHub Repositories -->
     <section class="repos">
         <div class="container">
-            <h2>repo</h2>
-            <div class="repo-list">
-                <a href="https://github.com/nediol/ansible" class="repo-card">
-                    <h3>ansible</h3>
-                </a>
-                <a href="https://github.com/nediol/ceph" class="repo-card">
-                    <h3>ceph</h3>
-                </a>
-                <a href="https://github.com/nediol/docker" class="repo-card">
-                    <h3>docker</h3>
-                </a>
-                <a href="https://github.com/nediol/gitlab-ci" class="repo-card">
-                    <h3>gitlab-ci</h3>
-                </a>
-                <a href="https://github.com/nediol/helm-chart-example" class="repo-card">
-                    <h3>helm-chart-example</h3>
-                </a>
-                <a href="https://github.com/nediol/helm-repo" class="repo-card">
-                    <h3>helm-repo</h3>
-                </a>
-                <a href="https://github.com/nediol/jenkins" class="repo-card">
-                    <h3>jenkins</h3>
-                </a>
-                <a href="https://github.com/nediol/kubernetes" class="repo-card">
-                    <h3>kubernetes</h3>
-                </a>
-                <a href="https://github.com/nediol/kubernetes-core" class="repo-card">
-                    <h3>kubernetes-core</h3>
-                </a>
-                <a href="https://github.com/nediol/kubespray" class="repo-card">
-                    <h3>kubespray</h3>
-                </a>
-                <a href="https://github.com/nediol/nginx" class="repo-card">
-                    <h3>nginx</h3>
-                </a>
-                <a href="https://github.com/nediol/postgresql" class="repo-card">
-                    <h3>postgresql</h3>
-                </a>
-                <a href="https://github.com/nediol/vagrant" class="repo-card">
-                    <h3>vagrant</h3>
-                </a>
+            <h2>My Repositories</h2>
+            <div class="repo-grid">
+                <a href="https://github.com/nediol/ansible" class="repo-card">Ansible</a>
+                <a href="https://github.com/nediol/ceph" class="repo-card">Ceph</a>
+                <a href="https://github.com/nediol/docker" class="repo-card">Docker</a>
+                <a href="https://github.com/nediol/gitlab-ci" class="repo-card">GitLab CI</a>
+                <a href="https://github.com/nediol/helm-chart-example" class="repo-card">Helm Chart</a>
+                <a href="https://github.com/nediol/kubernetes" class="repo-card">Kubernetes</a>
+                <a href="https://github.com/nediol/kubespray" class="repo-card">Kubespray</a>
+                <a href="https://github.com/nediol/nginx" class="repo-card">Nginx</a>
+                <a href="https://github.com/nediol/postgresql" class="repo-card">PostgreSQL</a>
+                <a href="https://github.com/nediol/vagrant" class="repo-card">Vagrant</a>
+            </div>
+        </div>
+    </section>
 
-                </a>
+    <!-- DevOps Tools & Docs -->
+    <section class="docs">
+        <div class="container">
+            <h2>Tools Documentation</h2>
+
+            <div class="doc-grid">
+                <h3>Source Control</h3>
+                <a href="https://git-scm.com/doc" class="doc-card">Git</a>
+                <a href="https://docs.github.com/en" class="doc-card">GitHub</a>
+                <a href="https://docs.gitlab.com/" class="doc-card">GitLab</a>
+                <a href="https://bitbucket.org/product/guides" class="doc-card">Bitbucket</a>
+                <a href="https://about.codeberg.org/" class="doc-card">Codeberg</a>
+
+                <h3>CI/CD</h3>
+                <a href="https://www.jenkins.io/doc/" class="doc-card">Jenkins</a>
+                <a href="https://docs.gitlab.com/ee/ci/" class="doc-card">GitLab CI</a>
+                <a href="https://circleci.com/docs/" class="doc-card">CircleCI</a>
+                <a href="https://drone.io/docs/" class="doc-card">Drone</a>
+                <a href="https://argo-cd.readthedocs.io/en/stable/" class="doc-card">ArgoCD</a>
+
+                <h3>Containerization & Orchestration</h3>
+                <a href="https://docs.docker.com/" class="doc-card">Docker</a>
+                <a href="https://kubernetes.io/docs/" class="doc-card">Kubernetes</a>
+                <a href="https://helm.sh/docs/" class="doc-card">Helm</a>
+                <a href="https://podman.io/getting-started/" class="doc-card">Podman</a>
+                <a href="https://fluxcd.io/docs/" class="doc-card">FluxCD</a>
+
+                <h3>Infrastructure as Code (IaC)</h3>
+                <a href="https://www.terraform.io/docs" class="doc-card">Terraform</a>
+                <a href="https://docs.ansible.com/ansible/latest/index.html" class="doc-card">Ansible</a>
+                <a href="https://www.puppet.com/docs" class="doc-card">Puppet</a>
+                <a href="https://docs.chef.io/" class="doc-card">Chef</a>
+
+                <h3>Monitoring & Logging</h3>
+                <a href="https://prometheus.io/docs/" class="doc-card">Prometheus</a>
+                <a href="https://grafana.com/docs/" class="doc-card">Grafana</a>
+                <a href="https://www.elastic.co/guide/index.html" class="doc-card">Elasticsearch</a>
+                <a href="https://www.zabbix.com/documentation/current/" class="doc-card">Zabbix</a>
+                <a href="https://www.datadoghq.com/" class="doc-card">Datadog</a>
+
+                <h3>Security & Secrets Management</h3>
+                <a href="https://www.vaultproject.io/docs" class="doc-card">HashiCorp Vault</a>
+                <a href="https://www.cyberark.com/" class="doc-card">CyberArk</a>
+                <a href="https://docs.openpolicyagent.org/" class="doc-card">Open Policy Agent</a>
+
+                <h3>Cloud Platforms</h3>
+                <a href="https://aws.amazon.com/documentation/" class="doc-card">AWS</a>
+                <a href="https://cloud.google.com/docs" class="doc-card">Google Cloud</a>
+                <a href="https://docs.microsoft.com/en-us/azure/" class="doc-card">Azure</a>
+                <a href="https://www.openstack.org/software/" class="doc-card">OpenStack</a>
+
+                <h3>Networking & Reverse Proxies</h3>
+                <a href="https://nginx.org/en/docs/" class="doc-card">Nginx</a>
+                <a href="https://www.haproxy.org/#docs" class="doc-card">HAProxy</a>
+
+                <h3>Databases</h3>
+                <a href="https://www.postgresql.org/docs/" class="doc-card">PostgreSQL</a>
+                <a href="https://mariadb.com/kb/en/documentation/" class="doc-card">MariaDB</a>
+                <a href="https://www.mongodb.com/docs/" class="doc-card">MongoDB</a>
+
+                <h3>Virtualization</h3>
+                <a href="https://developer.hashicorp.com/vagrant/docs" class="doc-card">Vagrant</a>
+                <a href="https://www.virtualbox.org/wiki/Documentation" class="doc-card">VirtualBox</a>
+                <a href="https://libvirt.org/" class="doc-card">Libvirt</a>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>Contact: <a href="mailto:your.email@example.com">https://github.com/nediol/</a></p>
+            <p>2025</p>
         </div>
     </footer>
 </body>
