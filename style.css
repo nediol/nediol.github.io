@@ -1,113 +1,57 @@
-/* Global Styles */
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-    color: #ffffff;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
     margin: 0;
     padding: 0;
 }
 
 .container {
     width: 90%;
-    margin: auto;
-    overflow: hidden;
-}
-
-/* Header */
-header {
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
+    max-width: 1200px;
+    margin: 40px auto;
 }
 
 h1 {
-    margin: 0;
-    font-size: 2.5em;
-    text-transform: uppercase;
-}
-
-.highlight {
-    color: #ff9800;
-}
-
-/* Sections */
-.repos, .docs {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    margin: 30px 0;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(8px);
-}
-
-h2 {
     text-align: center;
-    font-size: 2em;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+    font-size: 2.5em;
+    margin-bottom: 20px;
 }
 
-/* Categories Grid */
 .categories-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1fr 3fr;
     gap: 20px;
-    padding: 20px;
-    align-items: start;
 }
 
 .category {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.category h3 {
-    text-align: center;
-    font-size: 1.5em;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: left;
     margin-bottom: 10px;
 }
 
-/* Tools Grid */
 .tools-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 10px;
 }
 
 .tool-card {
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
+    background: #7f8c8d;
     padding: 15px;
-    text-align: center;
     border-radius: 8px;
-    text-decoration: none;
+    text-align: center;
     font-weight: bold;
-    font-size: 1em;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
-    position: relative;
-    overflow: hidden;
+    transition: 0.3s;
+}
+
+.tool-card a {
+    color: white;
+    text-decoration: none;
 }
 
 .tool-card:hover {
-    background: #ff9800;
-    color: #222;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    background: rgba(0, 0, 0, 0.9);
-    color: white;
-    padding: 15px 0;
-    margin-top: 30px;
-    font-size: 1em;
+    background: #f39c12;
+    transform: scale(1.05);
 }
