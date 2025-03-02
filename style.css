@@ -1,4 +1,4 @@
-/* Глобальные настройки */
+/* Основные стили */
 * {
     margin: 0;
     padding: 0;
@@ -6,253 +6,246 @@
 }
 
 body {
-    font-family: 'Orbitron', sans-serif;
-    background-color: #000021;
-    color: #e0f7fa;
-    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background-color: #111;
+    color: #fff;
     overflow: hidden;
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #fff;
+}
+
+h1 {
+    font-size: 4rem;
+    color: #f90;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #ff0, 0 0 10px #ff0, 0 0 15px #ff0, 0 0 20px #ff0, 0 0 30px #ff0;
+    }
+    100% {
+        text-shadow: 0 0 15px #ff0, 0 0 20px #ff0, 0 0 30px #ff0, 0 0 40px #ff0, 0 0 50px #ff0;
+    }
+}
+
+h2 {
+    margin-top: 50px;
+    font-size: 2rem;
+    color: #f90;
+    animation: fadeIn 1.5s ease-in;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Контейнеры */
+.container {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+/* Стили солнечной системы */
+.solar-system {
     position: relative;
-    animation: galacticWarp 15s infinite alternate, rotateStars 10s linear infinite;
-}
-
-/* Анимация космических волн */
-@keyframes galacticWarp {
-    0% { background-color: #000021; }
-    25% { background-color: #0d003b; }
-    50% { background-color: #1f004d; }
-    75% { background-color: #37006a; }
-    100% { background-color: #000021; }
-}
-
-/* Вращение звездного фона */
-@keyframes rotateStars {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.stars {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    background: url('https://example.com/stars-field.png') repeat;
-    opacity: 0.7;
-    animation: starsEffect 10s infinite alternate;
+    height: 600px;
+    margin-top: 50px;
+    perspective: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-@keyframes starsEffect {
-    0% { opacity: 0.5; }
-    50% { opacity: 0.8; }
-    100% { opacity: 0.5; }
-}
-
-/* Космический туман */
-@keyframes cosmicFog {
-    0% { opacity: 0.3; }
-    50% { opacity: 0.5; }
-    100% { opacity: 0.3; }
-}
-
-.fog {
+.sun {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 50, 0.7);
-    animation: cosmicFog 10s infinite ease-in-out;
-}
-
-/* Заголовок в центре */
-header {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 7em;
-    color: rgba(255, 255, 255, 0.9);
-    text-align: center;
-    letter-spacing: 0.5em;
-    text-transform: uppercase;
-    text-shadow: 0 0 30px rgba(255, 0, 255, 1), 0 0 60px rgba(0, 255, 255, 1);
-    animation: glowingEffect 3s infinite alternate, rotateGalactic 12s linear infinite;
-}
-
-@keyframes glowingEffect {
-    0% { text-shadow: 0 0 30px rgba(255, 0, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.8); }
-    50% { text-shadow: 0 0 80px rgba(255, 0, 255, 1), 0 0 150px rgba(0, 255, 255, 1); }
-    100% { text-shadow: 0 0 30px rgba(255, 0, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.8); }
-}
-
-@keyframes rotateGalactic {
-    0% { transform: translateX(-50%) rotate(0deg); }
-    100% { transform: translateX(-50%) rotate(360deg); }
-}
-
-/* Секция с планетами */
-section {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    padding: 30px;
-    text-align: center;
-    z-index: 10;
-    font-size: 1.8em;
-    color: #F0F8FF;
-    animation: cosmicWave 12s ease-in-out infinite;
-}
-
-@keyframes cosmicWave {
-    0% { transform: scale(1) rotate(0deg); }
-    50% { transform: scale(1.1) rotate(15deg); }
-    100% { transform: scale(1) rotate(0deg); }
-}
-
-/* Карточки-планеты */
-.repo-card {
-    display: inline-block;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 50px;
-    margin: 40px;
+    width: 150px;
+    height: 150px;
+    background-color: #ff0;
     border-radius: 50%;
-    width: 300px;
-    height: 300px;
+    box-shadow: 0 0 60px rgba(255, 140, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: rotateSun 30s infinite linear;
+    z-index: 100;
+}
+
+/* Стили для планет (репозиториев) */
+.repo-card {
+    position: absolute;
     text-align: center;
-    font-size: 2.5em;
-    color: #0ff;
-    border: 3px solid #f0f8ff;
-    box-shadow: 0 0 60px rgba(255, 0, 255, 0.8), 0 0 120px rgba(0, 255, 255, 0.9);
-    position: relative;
-    transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.7s ease-in-out;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    width: 90px;
+    height: 50px;
+    display: block;
+    transform-origin: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease, opacity 0.5s ease;
+    animation: repoHover 1s ease-in-out;
+}
+
+@keyframes repoHover {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
 }
 
 .repo-card:hover {
-    transform: scale(1.4) rotate(25deg);
+    transform: scale(1.5);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
     opacity: 1;
 }
 
-.repo-card:before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 25px;
-    height: 25px;
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 50%;
-    animation: orbitEffect 5s infinite linear;
-    transform: translate(-50%, -50%);
+/* Орбитальные анимации для планет */
+.repo-card:nth-child(1) {
+    animation: orbit 12s infinite linear;
+    animation-delay: 0s;
 }
 
-@keyframes orbitEffect {
-    0% { transform: rotate(0deg) translate(100px) rotate(0deg); }
-    100% { transform: rotate(360deg) translate(100px) rotate(-360deg); }
+.repo-card:nth-child(2) {
+    animation: orbit 14s infinite linear;
+    animation-delay: -1s;
 }
 
-/* Всплеск галактики */
-section:before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 1500px;
-    height: 1500px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 250px rgba(255, 0, 255, 0.5), 0 0 600px rgba(0, 255, 255, 0.7);
-    animation: cosmicRipple 7s infinite ease-in-out;
-    z-index: -1;
+.repo-card:nth-child(3) {
+    animation: orbit 16s infinite linear;
+    animation-delay: -2s;
 }
 
-@keyframes cosmicRipple {
-    0% { opacity: 0.5; }
-    50% { opacity: 1; }
-    100% { opacity: 0.5; }
+.repo-card:nth-child(4) {
+    animation: orbit 18s infinite linear;
+    animation-delay: -3s;
 }
 
-/* Светящийся футер */
-footer {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.5em;
-    color: #ffffff;
-    text-transform: uppercase;
-    text-shadow: 0 0 40px rgba(255, 255, 255, 0.7);
-    animation: blinkEffect 2s infinite alternate;
+.repo-card:nth-child(5) {
+    animation: orbit 20s infinite linear;
+    animation-delay: -4s;
 }
 
-@keyframes blinkEffect {
-    0% { opacity: 0.5; }
-    100% { opacity: 1; }
+.repo-card:nth-child(6) {
+    animation: orbit 22s infinite linear;
+    animation-delay: -5s;
 }
 
-/* Кнопки с космическим эффектом */
-button {
-    font-size: 2em;
-    background-color: #5a2a68;
-    color: #ffbc00;
-    border: 3px solid #e74c3c;
-    border-radius: 15px;
-    padding: 22px 45px;
-    cursor: pointer;
-    transition: all 0.5s ease-in-out;
+.repo-card:nth-child(7) {
+    animation: orbit 24s infinite linear;
+    animation-delay: -6s;
 }
 
-button:hover {
-    background-color: #ff00ff;
-    color: #f0f8ff;
-    transform: translateY(-7px) scale(1.1);
-    box-shadow: 0 0 50px rgba(255, 255, 255, 0.8);
+.repo-card:nth-child(8) {
+    animation: orbit 26s infinite linear;
+    animation-delay: -7s;
 }
 
-button:active {
-    animation: wormholeEffect 0.5s ease;
-    transform: scale(0.8) rotate(-25deg);
+.repo-card:nth-child(9) {
+    animation: orbit 28s infinite linear;
+    animation-delay: -8s;
 }
 
-/* Анимация червоточины для кнопки */
-@keyframes wormholeEffect {
-    0% { transform: scale(0.6) rotate(60deg); }
-    50% { transform: scale(1.2) rotate(0deg); }
-    100% { transform: scale(0.6) rotate(60deg); }
+.repo-card:nth-child(10) {
+    animation: orbit 30s infinite linear;
+    animation-delay: -9s;
 }
 
-/* Сеточные анимации */
-.grid-item {
-    display: inline-block;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    margin: 35px;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 2.5em;
-    box-shadow: 0 0 40px rgba(255, 0, 255, 0.6);
-    animation: floatEffect 6s infinite ease-in-out;
+/* Орбитальные движения */
+@keyframes orbit {
+    0% {
+        transform: rotate(0deg) translateX(180px) rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg) translateX(180px) rotate(-360deg);
+    }
 }
 
-@keyframes floatEffect {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0); }
+/* Стили для документации */
+.docs {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
-/* Эффекты для ссылок */
-a {
-    color: #ff00ff;
+.doc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.doc-card {
+    background-color: #333;
+    padding: 15px;
+    color: #fff;
+    border-radius: 10px;
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.5s ease-in-out, text-shadow 0.4s ease;
+    font-size: 16px;
+    transition: transform 0.3s ease-in-out;
+    animation: slideIn 0.8s ease-in-out;
 }
 
-a:hover {
-    color: #e74c3c;
-    text-shadow: 0 0 25px #fff, 0 0 35px #8e44ad;
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
-a:focus {
-    outline: 3px solid #e74c3c;
+.doc-card:hover {
+    transform: scale(1.1);
+}
+
+.doc-grid h3 {
+    width: 100%;
+    color: #ff6600;
+}
+
+/* Анимация для фона */
+body {
+    background: radial-gradient(circle, #000, #111);
+    animation: backgroundMotion 5s infinite alternate;
+}
+
+@keyframes backgroundMotion {
+    0% {
+        background: radial-gradient(circle, #111, #000);
+    }
+    100% {
+        background: radial-gradient(circle, #000, #111);
+    }
+}
+
+/* Улучшенные эффекты */
+.repo-card {
+    cursor: pointer;
+}
+
+.repo-card:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
 }
