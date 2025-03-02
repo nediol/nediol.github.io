@@ -1,95 +1,534 @@
-/* Основные стили */
+/* Общие стили */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #111;
-    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+    line-height: 1.6;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    font-size: 16px;
+    font-weight: 400;
 }
 
+/* Контейнеры */
 .container {
     width: 90%;
+    max-width: 1200px;
     margin: 0 auto;
+    overflow: hidden;
+    padding: 20px 0;
 }
 
-/* Заголовки и текст */
-h1, h2, h3 {
+/* Стили для шапки */
+/* Шапка */
+header {
+    background: rgba(0, 0, 0, 0.8);
     color: #fff;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h1 .highlight {
-    color: #FFD700;
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-/* Навигация */
-nav {
-    background-color: #222;
-    padding: 15px 0;
+header .highlight {
+    color: #ff9800;
+    font-weight: bold;
+    color: #e74c3c;
 }
 
-nav ul {
-    list-style: none;
+/* Секцию с репозиториями */
+.repos {
+    background-color: #ecf0f1;
+    padding: 50px 0;
+}
+
+header p {
+    font-size: 1.2em;
+    opacity: 0.8;
+.repos h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #34495e;
+}
+
+/* Основная сетка документации */
+.tools-container {
+.repo-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* Левая колонка - категории, правая - инструменты */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+    align-items: start;
+}
+
+/* Левая колонка - Категории */
+.categories {
     display: flex;
-    justify-content: center;
-}
-
-nav li {
-    margin: 0 20px;
-}
-
-nav a {
-    color: #fff;
+    flex-direction: column;
+    gap: 15px;
+    border-right: 2px solid rgba(255, 255, 255, 0.1);
+    padding-right: 15px;
+.repo-card {
+    display: block;
+    text-align: center;
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
     text-decoration: none;
     font-size: 18px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
 }
 
-/* Секции */
-.repos, .docs, .about {
-    padding: 40px 0;
+.repo-card:hover {
+    transform: translateY(-10px);
+    background-color: #2980b9;
 }
 
-/* Карточки документации */
-.doc-grid ul {
-    display: flex;
-    flex-wrap: wrap;
+.repo-card:focus {
+    outline: 2px solid #e74c3c;
+}
+
+.repo-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.repo-card:hover:before {
+    opacity: 1;
+}
+
+/* Секция с документацией */
+.docs {
+    background-color: white;
+    padding: 50px 0;
+}
+
+.docs h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #34495e;
+}
+
+.category {
+    font-size: 1.3em;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+.doc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.doc-grid h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #2980b9;
 }
 
 .doc-card {
     display: block;
-    background-color: #444;
-    padding: 15px;
-    margin: 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    color: #fff;
-    font-size: 16px;
     text-align: center;
+    background-color: #16a085;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: left;
+    transition: 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 18px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
 }
 
 .doc-card:hover {
-    background-color: #FFD700;
+    transform: translateY(-10px);
+    background-color: #1abc9c;
 }
 
-/* Солнечная система */
-.solar-system {
-    margin-top: 40px;
-    text-align: center;
+.doc-card:focus {
+    outline: 2px solid #e74c3c;
 }
 
-#solar-system-container {
+.category::after {
+    content: ">";
+.doc-card:before {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.7;
+    transition: 0.3s;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 500px;
-    background-color: #000;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-/* Подвал */
+.doc-card:hover:before {
+    opacity: 1;
+}
+
+/* Подсветка активных ссылок */
+a:focus {
+    outline: 2px solid #e74c3c;
+}
+
+/* Стили для кнопок */
+button {
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #c0392b;
+    transform: translateY(-3px);
+}
+
+button:focus {
+    outline: 2px solid #e74c3c;
+}
+
+/* Стили для форм */
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.category:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+input:focus,
+textarea:focus {
+    border-color: #e74c3c;
+    outline: none;
+}
+
+.category:hover::after {
+/* Подсказки и элементы на странице */
+.tooltip {
+    display: inline-block;
+    position: relative;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: #34495e;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Правая колонка - Инструменты */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+/* Стиль для футера */
 footer {
-    background-color: #222;
-    color: #aaa;
+    background-color: #2c3e50;
+    color: white;
     padding: 20px 0;
     text-align: center;
+    font-size: 16px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Карточки инструментов */
+.tool-card {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 15px;
+    border-radius: 8px;
+footer p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* Стили для навигации */
+nav {
+    background-color: #2c3e50;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    text-align: center;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #e74c3c;
+}
+
+nav ul li a:focus {
+    outline: 2px solid #e74c3c;
+}
+
+/* Карточки с изображениями */
+.image-card {
+    position: relative;
+    display: block;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.tool-card::before {
+    content: "";
+.image-card .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 152, 0, 0.1);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.tool-card:hover::before {
+    transform: scaleX(1);
+.image-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.tool-card a {
+    color: #ff9800;
+    text-decoration: none;
+    transition: 0.3s;
+.image-card:hover .image-overlay {
+    opacity: 1;
+}
+
+.tool-card:hover a {
+    color: #ffffff;
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Адаптивность */
+@media screen and (max-width: 768px) {
+    .tools-container {
+        grid-template-columns: 1fr; /* Одна колонка */
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+    .categories {
+        text-align: center;
+        border-right: none;
+        padding-right: 0;
+        margin-bottom: 20px;
+header {
+    animation: fadeIn 1s ease-in-out;
+}
+
+.repos,
+.docs {
+    animation: slideIn 1s ease-in-out;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 28px;
+    }
+
+    .category {
+        text-align: center;
+    .repo-card,
+    .doc-card,
+    .image-card {
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    .category::after {
+        content: none;
+    .repo-grid,
+    .doc-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .tools-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Меньшие карточки */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    .repo-card,
+    .doc-card,
+    .image-card {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .repo-grid,
+    .doc-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+}
+
+/* Стили для печатной версии */
+@media print {
+    body {
+        font-size: 12px;
+        color: black;
+        background-color: white;
+    }
+
+    header,
+    footer {
+        display: none;
+    }
+
+    .repo-card,
+    .doc-card {
+        background-color: transparent;
+        color: black;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+
+    .repo-card:hover,
+    .doc-card:hover {
+        background-color: transparent;
+        transform: none;
+    }
+
+    .repo-grid,
+    .doc-grid {
+        display: block;
+    }
+
+    .repo-card,
+    .doc-card {
+        margin-bottom: 10px;
+    }
 }
