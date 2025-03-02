@@ -1,109 +1,433 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>devops links</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1>DevOps <span class="highlight">Resources</span></h1>
-        </div>
-    </header>
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
 
-    <!-- GitHub Repositories -->
-    <section class="repos">
-        <div class="container">
-            <h2>my repo</h2>
-            <div class="repo-grid">
-                <a href="https://github.com/nediol/ansible" class="repo-card">Ansible</a>
-                <a href="https://github.com/nediol/ceph" class="repo-card">Ceph</a>
-                <a href="https://github.com/nediol/docker" class="repo-card">Docker</a>
-                <a href="https://github.com/nediol/gitlab-ci" class="repo-card">GitLab CI</a>
-                <a href="https://github.com/nediol/helm-chart-example" class="repo-card">Helm Chart</a>
-                <a href="https://github.com/nediol/kubernetes" class="repo-card">Kubernetes</a>
-                <a href="https://github.com/nediol/kubespray" class="repo-card">Kubespray</a>
-                <a href="https://github.com/nediol/nginx" class="repo-card">Nginx</a>
-                <a href="https://github.com/nediol/postgresql" class="repo-card">PostgreSQL</a>
-                <a href="https://github.com/nediol/vagrant" class="repo-card">Vagrant</a>
-            </div>
-        </div>
-    </section>
+body {
+    background-color: #f4f7fa;
+    color: #333;
+    line-height: 1.6;
+    font-size: 16px;
+    font-weight: 400;
+}
 
-    <!-- DevOps Tools & Docs -->
-    <section class="docs">
-        <div class="container">
-            <h2>tools documentation</h2>
+/* Контейнеры */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
 
-            <div class="doc-grid">
-                <h3>Source Control</h3>
-                <a href="https://git-scm.com/doc" class="doc-card">Git</a>
-                <a href="https://docs.github.com/en" class="doc-card">GitHub</a>
-                <a href="https://docs.gitlab.com/" class="doc-card">GitLab</a>
-                <a href="https://bitbucket.org/product/guides" class="doc-card">Bitbucket</a>
-                <a href="https://about.codeberg.org/" class="doc-card">Codeberg</a>
+/* Шапка */
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-                <h3>CI/CD</h3>
-                <a href="https://www.jenkins.io/doc/" class="doc-card">Jenkins</a>
-                <a href="https://docs.gitlab.com/ee/ci/" class="doc-card">GitLab CI</a>
-                <a href="https://circleci.com/docs/" class="doc-card">CircleCI</a>
-                <a href="https://drone.io/docs/" class="doc-card">Drone</a>
-                <a href="https://argo-cd.readthedocs.io/en/stable/" class="doc-card">ArgoCD</a>
+header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
 
-                <h3>Containerization & Orchestration</h3>
-                <a href="https://docs.docker.com/" class="doc-card">Docker</a>
-                <a href="https://kubernetes.io/docs/" class="doc-card">Kubernetes</a>
-                <a href="https://helm.sh/docs/" class="doc-card">Helm</a>
-                <a href="https://podman.io/getting-started/" class="doc-card">Podman</a>
-                <a href="https://fluxcd.io/docs/" class="doc-card">FluxCD</a>
+header .highlight {
+    color: #e74c3c;
+}
 
-                <h3>Infrastructure as Code (IaC)</h3>
-                <a href="https://www.terraform.io/docs" class="doc-card">Terraform</a>
-                <a href="https://docs.ansible.com/ansible/latest/index.html" class="doc-card">Ansible</a>
-                <a href="https://www.puppet.com/docs" class="doc-card">Puppet</a>
-                <a href="https://docs.chef.io/" class="doc-card">Chef</a>
+/* Секцию с репозиториями */
+.repos {
+    background-color: #ecf0f1;
+    padding: 50px 0;
+}
 
-                <h3>Monitoring & Logging</h3>
-                <a href="https://prometheus.io/docs/" class="doc-card">Prometheus</a>
-                <a href="https://grafana.com/docs/" class="doc-card">Grafana</a>
-                <a href="https://www.elastic.co/guide/index.html" class="doc-card">Elasticsearch</a>
-                <a href="https://www.zabbix.com/documentation/current/" class="doc-card">Zabbix</a>
-                <a href="https://www.datadoghq.com/" class="doc-card">Datadog</a>
+.repos h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #34495e;
+}
 
-                <h3>Security & Secrets Management</h3>
-                <a href="https://www.vaultproject.io/docs" class="doc-card">HashiCorp Vault</a>
-                <a href="https://www.cyberark.com/" class="doc-card">CyberArk</a>
-                <a href="https://docs.openpolicyagent.org/" class="doc-card">Open Policy Agent</a>
+.repo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
 
-                <h3>Cloud Platforms</h3>
-                <a href="https://aws.amazon.com/documentation/" class="doc-card">AWS</a>
-                <a href="https://cloud.google.com/docs" class="doc-card">Google Cloud</a>
-                <a href="https://docs.microsoft.com/en-us/azure/" class="doc-card">Azure</a>
-                <a href="https://www.openstack.org/software/" class="doc-card">OpenStack</a>
+.repo-card {
+    display: block;
+    text-align: center;
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
 
-                <h3>Networking & Reverse Proxies</h3>
-                <a href="https://nginx.org/en/docs/" class="doc-card">Nginx</a>
-                <a href="https://www.haproxy.org/#docs" class="doc-card">HAProxy</a>
+.repo-card:hover {
+    transform: translateY(-10px);
+    background-color: #2980b9;
+}
 
-                <h3>Databases</h3>
-                <a href="https://www.postgresql.org/docs/" class="doc-card">PostgreSQL</a>
-                <a href="https://mariadb.com/kb/en/documentation/" class="doc-card">MariaDB</a>
-                <a href="https://www.mongodb.com/docs/" class="doc-card">MongoDB</a>
+.repo-card:focus {
+    outline: 2px solid #e74c3c;
+}
 
-                <h3>Virtualization</h3>
-                <a href="https://developer.hashicorp.com/vagrant/docs" class="doc-card">Vagrant</a>
-                <a href="https://www.virtualbox.org/wiki/Documentation" class="doc-card">VirtualBox</a>
-                <a href="https://libvirt.org/" class="doc-card">Libvirt</a>
-            </div>
-        </div>
-    </section>
+.repo-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
 
-    <footer>
-        <div class="container">
-            <p>2025</p>
-        </div>
-    </footer>
-</body>
-</html>
+.repo-card:hover:before {
+    opacity: 1;
+}
+
+/* Секция с документацией */
+.docs {
+    background-color: white;
+    padding: 50px 0;
+}
+
+.docs h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #34495e;
+}
+
+.doc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.doc-grid h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #2980b9;
+}
+
+.doc-card {
+    display: block;
+    text-align: center;
+    background-color: #16a085;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.doc-card:hover {
+    transform: translateY(-10px);
+    background-color: #1abc9c;
+}
+
+.doc-card:focus {
+    outline: 2px solid #e74c3c;
+}
+
+.doc-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.doc-card:hover:before {
+    opacity: 1;
+}
+
+/* Подсветка активных ссылок */
+a:focus {
+    outline: 2px solid #e74c3c;
+}
+
+/* Стили для кнопок */
+button {
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #c0392b;
+    transform: translateY(-3px);
+}
+
+button:focus {
+    outline: 2px solid #e74c3c;
+}
+
+/* Стили для форм */
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #e74c3c;
+    outline: none;
+}
+
+/* Подсказки и элементы на странице */
+.tooltip {
+    display: inline-block;
+    position: relative;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: #34495e;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Стиль для футера */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 16px;
+    position: relative;
+    z-index: 10;
+}
+
+footer p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* Стили для навигации */
+nav {
+    background-color: #2c3e50;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #e74c3c;
+}
+
+nav ul li a:focus {
+    outline: 2px solid #e74c3c;
+}
+
+/* Карточки с изображениями */
+.image-card {
+    position: relative;
+    display: block;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.image-card .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.image-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.image-card:hover .image-overlay {
+    opacity: 1;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+header {
+    animation: fadeIn 1s ease-in-out;
+}
+
+.repos,
+.docs {
+    animation: slideIn 1s ease-in-out;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 28px;
+    }
+
+    .repo-card,
+    .doc-card,
+    .image-card {
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    .repo-grid,
+    .doc-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    .repo-card,
+    .doc-card,
+    .image-card {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .repo-grid,
+    .doc-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+}
+
+/* Стили для печатной версии */
+@media print {
+    body {
+        font-size: 12px;
+        color: black;
+        background-color: white;
+    }
+
+    header,
+    footer {
+        display: none;
+    }
+
+    .repo-card,
+    .doc-card {
+        background-color: transparent;
+        color: black;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+
+    .repo-card:hover,
+    .doc-card:hover {
+        background-color: transparent;
+        transform: none;
+    }
+
+    .repo-grid,
+    .doc-grid {
+        display: block;
+    }
+
+    .repo-card,
+    .doc-card {
+        margin-bottom: 10px;
+    }
+}
