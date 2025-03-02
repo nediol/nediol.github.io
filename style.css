@@ -1,4 +1,23 @@
 /* Общие стили */
+:root {
+    /* Цветовая палитра */
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #e74c3c;
+    --bg-light: #f4f7fa;
+    --bg-dark: #2d3436;
+    --text-color-light: #333;
+    --text-color-dark: #ecf0f1;
+    --button-bg: #e74c3c;
+    --button-bg-hover: #c0392b;
+    --card-bg-light: #3498db;
+    --card-bg-dark: #2980b9;
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+    --font-size: 16px;
+}
+
+/* Общие стили */
 * {
     margin: 0;
     padding: 0;
@@ -7,14 +26,20 @@
 }
 
 body {
-    background-color: #181818; /* Темный фон */
-    color: #e1e1e1; /* Светлый текст */
+    background-color: var(--bg-light);
+    color: var(--text-color-light);
     line-height: 1.6;
-    font-size: 16px;
+    font-size: var(--font-size);
     font-weight: 400;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
-/* Контейнеры */
+/* Темная тема */
+body.dark-mode {
+    background-color: var(--bg-dark);
+    color: var(--text-color-dark);
+}
+
 .container {
     width: 90%;
     max-width: 1200px;
@@ -24,11 +49,11 @@ body {
 
 /* Шапка */
 header {
-    background-color: #1f1f1f; /* Темный фон */
-    color: #fff;
+    background-color: var(--primary-color);
+    color: white;
     padding: 20px 0;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
@@ -37,12 +62,12 @@ header h1 {
 }
 
 header .highlight {
-    color: #e74c3c;
+    color: var(--accent-color);
 }
 
-/* Секцию с репозиториями */
+/* Секция с репозиториями */
 .repos {
-    background-color: #2b2b2b; /* Темный фон секции */
+    background-color: var(--bg-light);
     padding: 50px 0;
 }
 
@@ -50,37 +75,37 @@ header .highlight {
     text-align: center;
     font-size: 32px;
     margin-bottom: 40px;
-    color: #ecf0f1; /* Светлый текст */
+    color: var(--secondary-color);
 }
 
 .repo-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
 }
 
 .repo-card {
     display: block;
     text-align: center;
-    background-color: #444; /* Темный фон карточек */
-    color: #fff;
+    background-color: var(--card-bg-light);
+    color: white;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     text-decoration: none;
     font-size: 18px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
 }
 
 .repo-card:hover {
     transform: translateY(-10px);
-    background-color: #555; /* Светлее при наведении */
+    background-color: var(--card-bg-dark);
 }
 
 .repo-card:focus {
-    outline: 2px solid #e74c3c;
+    outline: 2px solid var(--accent-color);
 }
 
 .repo-card:before {
@@ -92,7 +117,7 @@ header .highlight {
     height: 100%;
     background: rgba(0, 0, 0, 0.2);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity var(--transition-speed) ease;
 }
 
 .repo-card:hover:before {
@@ -101,7 +126,7 @@ header .highlight {
 
 /* Секция с документацией */
 .docs {
-    background-color: #2b2b2b; /* Темный фон */
+    background-color: white;
     padding: 50px 0;
 }
 
@@ -109,43 +134,43 @@ header .highlight {
     text-align: center;
     font-size: 32px;
     margin-bottom: 40px;
-    color: #ecf0f1; /* Светлый текст */
+    color: var(--secondary-color);
 }
 
 .doc-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 30px;
 }
 
 .doc-grid h3 {
     font-size: 24px;
     margin-bottom: 15px;
-    color: #e74c3c; /* Выделение заголовков */
+    color: var(--card-bg-dark);
 }
 
 .doc-card {
     display: block;
     text-align: center;
-    background-color: #555; /* Темный фон карточек */
+    background-color: #16a085;
     color: white;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     text-decoration: none;
     font-size: 18px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
 }
 
 .doc-card:hover {
     transform: translateY(-10px);
-    background-color: #666; /* Светлее при наведении */
+    background-color: #1abc9c;
 }
 
 .doc-card:focus {
-    outline: 2px solid #e74c3c;
+    outline: 2px solid var(--accent-color);
 }
 
 .doc-card:before {
@@ -157,37 +182,32 @@ header .highlight {
     height: 100%;
     background: rgba(0, 0, 0, 0.2);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity var(--transition-speed) ease;
 }
 
 .doc-card:hover:before {
     opacity: 1;
 }
 
-/* Подсветка активных ссылок */
-a:focus {
-    outline: 2px solid #e74c3c;
-}
-
 /* Стили для кнопок */
 button {
     padding: 10px 20px;
-    background-color: #e74c3c;
+    background-color: var(--button-bg);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
 }
 
 button:hover {
-    background-color: #c0392b;
+    background-color: var(--button-bg-hover);
     transform: translateY(-3px);
 }
 
 button:focus {
-    outline: 2px solid #e74c3c;
+    outline: 2px solid var(--accent-color);
 }
 
 /* Стили для форм */
@@ -197,64 +217,19 @@ textarea {
     padding: 10px;
     margin: 10px 0;
     border-radius: 5px;
-    border: 1px solid #444; /* Темные рамки */
-    background-color: #333; /* Темный фон */
-    color: #e1e1e1; /* Светлый текст */
+    border: 1px solid #ccc;
     font-size: 16px;
 }
 
 input:focus,
 textarea:focus {
-    border-color: #e74c3c;
+    border-color: var(--accent-color);
     outline: none;
 }
 
-/* Подсказки и элементы на странице */
-.tooltip {
-    display: inline-block;
-    position: relative;
-}
-
-.tooltip .tooltip-text {
-    visibility: hidden;
-    width: 120px;
-    background-color: #34495e;
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px;
-    position: absolute;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.tooltip:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
-}
-
-/* Стиль для футера */
-footer {
-    background-color: #1f1f1f; /* Темный фон */
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-    font-size: 16px;
-    position: relative;
-    z-index: 10;
-}
-
-footer p {
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-/* Стили для навигации */
+/* Навигация */
 nav {
-    background-color: #1f1f1f; /* Темный фон */
+    background-color: var(--primary-color);
     padding: 10px 0;
 }
 
@@ -272,57 +247,15 @@ nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 18px;
-    transition: color 0.3s ease;
+    transition: color var(--transition-speed) ease;
 }
 
 nav ul li a:hover {
-    color: #e74c3c;
+    color: var(--accent-color);
 }
 
 nav ul li a:focus {
-    outline: 2px solid #e74c3c;
-}
-
-/* Карточки с изображениями */
-.image-card {
-    position: relative;
-    display: block;
-    background-color: #444; /* Темный фон */
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.image-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.image-card .image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-}
-
-.image-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-.image-card:hover .image-overlay {
-    opacity: 1;
+    outline: 2px solid var(--accent-color);
 }
 
 /* Анимации */
