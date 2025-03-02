@@ -48,11 +48,13 @@
     <h1>DevOps Quiz</h1>
     <div class="quiz-container" id="quiz">
         <div id="question-container" class="question"></div>
+        <div id="options-container"></div>
         <button id="next-button" class="option hidden">Next</button>
         <button id="finish-button" class="option hidden">Finish</button>
     </div>
 
     <script>
+        // База данных с вопросами
         const questionsPool = [
             { question: "Which tool is used for container management?", options: ["Ansible", "Docker", "Terraform", "Jenkins"], answer: "Docker" },
             { question: "Which command creates a new pod in Kubernetes?", options: ["kubectl run", "kubectl create pod", "kubectl new pod", "kubectl deploy"], answer: "kubectl run" },
@@ -63,17 +65,7 @@
             { question: "What is the default port for SSH?", options: ["80", "22", "443", "8080"], answer: "22" },
             { question: "Which protocol is used for secure communication over the internet?", options: ["HTTP", "FTP", "HTTPS", "SMTP"], answer: "HTTPS" },
             { question: "Which tool is used for version control?", options: ["Git", "SVN", "Mercurial", "Perforce"], answer: "Git" },
-            { question: "What is the main purpose of Ansible?", options: ["Containerization", "Configuration Management", "Monitoring", "Logging"], answer: "Configuration Management" },
-            { question: "Which cloud provider offers AWS services?", options: ["Google Cloud", "Microsoft Azure", "Amazon Web Services", "Oracle Cloud"], answer: "Amazon Web Services" },
-            { question: "Which tool is used for log aggregation?", options: ["ELK Stack", "Prometheus", "Grafana", "Jenkins"], answer: "ELK Stack" },
-            { question: "What is the default port for HTTP?", options: ["22", "80", "443", "8080"], answer: "80" },
-            { question: "Which tool is used for continuous integration?", options: ["Jenkins", "Docker", "Kubernetes", "Terraform"], answer: "Jenkins" },
-            { question: "Which command deletes a Kubernetes pod?", options: ["kubectl delete pod", "kubectl remove pod", "kubectl destroy pod", "kubectl erase pod"], answer: "kubectl delete pod" },
-            { question: "Which tool is used for service mesh?", options: ["Istio", "Kubernetes", "Docker", "Jenkins"], answer: "Istio" },
-            { question: "What is the main purpose of Prometheus?", options: ["Monitoring", "Logging", "Version Control", "CI/CD"], answer: "Monitoring" },
-            { question: "Which tool is used for secrets management?", options: ["Vault", "Jenkins", "Docker", "Kubernetes"], answer: "Vault" },
-            { question: "What is the default port for HTTPS?", options: ["80", "22", "443", "8080"], answer: "443" },
-            { question: "Which tool is used for load balancing?", options: ["HAProxy", "Docker", "Kubernetes", "Jenkins"], answer: "HAProxy" },
+            { question: "What is the main purpose of Ansible?", options: ["Containerization", "Configuration Management", "Monitoring", "Logging"], answer: "Configuration Management" }
         ];
 
         let currentQuestionIndex = 0;
@@ -81,17 +73,19 @@
         let shuffledQuestions = [];
 
         function startQuiz() {
-            shuffledQuestions = questionsPool.sort(() => Math.random() - 0.5).slice(0, 10);
+            shuffledQuestions = questionsPool.sort(() => Math.random() - 0.5); // Перемешиваем вопросы
             showQuestion();
         }
 
         function showQuestion() {
-            const quizContainer = document.getElementById('quiz');
             const questionContainer = document.getElementById('question-container');
+            const optionsContainer = document.getElementById('options-container');
             const nextButton = document.getElementById('next-button');
             const finishButton = document.getElementById('finish-button');
 
+            // Очистим контейнеры перед каждым вопросом
             questionContainer.innerHTML = '';
+            optionsContainer.innerHTML = '';
 
             if (currentQuestionIndex >= shuffledQuestions.length) {
                 showResults();
@@ -105,12 +99,13 @@
                 const button = document.createElement('button');
                 button.className = 'option';
                 button.textContent = option;
-                button.onclick = () => selectAnswer(currentQuestion, option, button);
-                questionContainer.appendChild(button);
+                button.onclick = () => selectAnswer(currentQuestion, option);
+                optionsContainer.appendChild(button);
             });
 
             nextButton.classList.add('hidden');
             finishButton.classList.add('hidden');
+
             if (currentQuestionIndex === shuffledQuestions.length - 1) {
                 finishButton.classList.remove('hidden');
             } else {
@@ -118,13 +113,14 @@
             }
         }
 
-        function selectAnswer(question, answer, button) {
+        function selectAnswer(question, answer) {
             selectedAnswers[currentQuestionIndex] = answer;
-            button.disabled = true;
 
+            // Блокируем все кнопки
             const buttons = document.querySelectorAll('.option');
-            buttons.forEach(btn => btn.disabled = true);
+            buttons.forEach(button => button.disabled = true);
 
+            // Показать кнопку "Next"
             document.getElementById('next-button').classList.remove('hidden');
         }
 
@@ -163,7 +159,7 @@
         document.getElementById('next-button').onclick = nextQuestion;
         document.getElementById('finish-button').onclick = showResults;
 
-        startQuiz();
+        startQuiz(); // Начать квиз сразу при загрузке страницы
     </script>
 </body>
 </html>
