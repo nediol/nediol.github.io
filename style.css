@@ -7,44 +7,27 @@
 
 body {
     font-family: 'Orbitron', sans-serif;
-    background-color: #000032;
-    color: #E1E1E1;
-    overflow: hidden;
+    background-color: #000021;
+    color: #e0f7fa;
     height: 100vh;
+    overflow: hidden;
     position: relative;
-    animation: galaxyWarp 8s infinite alternate;
+    animation: galacticWarp 15s infinite alternate, rotateStars 10s linear infinite;
 }
 
-/* Анимация галактического пространства */
-@keyframes galaxyWarp {
-    0% {
-        background-color: #000032;
-    }
-    25% {
-        background-color: #2b0036;
-    }
-    50% {
-        background-color: #46007b;
-    }
-    75% {
-        background-color: #1f004d;
-    }
-    100% {
-        background-color: #000032;
-    }
+/* Анимация космических волн */
+@keyframes galacticWarp {
+    0% { background-color: #000021; }
+    25% { background-color: #0d003b; }
+    50% { background-color: #1f004d; }
+    75% { background-color: #37006a; }
+    100% { background-color: #000021; }
 }
 
-/* Элементы, связанные с космическим пространством */
-@keyframes stars {
-    0% {
-        opacity: 0.3;
-    }
-    50% {
-        opacity: 0.8;
-    }
-    100% {
-        opacity: 0.3;
-    }
+/* Вращение звездного фона */
+@keyframes rotateStars {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .stars {
@@ -53,21 +36,22 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('https://example.com/space_stars.png') repeat;
-    animation: stars 10s infinite;
-    opacity: 0.6;
+    background: url('https://example.com/stars-field.png') repeat;
+    opacity: 0.7;
+    animation: starsEffect 10s infinite alternate;
 }
 
+@keyframes starsEffect {
+    0% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.5; }
+}
+
+/* Космический туман */
 @keyframes cosmicFog {
-    0% {
-        opacity: 0.2;
-    }
-    50% {
-        opacity: 0.4;
-    }
-    100% {
-        opacity: 0.2;
-    }
+    0% { opacity: 0.3; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0.3; }
 }
 
 .fog {
@@ -80,77 +64,71 @@ body {
     animation: cosmicFog 10s infinite ease-in-out;
 }
 
-/* Заголовок в центре галактики */
+/* Заголовок в центре */
 header {
     position: absolute;
     top: 20%;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 5em;
+    font-size: 7em;
     color: rgba(255, 255, 255, 0.9);
     text-align: center;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.5em;
     text-transform: uppercase;
-    text-shadow: 0 0 25px rgba(255, 0, 255, 0.7), 0 0 50px rgba(0, 255, 255, 0.7);
-    animation: glowEffect 3s infinite alternate, rotateGalactic 10s linear infinite;
+    text-shadow: 0 0 30px rgba(255, 0, 255, 1), 0 0 60px rgba(0, 255, 255, 1);
+    animation: glowingEffect 3s infinite alternate, rotateGalactic 12s linear infinite;
 }
 
-/* Анимация свечения для заголовка */
-@keyframes glowEffect {
-    0% {
-        text-shadow: 0 0 25px rgba(255, 255, 255, 0.7), 0 0 50px rgba(0, 255, 255, 0.7);
-    }
-    50% {
-        text-shadow: 0 0 50px rgba(255, 0, 255, 1), 0 0 100px rgba(0, 255, 255, 1);
-    }
-    100% {
-        text-shadow: 0 0 25px rgba(255, 255, 255, 0.7), 0 0 50px rgba(0, 255, 255, 0.7);
-    }
+@keyframes glowingEffect {
+    0% { text-shadow: 0 0 30px rgba(255, 0, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.8); }
+    50% { text-shadow: 0 0 80px rgba(255, 0, 255, 1), 0 0 150px rgba(0, 255, 255, 1); }
+    100% { text-shadow: 0 0 30px rgba(255, 0, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.8); }
 }
 
-/* Вращение заголовка по кругу */
 @keyframes rotateGalactic {
-    0% {
-        transform: translateX(-50%) rotate(0deg);
-    }
-    100% {
-        transform: translateX(-50%) rotate(360deg);
-    }
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(360deg); }
 }
 
 /* Секция с планетами */
 section {
     position: absolute;
-    top: 45%;
+    top: 50%;
     width: 100%;
-    padding: 20px;
+    padding: 30px;
     text-align: center;
     z-index: 10;
-    font-size: 1.5em;
+    font-size: 1.8em;
     color: #F0F8FF;
+    animation: cosmicWave 12s ease-in-out infinite;
 }
 
-/* Карточки с "планетами" */
+@keyframes cosmicWave {
+    0% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.1) rotate(15deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Карточки-планеты */
 .repo-card {
     display: inline-block;
     background-color: rgba(255, 255, 255, 0.1);
-    padding: 40px;
-    margin: 30px;
+    padding: 50px;
+    margin: 40px;
     border-radius: 50%;
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
     text-align: center;
-    font-size: 2em;
+    font-size: 2.5em;
     color: #0ff;
-    border: 2px solid #f0f8ff;
-    box-shadow: 0 0 40px rgba(255, 0, 255, 0.7), 0 0 80px rgba(0, 255, 255, 0.8);
+    border: 3px solid #f0f8ff;
+    box-shadow: 0 0 60px rgba(255, 0, 255, 0.8), 0 0 120px rgba(0, 255, 255, 0.9);
     position: relative;
-    transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.5s ease-in-out;
+    transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.7s ease-in-out;
 }
 
-/* Эффект на картах "планет" */
 .repo-card:hover {
-    transform: scale(1.3) rotate(20deg);
+    transform: scale(1.4) rotate(25deg);
     opacity: 1;
 }
 
@@ -159,38 +137,17 @@ section {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 20px;
-    height: 20px;
-    background-color: rgba(255, 255, 255, 0.5);
+    width: 25px;
+    height: 25px;
+    background-color: rgba(255, 255, 255, 0.7);
     border-radius: 50%;
     animation: orbitEffect 5s infinite linear;
     transform: translate(-50%, -50%);
 }
 
 @keyframes orbitEffect {
-    0% {
-        transform: rotate(0deg) translate(75px) rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg) translate(75px) rotate(-360deg);
-    }
-}
-
-/* Псевдоклассы для ссылок */
-a {
-    color: #ff00ff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.4s ease-in-out, text-shadow 0.3s ease;
-}
-
-a:hover {
-    color: #e74c3c;
-    text-shadow: 0 0 15px #fff, 0 0 25px #8e44ad;
-}
-
-a:focus {
-    outline: 3px solid #e74c3c;
+    0% { transform: rotate(0deg) translate(100px) rotate(0deg); }
+    100% { transform: rotate(360deg) translate(100px) rotate(-360deg); }
 }
 
 /* Всплеск галактики */
@@ -199,111 +156,103 @@ section:before {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 1200px;
-    height: 1200px;
+    width: 1500px;
+    height: 1500px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0 0 200px rgba(255, 0, 255, 0.4), 0 0 500px rgba(0, 255, 255, 0.6);
-    animation: cosmicRipple 5s infinite ease-in-out;
+    box-shadow: 0 0 250px rgba(255, 0, 255, 0.5), 0 0 600px rgba(0, 255, 255, 0.7);
+    animation: cosmicRipple 7s infinite ease-in-out;
     z-index: -1;
 }
 
-/* Космический всплеск */
 @keyframes cosmicRipple {
-    0% {
-        opacity: 0.4;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0.4;
-    }
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
 }
 
-/* Футер с подсветкой */
+/* Светящийся футер */
 footer {
     position: absolute;
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 1.2em;
+    font-size: 1.5em;
     color: #ffffff;
     text-transform: uppercase;
-    text-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
-    animation: blinkEffect 1.5s infinite alternate;
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.7);
+    animation: blinkEffect 2s infinite alternate;
 }
 
-/* Плавное мигание футера */
 @keyframes blinkEffect {
-    0% {
-        opacity: 0.5;
-    }
-    100% {
-        opacity: 1;
-    }
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
 }
 
-/* Кнопки "Темного кода" */
+/* Кнопки с космическим эффектом */
 button {
-    font-size: 1.5em;
+    font-size: 2em;
     background-color: #5a2a68;
     color: #ffbc00;
-    border: 2px solid #e74c3c;
-    border-radius: 12px;
-    padding: 18px 35px;
+    border: 3px solid #e74c3c;
+    border-radius: 15px;
+    padding: 22px 45px;
     cursor: pointer;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 button:hover {
     background-color: #ff00ff;
     color: #f0f8ff;
-    transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+    transform: translateY(-7px) scale(1.1);
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.8);
 }
 
 button:active {
-    animation: wormholeEffect 0.4s ease;
-    transform: scale(0.7) rotate(-15deg);
+    animation: wormholeEffect 0.5s ease;
+    transform: scale(0.8) rotate(-25deg);
 }
 
 /* Анимация червоточины для кнопки */
 @keyframes wormholeEffect {
-    0% {
-        transform: scale(0.5) rotate(45deg);
-    }
-    50% {
-        transform: scale(1.2) rotate(0deg);
-    }
-    100% {
-        transform: scale(0.5) rotate(45deg);
-    }
+    0% { transform: scale(0.6) rotate(60deg); }
+    50% { transform: scale(1.2) rotate(0deg); }
+    100% { transform: scale(0.6) rotate(60deg); }
 }
 
-/* Анимация для сетки */
+/* Сеточные анимации */
 .grid-item {
     display: inline-block;
     background-color: rgba(255, 255, 255, 0.1);
-    padding: 25px;
-    margin: 30px;
-    border-radius: 15px;
+    padding: 30px;
+    margin: 35px;
+    border-radius: 20px;
     text-align: center;
-    font-size: 2em;
-    box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
-    animation: floatEffect 5s infinite ease-in-out;
+    font-size: 2.5em;
+    box-shadow: 0 0 40px rgba(255, 0, 255, 0.6);
+    animation: floatEffect 6s infinite ease-in-out;
 }
 
-/* Анимация "плавания" элементов сетки */
 @keyframes floatEffect {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-15px);
-    }
-    100% {
-        transform: translateY(0);
-    }
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+/* Эффекты для ссылок */
+a {
+    color: #ff00ff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.5s ease-in-out, text-shadow 0.4s ease;
+}
+
+a:hover {
+    color: #e74c3c;
+    text-shadow: 0 0 25px #fff, 0 0 35px #8e44ad;
+}
+
+a:focus {
+    outline: 3px solid #e74c3c;
 }
