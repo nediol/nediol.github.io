@@ -1,57 +1,199 @@
+/* Общие стили */
+* {
+/* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #2c3e50, #34495e);
-    color: white;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    color: #ffffff;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
 .container {
     width: 90%;
     max-width: 1200px;
-    margin: 40px auto;
+    margin: 0 auto;
+    margin: auto;
+    overflow: hidden;
 }
 
-h1 {
+/* Стили для шапки */
+/* Header */
+header {
+    background-color: #333;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 50px 0;
+    padding: 20px 0;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+header h1 {
+h1 {
+    margin: 0;
     font-size: 2.5em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+header .highlight {
+    color: #00bcd4;
+.highlight {
+    color: #ff9800;
+}
+
+header p {
+    font-size: 1.2em;
+/* Sections */
+.repos, .docs {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    margin: 30px 0;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+}
+
+/* Стили для секции "Обо мне" */
+.about {
+    padding: 50px 0;
+    background-color: #fff;
+}
+
+.about h2 {
+    font-size: 2em;
     margin-bottom: 20px;
 }
 
-.categories-container {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    gap: 20px;
+.about p {
+    font-size: 1.1em;
+    color: #555;
 }
 
-.category {
-    font-weight: bold;
-    font-size: 1.2em;
-    text-align: left;
-    margin-bottom: 10px;
+/* Стили для секции репозиториев */
+.repos {
+    background-color: #f9f9f9;
+    padding: 50px 0;
 }
 
-.tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 10px;
-}
-
-.tool-card {
-    background: #7f8c8d;
-    padding: 15px;
-    border-radius: 8px;
+.repos h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+h2 {
     text-align: center;
-    font-weight: bold;
-    transition: 0.3s;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
-.tool-card a {
-    color: white;
+.repo-list {
+/* Grids */
+.repo-grid, .doc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    text-align: center;
+    padding: 20px;
+}
+
+.repo-card {
+    background-color: #fff;
+/* Cards */
+.repo-card, .doc-card {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+}
+
+.repo-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+.repo-card::after, .doc-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.repo-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+.repo-card:hover::after, .doc-card:hover::after {
+    transform: scale(1);
+}
+
+.repo-card p {
+    font-size: 1em;
+    color: #666;
+.repo-card:hover, .doc-card:hover {
+    background: #ff9800;
+    color: #222;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Стили для футера */
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 0;
+    text-align: center;
+}
+
+footer a {
+    color: #00bcd4;
     text-decoration: none;
 }
 
-.tool-card:hover {
-    background: #f39c12;
-    transform: scale(1.05);
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Адаптивность */
+@media screen and (max-width: 768px) {
+    .repo-list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .repo-list {
+        grid-template-columns: 1fr;
+    }
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 15px 0;
+    margin-top: 30px;
+    font-size: 1em;
 }
