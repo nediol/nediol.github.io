@@ -26,20 +26,21 @@
 }
 
 body {
-    background-color: var(--bg-dark);
-    color: var(--text-color-light);
+    background-color: var(--bg-dark); /* Темная тема по умолчанию */
+    color: var(--text-color-dark); /* Текст светлый на темном фоне */
     line-height: 1.6;
     font-size: var(--font-size);
     font-weight: 400;
     transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
-/* Темная тема */
-body.dark-mode {
-    background-color: var(--bg-dark);
-    color: var(--text-color-dark);
+/* Темная тема (для возможных изменений, например, на светлую) */
+body.light-mode {
+    background-color: var(--bg-light);
+    color: var(--text-color-light);
 }
 
+/* Контейнер */
 .container {
     width: 90%;
     max-width: 1200px;
@@ -67,7 +68,7 @@ header .highlight {
 
 /* Секция с репозиториями */
 .repos {
-    background-color: var(--bg-light);
+    background-color: var(--bg-dark);
     padding: 50px 0;
 }
 
@@ -87,7 +88,7 @@ header .highlight {
 .repo-card {
     display: block;
     text-align: center;
-    background-color: var(--card-bg-light);
+    background-color: var(--card-bg-dark);
     color: white;
     padding: 20px;
     border-radius: var(--border-radius);
@@ -101,7 +102,7 @@ header .highlight {
 
 .repo-card:hover {
     transform: translateY(-10px);
-    background-color: var(--card-bg-dark);
+    background-color: var(--card-bg-light);
 }
 
 .repo-card:focus {
@@ -126,7 +127,7 @@ header .highlight {
 
 /* Секция с документацией */
 .docs {
-    background-color: white;
+    background-color: var(--bg-light);
     padding: 50px 0;
 }
 
