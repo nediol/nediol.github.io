@@ -79,50 +79,38 @@ header .highlight {
     color: var(--secondary-color);
 }
 
+/* Сетка репозиториев */
 .repo-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
+    padding: 0;
 }
 
+/* Карточка репозитория */
 .repo-card {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     background-color: var(--card-bg-dark);
     color: white;
-    padding: 20px;
+    padding: 15px;
     border-radius: var(--border-radius);
     text-decoration: none;
     font-size: 18px;
+    font-weight: 500;
     transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    overflow: hidden;
 }
 
 .repo-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
     background-color: var(--card-bg-light);
 }
 
 .repo-card:focus {
     outline: 2px solid var(--accent-color);
-}
-
-.repo-card:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    transition: opacity var(--transition-speed) ease;
-}
-
-.repo-card:hover:before {
-    opacity: 1;
 }
 
 /* Секция с документацией */
