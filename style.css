@@ -44,139 +44,81 @@ header p {
     font-size: 1.2em;
 }
 
-/* Секции */
-.repos, .docs {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    margin: 30px 0;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(8px);
-}
-
-/* Стили для секции "Обо мне" */
-.about {
-    padding: 50px 0;
-    background-color: #fff;
-}
-
-.about h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-
-.about p {
-    font-size: 1.1em;
-    color: #555;
-}
-
-/* Стили для секции репозиториев */
-.repos {
-    background-color: #f9f9f9;
-    padding: 50px 0;
-}
-
-.repos h2 {
-    text-align: center;
-    font-size: 2em;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 30px;
-}
-
-/* Grids */
-.repo-grid, .doc-grid {
+/* Основная сетка документации */
+.tools-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: 1fr 3fr; /* Левая колонка - категории, правая - инструменты */
     gap: 20px;
-    text-align: center;
-    padding: 20px;
+    margin-top: 30px;
+    align-items: start;
 }
 
-/* Cards */
-.repo-card, .doc-card {
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease-in-out;
-    text-decoration: none;
-    color: #333;
+/* Левая колонка - Категории */
+.categories {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.category {
+    font-size: 1.3em;
     font-weight: bold;
-    font-size: 1.1em;
-}
-
-.repo-card:hover, .doc-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-    background: #ff9800;
-    color: #222;
-}
-
-.repo-card::after, .doc-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     background: rgba(255, 255, 255, 0.1);
-    transform: scale(0);
-    transition: transform 0.3s ease-in-out;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: left;
+    transition: 0.3s;
 }
 
-.repo-card:hover::after, .doc-card:hover::after {
-    transform: scale(1);
+.category:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
 }
 
-.repo-card h3 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+/* Правая колонка - Инструменты */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
 }
 
-.repo-card p {
-    font-size: 1em;
-    color: #666;
-}
-
-/* Стили для футера */
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 30px 0;
+/* Карточки инструментов */
+.tool-card {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 15px;
+    border-radius: 8px;
     text-align: center;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-footer a {
-    color: #00bcd4;
+.tool-card a {
+    color: #ff9800; /* Цвет ссылок для видимости */
     text-decoration: none;
 }
 
-footer a:hover {
-    text-decoration: underline;
+.tool-card:hover {
+    background: #ff9800;
+    transform: scale(1.05);
+}
+
+.tool-card:hover a {
+    color: #222;
 }
 
 /* Адаптивность */
 @media screen and (max-width: 768px) {
-    .repo-grid, .doc-grid {
-        grid-template-columns: 1fr 1fr;
+    .tools-container {
+        grid-template-columns: 1fr; /* Одна колонка */
+    }
+
+    .categories {
+        text-align: center;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .repo-grid, .doc-grid {
-        grid-template-columns: 1fr;
-    }
-
-    footer {
-        background: rgba(0, 0, 0, 0.9);
-        color: white;
-        padding: 15px 0;
-        margin-top: 30px;
-        font-size: 1em;
+    .tools-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Меньшие карточки */
     }
 }
