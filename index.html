@@ -53,7 +53,6 @@
     </div>
 
     <script>
-        // База данных с 1000 вопросами
         const questionsPool = [
             { question: "Which tool is used for container management?", options: ["Ansible", "Docker", "Terraform", "Jenkins"], answer: "Docker" },
             { question: "Which command creates a new pod in Kubernetes?", options: ["kubectl run", "kubectl create pod", "kubectl new pod", "kubectl deploy"], answer: "kubectl run" },
@@ -82,7 +81,6 @@
         let shuffledQuestions = [];
 
         function startQuiz() {
-            // Перемешиваем вопросы и выбираем первые 10
             shuffledQuestions = questionsPool.sort(() => Math.random() - 0.5).slice(0, 10);
             showQuestion();
         }
@@ -93,16 +91,13 @@
             const nextButton = document.getElementById('next-button');
             const finishButton = document.getElementById('finish-button');
 
-            // Очищаем контейнер
             questionContainer.innerHTML = '';
 
             if (currentQuestionIndex >= shuffledQuestions.length) {
-                // Если вопросы закончились, показываем результаты
                 showResults();
                 return;
             }
 
-            // Показываем текущий вопрос
             const currentQuestion = shuffledQuestions[currentQuestionIndex];
             questionContainer.innerHTML = `<p>${currentQuestion.question}</p>`;
 
@@ -110,11 +105,10 @@
                 const button = document.createElement('button');
                 button.className = 'option';
                 button.textContent = option;
-                button.onclick = () => selectAnswer(currentQuestion, option);
+                button.onclick = () => selectAnswer(currentQuestion, option, button);
                 questionContainer.appendChild(button);
             });
 
-            // Показываем кнопки "Next" или "Finish"
             nextButton.classList.add('hidden');
             finishButton.classList.add('hidden');
             if (currentQuestionIndex === shuffledQuestions.length - 1) {
@@ -124,14 +118,13 @@
             }
         }
 
-        function selectAnswer(question, answer) {
-            // Сохраняем выбранный ответ
+        function selectAnswer(question, answer, button) {
             selectedAnswers[currentQuestionIndex] = answer;
+            button.disabled = true;
 
-            // Делаем кнопки неактивными
-            document.querySelectorAll('.option').forEach(button => button.disabled = true);
+            const buttons = document.querySelectorAll('.option');
+            buttons.forEach(btn => btn.disabled = true);
 
-            // Показываем кнопку "Next" или "Finish"
             document.getElementById('next-button').classList.remove('hidden');
         }
 
