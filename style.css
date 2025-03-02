@@ -127,7 +127,7 @@ header .highlight {
 
 /* Секция с документацией */
 .docs {
-    background-color: var(--bg-light);
+    background-color: var(--bg-dark);
     padding: 50px 0;
 }
 
