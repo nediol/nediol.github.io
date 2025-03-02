@@ -9,243 +9,87 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: #111;
     color: #fff;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Заголовки и текст */
+h1, h2, h3 {
+    color: #fff;
+}
+
+h1 .highlight {
+    color: #FFD700;
+}
+
+/* Навигация */
+nav {
+    background-color: #222;
+    padding: 15px 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav li {
+    margin: 0 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
     font-size: 18px;
 }
 
-h1, h2 {
-    text-align: center;
-    color: #fff;
+/* Секции */
+.repos, .docs, .about {
+    padding: 40px 0;
 }
 
-h1 {
-    font-size: 4rem;
-    color: #f90;
-    animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-    0% {
-        text-shadow: 0 0 5px #ff0, 0 0 10px #ff0, 0 0 15px #ff0, 0 0 20px #ff0, 0 0 30px #ff0;
-    }
-    100% {
-        text-shadow: 0 0 15px #ff0, 0 0 20px #ff0, 0 0 30px #ff0, 0 0 40px #ff0, 0 0 50px #ff0;
-    }
-}
-
-h2 {
-    margin-top: 50px;
-    font-size: 2rem;
-    color: #f90;
-    animation: fadeIn 1.5s ease-in;
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-/* Контейнеры */
-.container {
-    margin: 0 auto;
-    padding: 20px;
-    max-width: 1200px;
-}
-
-/* Стили солнечной системы */
-.solar-system {
-    position: relative;
-    width: 100%;
-    height: 600px;
-    margin-top: 50px;
-    perspective: 1200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.sun {
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    background-color: #ff0;
-    border-radius: 50%;
-    box-shadow: 0 0 60px rgba(255, 140, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: rotateSun 30s infinite linear;
-    z-index: 100;
-}
-
-/* Стили для планет (репозиториев) */
-.repo-card {
-    position: absolute;
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.3);
-    padding: 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    width: 90px;
-    height: 50px;
-    display: block;
-    transform-origin: center;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease, opacity 0.5s ease;
-    animation: repoHover 1s ease-in-out;
-}
-
-@keyframes repoHover {
-    0% {
-        transform: scale(1);
-        opacity: 0.7;
-    }
-    100% {
-        transform: scale(1.2);
-        opacity: 1;
-    }
-}
-
-.repo-card:hover {
-    transform: scale(1.5);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
-    opacity: 1;
-}
-
-/* Орбитальные анимации для планет */
-.repo-card:nth-child(1) {
-    animation: orbit 12s infinite linear;
-    animation-delay: 0s;
-}
-
-.repo-card:nth-child(2) {
-    animation: orbit 14s infinite linear;
-    animation-delay: -1s;
-}
-
-.repo-card:nth-child(3) {
-    animation: orbit 16s infinite linear;
-    animation-delay: -2s;
-}
-
-.repo-card:nth-child(4) {
-    animation: orbit 18s infinite linear;
-    animation-delay: -3s;
-}
-
-.repo-card:nth-child(5) {
-    animation: orbit 20s infinite linear;
-    animation-delay: -4s;
-}
-
-.repo-card:nth-child(6) {
-    animation: orbit 22s infinite linear;
-    animation-delay: -5s;
-}
-
-.repo-card:nth-child(7) {
-    animation: orbit 24s infinite linear;
-    animation-delay: -6s;
-}
-
-.repo-card:nth-child(8) {
-    animation: orbit 26s infinite linear;
-    animation-delay: -7s;
-}
-
-.repo-card:nth-child(9) {
-    animation: orbit 28s infinite linear;
-    animation-delay: -8s;
-}
-
-.repo-card:nth-child(10) {
-    animation: orbit 30s infinite linear;
-    animation-delay: -9s;
-}
-
-/* Орбитальные движения */
-@keyframes orbit {
-    0% {
-        transform: rotate(0deg) translateX(180px) rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg) translateX(180px) rotate(-360deg);
-    }
-}
-
-/* Стили для документации */
-.docs {
-    margin-top: 50px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.doc-grid {
+/* Карточки документации */
+.doc-grid ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
 }
 
 .doc-card {
-    background-color: #333;
+    display: block;
+    background-color: #444;
     padding: 15px;
-    color: #fff;
-    border-radius: 10px;
+    margin: 10px;
+    border-radius: 5px;
     text-decoration: none;
+    color: #fff;
     font-size: 16px;
-    transition: transform 0.3s ease-in-out;
-    animation: slideIn 0.8s ease-in-out;
-}
-
-@keyframes slideIn {
-    0% {
-        transform: translateX(-100px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
+    text-align: center;
 }
 
 .doc-card:hover {
-    transform: scale(1.1);
+    background-color: #FFD700;
 }
 
-.doc-grid h3 {
+/* Солнечная система */
+.solar-system {
+    margin-top: 40px;
+    text-align: center;
+}
+
+#solar-system-container {
     width: 100%;
-    color: #ff6600;
+    height: 500px;
+    background-color: #000;
 }
 
-/* Анимация для фона */
-body {
-    background: radial-gradient(circle, #000, #111);
-    animation: backgroundMotion 5s infinite alternate;
-}
-
-@keyframes backgroundMotion {
-    0% {
-        background: radial-gradient(circle, #111, #000);
-    }
-    100% {
-        background: radial-gradient(circle, #000, #111);
-    }
-}
-
-/* Улучшенные эффекты */
-.repo-card {
-    cursor: pointer;
-}
-
-.repo-card:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+/* Подвал */
+footer {
+    background-color: #222;
+    color: #aaa;
+    padding: 20px 0;
+    text-align: center;
 }
