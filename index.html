@@ -8,6 +8,8 @@
     <title>DevOps Resources</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/r18/tween.min.js"></script>
 </head>
 <body>
     <header role="banner">
@@ -31,18 +33,7 @@
             <div class="container">
                 <h2>My Repositories</h2>
                 <div class="solar-system">
-                    <div class="sun">
-                        <a href="https://github.com/nediol/ansible" class="repo-card">Ansible</a>
-                        <a href="https://github.com/nediol/ceph" class="repo-card">Ceph</a>
-                        <a href="https://github.com/nediol/docker" class="repo-card">Docker</a>
-                        <a href="https://github.com/nediol/gitlab-ci" class="repo-card">GitLab CI</a>
-                        <a href="https://github.com/nediol/helm-chart-example" class="repo-card">Helm Chart</a>
-                        <a href="https://github.com/nediol/kubernetes" class="repo-card">Kubernetes</a>
-                        <a href="https://github.com/nediol/kubespray" class="repo-card">Kubespray</a>
-                        <a href="https://github.com/nediol/nginx" class="repo-card">Nginx</a>
-                        <a href="https://github.com/nediol/postgresql" class="repo-card">PostgreSQL</a>
-                        <a href="https://github.com/nediol/vagrant" class="repo-card">Vagrant</a>
-                    </div>
+                    <div id="solar-system-container"></div>
                 </div>
             </div>
         </section>
@@ -107,5 +98,69 @@
             <p>2025 &copy; DevOps Resources</p>
         </div>
     </footer>
+
+    <script>
+        // Сцена, камера и рендерер
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('solar-system-container').appendChild(renderer.domElement);
+
+        // Добавление солнечного света
+        const light = new THREE.PointLight(0xFFFFFF, 1, 1000);
+        light.position.set(0, 0, 0);
+        scene.add(light);
+
+        // Солнце
+        const sunGeometry = new THREE.SphereGeometry(5, 32, 32);
+        const sunMaterial = new THREE.MeshBasicMaterial({ color: 0xFFFF00 });
+        const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+        scene.add(sun);
+
+        // Планеты
+        const planets = [];
+        const planetMaterials = [
+            new THREE.MeshBasicMaterial({ color: 0x00ff00 }), // Планета 1
+            new THREE.MeshBasicMaterial({ color: 0xff0000 }), // Планета 2
+            new THREE.MeshBasicMaterial({ color: 0x0000ff }), // Планета 3
+        ];
+
+        for (let i = 0; i < 3; i++) {
+            const planetGeometry = new THREE.SphereGeometry(1, 32, 32);
+            const planet = new THREE.Mesh(planetGeometry, planetMaterials[i]);
+            planet.position.x = (i + 1) * 10;  // Установка орбит
+            planets.push(planet);
+            scene.add(planet);
+        }
+
+        // Анимация вращения планет
+        function animatePlanets() {
+            planets.forEach((planet, index) => {
+                planet.position.x = (index + 1) * 10 * Math.cos(Date.now() * 0.001 * (index + 1));
+                planet.position.z = (index + 1) * 10 * Math.sin(Date.now() * 0.001 * (index + 1));
+            });
+        }
+
+        // Установка камеры
+        camera.position.z = 30;
+
+        // Анимация сцены
+        function animate() {
+            requestAnimationFrame(animate);
+
+            animatePlanets();  // Вращение планет
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Реакция на изменение размера окна
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
+    </script>
 </body>
 </html>
