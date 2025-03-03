@@ -124,6 +124,30 @@
     background: linear-gradient(135deg, #16213e, #0f3460);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   }
+
+  header::after {
+    content: '✨';
+    position: absolute;
+    right: 100px;
+    top: 0%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: #FFD700;
+    animation: float 1s infinite ease-in-out, glow 2s infinite alternate;
+}
+
+/* Движение вверх-вниз */
+@keyframes float {
+    0%, 100% { transform: translateY(-50%) translateX(0); }
+    50% { transform: translateY(-60%) translateX(10px); }
+}
+
+/* Эффект свечения */
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700; }
+    100% { text-shadow: 0 0 10px #FFB700, 0 0 20px #FFB700; }
+}
+
   
   header h1 {
     font-size: 2rem;
@@ -159,8 +183,9 @@
   nav a:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: scale(1.1);
+
   }
-  
+
   /* Main Content */
   main {
     flex: 1;
@@ -377,18 +402,6 @@ h1 {
   
   tr:hover {
     background: rgba(255, 255, 255, 0.1);
-  }
-  
-  /* Улучшенные эффекты для футера */
-  footer p {
-    position: relative;
-  }
-  
-  footer p::after {
-    content: '✨';
-    position: absolute;
-    right: -20px;
-    animation: float 3s infinite ease-in-out;
   }
   
   @keyframes float {
