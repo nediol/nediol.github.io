@@ -1,783 +1,521 @@
-/* Общие настройки */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-    color: #e0e0e0;
-    line-height: 2.5;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  h1, h2, h3 {
-    font-weight: 500;
-    color: #f0f0f0;
-  }
-  
-  a {
-    text-decoration: none;
-    color: #64ffda;
-    transition: color 0.3s ease;
-  }
-  
-  a:hover {
-    color: #8ae2c9;
-  }
-  
-  .highlight {
-    color: #64ffda;
-  }
-  
-/* Общий стиль для секций */
-.section-container {
-    background: rgba(255, 255, 255, 0.05); /* Полупрозрачный фон */
-    border-radius: 15px; /* Закругленные углы */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Тень для объема */
-    padding: 30px; /* Внутренние отступы */
-    margin-bottom: 40px; /* Отступ между секциями */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Анимация при наведении */
-  }
-  
-  .section-container:hover {
-    transform: translateY(-5px); /* Легкий эффект "подъема" */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Усиленная тень */
-  }
-  
-  /* Стиль для заголовков внутри секций */
-  .section-container h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #f0f0f0;
-    text-align: center;
-    position: relative;
-  }
-  
-  .section-container h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 2px;
-    background: #64ffda; /* Цвет подчеркивания */
-  }
-  
-  /* Стиль для командной строки */
-.bash-prompt {
-    display: flex;
-    align-items: center;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1rem;
-    color: #64ffda; /* Цвет текста командной строки */
-    margin-top: 10px;
-    user-select: none; /* Для современных браузеров */
-    -webkit-user-select: none; /* Для Safari и старых версий Chrome */
-    -moz-user-select: none; /* Для Firefox */
-    -ms-user-select: none; /* Для Internet Explorer */
-    pointer-events: none; /* Отключает взаимодействие с элементом */
-  }
-  
-  .bash-prompt .prompt {
-    margin-right: 5px;
-  }
-  
-  .bash-prompt .command {
-    margin-right: 5px;
-  }
-  
-  /* Мигающий курсор */
-  .bash-prompt .cursor {
-    display: inline-block;
-    width: 6px;
-    height: 16px;
-    background: #64ffda; /* Цвет курсора */
-    animation: blink 1s infinite;
-  }
-  
-  /* Анимация мигания курсора */
-  @keyframes blink {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DevOps resources, tools, and documentation for developers.">
+<meta name="keywords" content="DevOps, tools, Git, Jenkins, Kubernetes, Terraform, Ansible">
+<title>quick links</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header role="banner">
+        <div class="container">
+          <h1><span class="highlight">quick links</span></h1>
+          <div class="bash-prompt">
+            <span class="prompt">admin@server #</span>
+            <span class="command" id="terminal-text"></span>
+            <span class="cursor"></span>
+          </div>
+        </div>
+      </header>
 
-  /* Header */
-  header {
-    padding: 20px 0;
-    background: linear-gradient(135deg, #16213e, #0f3460);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  }
-  
-  header h1 {
-    font-size: 2rem;
-    text-align: center;
-  }
-  
-  /* Navigation */
-  nav {
-    background: linear-gradient(135deg, #16213e, #0f3460);
-    padding: 10px 0;
-  }
-  
-  nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    list-style: none;
-  }
-  
-  nav a {
-    font-size: 1rem;
-    padding: 10px 15px;
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.1);
-    transition: background 0.3s ease, transform 0.3s ease;
-  }
-  
-  nav a:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.1);
-  }
-  
-  /* Main Content */
-  main {
-    flex: 1;
-    padding: 40px 0;
-  }
-  
-  section {
-    margin-bottom: 40px;
-  }
-  
-  .repo-category, .doc-grid {
-    margin-top: 20px;
-  }
-  
-  .repo-category h3, .doc-grid h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    position: relative;
-  }
-  
-  .repo-category h3::after, .doc-grid h3::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 50px;
-    height: 2px;
-    background: #64ffda;
-  }
-  
-  .repo-grid, .doc-grid ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-  }
-  
-  .repo-card, .doc-card {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    transition: transform 0.3s ease, background 0.3s ease;
-  }
-  
-  .repo-card:hover, .doc-card:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-5px);
-  }
-  
-  /* Footer */
-  footer {
-    background: linear-gradient(135deg, #16213e, #0f3460);
-    padding: 20px 0;
-    text-align: center;
-    font-size: 0.9rem;
-  }
-  
-  footer p {
-    color: #b0b0b0;
-  }
-  
-  /* Анимации */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .repos, .docs {
-    animation: fadeIn 1s ease-in-out;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    nav ul {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .repo-grid, .doc-grid ul {
-      grid-template-columns: 1fr;
-    }
-  }
+<nav role="navigation">
+<div class="container">
+<ul>
+<a href="#repos" aria-label="Go to repositories">repo</a>
+<a href="#docs" aria-label="Go to documentation">docs</a>
+</ul>
+</div>
+</nav>
 
-/* Дополнительные стили для заголовков */
-h1 {
-    letter-spacing: 2px;
-    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  }
-  
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
-    position: relative;
-  }
-  
-  h2::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: 0;
-    width: 50px;
-    height: 2px;
-    background: #64ffda;
-  }
-  
-  /* Стилизация кнопок */
-  button {
-    background: linear-gradient(135deg, #64ffda, #2ec4b6);
-    color: #1a1a2e;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  }
-  
-  button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  button:active {
-    transform: scale(0.95);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Улучшенные эффекты для карточек */
-  .repo-card, .doc-card {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .repo-card::before, .doc-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s ease;
-  }
-  
-  .repo-card:hover::before, .doc-card:hover::before {
-    transform: scaleX(1);
-    transform-origin: right;
-  }
-  
-  /* Анимация появления для ссылок */
-  a {
-    position: relative;
-  }
-  
-  a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #64ffda;
-    transition: width 0.3s ease;
-  }
-  
-  a:hover::after {
-    width: 100%;
-  }
-  
-  /* Дополнительные анимации */
-  @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.05);
-    }
-  }
-  
-  .highlight {
-    animation: pulse 2s infinite;
-  }
-  
-  /* Стиль для таблиц (если понадобится) */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  
-  th, td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  th {
-    background: rgba(255, 255, 255, 0.1);
-    color: #64ffda;
-    font-weight: 500;
-  }
-  
-  tr:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
-  
-  /* Улучшенные эффекты для футера */
-  footer p {
-    position: relative;
-  }
-  
-  footer p::after {
-    content: '✨';
-    position: absolute;
-    right: -20px;
-    animation: float 3s infinite ease-in-out;
-  }
-  
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-5px);
-    }
-  }
-  
-  /* Стиль для блоков с кодом */
-  pre {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 15px;
-    border-radius: 10px;
-    overflow-x: auto;
-    font-family: 'Courier New', Courier, monospace;
-    color: #64ffda;
-  }
-  
-  code {
-    color: #f0f0f0;
-  }
-  
-  /* Дополнительные медиа-запросы */
-  @media (max-width: 480px) {
-    h1 {
-      font-size: 1.5rem;
-    }
-  
-    h2 {
-      font-size: 1.5rem;
-    }
-  
-    nav a {
-      font-size: 0.9rem;
-      padding: 8px 12px;
-    }
-  
-    .repo-card, .doc-card {
-      padding: 10px;
-    }
-  }
-  
-  /* Эффекты для изображений (если будут добавлены) */
-  img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Стиль для форм (если понадобится) */
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  input, textarea, select {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 10px;
-    border-radius: 5px;
-    color: #e0e0e0;
-    transition: background 0.3s ease, border-color 0.3s ease;
-  }
-  
-  input:focus, textarea:focus, select:focus {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #64ffda;
-    outline: none;
-  }
-  
-  /* Дополнительные микровзаимодействия */
-  .doc-grid ul li {
-    position: relative;
-  }
-  
-  .doc-grid ul li::before {
-    content: '🔗';
-    position: absolute;
-    left: -20px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .doc-grid ul li:hover::before {
-    opacity: 1;
-  }
-  
-  /* Анимация загрузки */
-  .loader {
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    border-top: 4px solid #64ffda;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+<main>
+<section id="repos" class="repos">
+<div class="section-container">
+<div class="container">
+<h2>my repo</h2>
 
-/* Дополнительные эффекты для заголовков */
-h3 {
-    font-size: 1.25rem;
-    margin-bottom: 10px;
-    position: relative;
-  }
-  
-  h3::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 30px;
-    height: 2px;
-    background: #64ffda;
-    transition: width 0.3s ease;
-  }
-  
-  h3:hover::after {
-    width: 60px;
-  }
-  
-  /* Стиль для подсветки текста */
-  .highlight-text {
-    background: linear-gradient(135deg, #64ffda, #2ec4b6);
-    -webkit-text-fill-color: transparent;
-    font-weight: bold;
-  }
-  
-  /* Эффекты для блоков с цитатами */
-  blockquote {
-    background: rgba(255, 255, 255, 0.05);
-    border-left: 4px solid #64ffda;
-    padding: 15px;
-    margin: 20px 0;
-    border-radius: 5px;
-    position: relative;
-  }
-  
-  blockquote::before {
-    content: '“';
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 2rem;
-    color: #64ffda;
-    opacity: 0.5;
-  }
-  
-  blockquote p {
-    font-style: italic;
-    color: #b0b0b0;
-  }
-  
-  /* Стиль для тегов */
-  .tag {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.1);
-    color: #e0e0e0;
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    margin: 5px;
-    transition: background 0.3s ease, transform 0.3s ease;
-  }
-  
-  .tag:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.1);
-  }
-  
-  /* Улучшенные эффекты для навигации */
-  nav ul li {
-    position: relative;
-  }
-  
-  nav ul li::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: #64ffda;
-    transition: width 0.3s ease, left 0.3s ease;
-  }
-  
-  nav ul li:hover::after {
-    width: 100%;
-    left: 0;
-  }
-  
-  /* Анимация для карточек */
-  @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
+<div class="repo-category">
+<h3>Operating Systems</h3>
+<div class="repo-grid">
+<a href="https://github.com/nediol/windows" class="repo-card">Windows</a>
+<a href="https://github.com/nediol/linux" class="repo-card">Linux</a>
+</div>
+</div>
+
+<div class="repo-category">
+<h3>Development & Scripting</h3>
+<div class="repo-grid">
+<a href="https://github.com/nediol/bash" class="repo-card">Linux Bash</a>
+<a href="https://github.com/nediol/git" class="repo-card">Git</a>
+<a href="https://github.com/nediol/gitlab-ci" class="repo-card">Gitlab CI</a>
+<a href="https://github.com/nediol/jenkins" class="repo-card">Jenkins</a>
+</div>
+</div>
+
+<div class="repo-category">
+<h3>Networking & Security</h3>
+<div class="repo-grid">
+<a href="https://github.com/nediol/network" class="repo-card">Network</a>
+<a href="https://github.com/nediol/network-analyse" class="repo-card">Network Analyse</a>
+<a href="https://github.com/nediol/ip-telephony" class="repo-card">IP Telephony</a>
+<a href="https://github.com/nediol/linux-security" class="repo-card">Linux Security</a>
+</div>
+</div>
+
+<div class="repo-category">
+<h3>Servers & Web Technologies</h3>
+<div class="repo-grid">
+<a href="https://github.com/nediol/nginx" class="repo-card">Nginx</a>
+<a href="https://github.com/nediol/apache-kafka" class="repo-card">Apache Kafka</a>
+<a href="https://github.com/nediol/rabbitmq" class="repo-card">RabbitMQ</a>
+</div>
+</div>
+
+<div class="repo-category">
+<h3>DevOps & Automation</h3>
+<div class="repo-grid">
+<a href="https://github.com/nediol/ansible" class="repo-card">Ansible</a>
+<a href="https://github.com/nediol/terraform" class="repo-card">Terraform</a>
+<a href="https://github.com/nediol/vagrant" class="repo-card">Vagrant</a>
+<a href="https://github.com/nediol/microservices" class="repo-card">Microservices</a>
+</div>
+</div>
+
+<div class="repo-category">
+<h3>Containerization & Orchestration</h3>
+<div class="repo-grid">
+<a href="https://github.com/nediol/kubernetes" class="repo-card">Kubernetes</a>
+<a href="https://github.com/nediol/kubernetes-core" class="repo-card">Kubernetes Core</a>
+<a href="https://github.com/nediol/kubespray" class="repo-card">Kubespray</a>
+<a href="https://github.com/nediol/helm-repo" class="repo-card">Helm Repo</a>
+<a href="https://github.com/nediol/helm-chart-example" class="repo-card">Helm Chart Example</a>
+<a href="https://github.com/nediol/docker" class="repo-card">Docker</a>
+</div>
+</div>
+
+<div class="repo-category">
+<h3>Monitoring & Storage & Logs</h3>
+<div class="repo-grid">
+<a href="https://github.com/nediol/prometheus" class="repo-card">Prometheus</a>
+<a href="https://github.com/nediol/grafana" class="repo-card">Grafana</a>
+<a href="https://github.com/nediol/vault" class="repo-card">Vault</a>
+<a href="https://github.com/nediol/ceph" class="repo-card">Ceph</a>
+<a href="https://github.com/nediol/postgresql" class="repo-card">PostgreSQL</a>
+<a href="https://github.com/nediol/elk-stack" class="repo-card">ELK Stack</a>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="docs" class="docs">
+<div class="section-container">
+<div class="container">
+<h2>docs</h2>
+<div class="doc-grid">
+
+<h3>Source Control</h3>
+<ul>
+<a href="https://git-scm.com/doc" class="doc-card">Git</a>
+<a href="https://docs.github.com/en" class="doc-card">GitHub</a>
+<a href="https://docs.gitlab.com/" class="doc-card">GitLab</a>
+<a href="https://bitbucket.org/product/guides" class="doc-card">Bitbucket</a>
+</ul>
+
+<h3>CI/CD</h3>
+<ul>
+<a href="https://www.jenkins.io/doc/" class="doc-card">Jenkins</a>
+<a href="https://docs.gitlab.com/ee/ci/" class="doc-card">GitLab CI</a>
+<a href="https://circleci.com/docs/" class="doc-card">CircleCI</a>
+<a href="https://argo-cd.readthedocs.io/en/stable/" class="doc-card">ArgoCD</a>
+</ul>
+
+<h3>Containerization & Orchestration</h3>
+<ul>
+<a href="https://docs.docker.com/" class="doc-card">Docker</a>
+<a href="https://kubernetes.io/docs/" class="doc-card">Kubernetes</a>
+<a href="https://helm.sh/docs/" class="doc-card">Helm</a>
+<a href="https://podman.io/getting-started/" class="doc-card">Podman</a>
+<a href="https://fluxcd.io/docs/" class="doc-card">FluxCD</a>
+</ul>
+
+<h3>Infrastructure as Code</h3>
+<ul>
+<a href="https://www.terraform.io/docs" class="doc-card">Terraform</a>
+<a href="https://docs.ansible.com/ansible/latest/index.html" class="doc-card">Ansible</a>
+<a href="https://www.puppet.com/docs" class="doc-card">Puppet</a>
+<a href="https://docs.chef.io/" class="doc-card">Chef</a>
+</ul>
+
+<h3>Monitoring & Logging</h3>
+<ul>
+<a href="https://prometheus.io/docs/" class="doc-card">Prometheus</a>
+<a href="https://grafana.com/docs/" class="doc-card">Grafana</a>
+<a href="https://www.elastic.co/guide/index.html" class="doc-card">Elasticsearch</a>
+<a href="https://www.zabbix.com/documentation/current/" class="doc-card">Zabbix</a>
+<a href="https://www.datadoghq.com/" class="doc-card">Datadog</a>
+<a href="https://www.elastic.co/elastic-stack" class="doc-card">ELK Stack</a>
+</ul>
+
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer role="contentinfo">
+<div class="container">
+<p>2025 &copy;</p>
+</div>
+</footer>
+
+<script>
+    // Список случайных фраз для терминала
+    const phrases = [
+        "kubectl get pods", // Показывает список подов в Kubernetes.
+        "docker ps", // Выводит запущенные контейнеры Docker.
+        "ansible-playbook playbook.yml", // Запускает Ansible playbook.
+        "terraform apply", // Применяет изменения инфраструктуры через Terraform.
+        "git pull origin main", // Обновляет локальный репозиторий из удалённого.
+        "ssh user@remote-server", // Подключается к удалённому серверу.
+        "curl http://example.com", // Отправляет HTTP-запрос.
+        "systemctl status nginx", // Проверяет статус службы Nginx.
+        "journalctl -u service-name", // Просматривает логи systemd-сервиса.
+        "netstat -tuln", // Показывает активные сетевые соединения.
+        "htop", // Интерактивный мониторинг процессов.
+        "df -h", // Показывает использование дискового пространства.
+        "free -h", // Показывает использование оперативной памяти.
+        "uptime", // Показывает время работы системы.
+        "lsblk", // Выводит список блочных устройств.
+        "ping google.com", // Проверяет доступность сервера.
+        "traceroute google.com", // Показывает маршрут до сервера.
+        "dig example.com", // Получает DNS-записи домена.
+        "nslookup example.com", // Проверяет DNS-записи.
+        "whois example.com", // Получает WHOIS-информацию о домене.
+        "openssl s_client -connect example.com:443", // Проверяет SSL-сертификат.
+        "scp file.txt user@remote:/path", // Копирует файл на удалённый сервер.
+        "rsync -avz /source /destination", // Синхронизирует файлы между системами.
+        "tar -cvf archive.tar files/", // Создаёт tar-архив.
+        "gzip file.txt", // Сжимает файл в формате .gz.
+        "unzip archive.zip", // Распаковывает ZIP-архив.
+        "chmod +x script.sh", // Делает скрипт исполняемым.
+        "chown user:group file.txt", // Изменяет владельца файла.
+        "find / -name filename", // Ищет файл по имени.
+        "grep 'text' file.txt", // Ищет текст в файле.
+        "sed 's/old/new/' file.txt", // Заменяет текст в файле.
+        "awk '{print $1}' file.txt", // Выводит первый столбец текстового файла.
+        "watch -n 5 command", // Выполняет команду каждые 5 секунд.
+        "nohup command &", // Запускает команду в фоновом режиме.
+        "tmux new-session -s mysession", // Создаёт новую сессию tmux.
+        "screen -S session_name", // Создаёт новую сессию screen.
+        "history", // Показывает историю выполненных команд.
+        "alias ll='ls -la'", // Создаёт алиас для команды.
+        "env", // Показывает переменные окружения.
+        "export VAR_NAME=value", // Устанавливает переменную окружения.
+        "crontab -e", // Редактирует cron-задачи.
+        "ps aux", // Показывает все запущенные процессы.
+        "kill PID", // Завершает процесс по ID.
+        "lsof -i :80", // Показывает процессы, использующие порт 80.
+        "iptables -L", // Показывает правила файрвола.
+        "ufw status", // Проверяет статус UFW (Uncomplicated Firewall).
+        "mount /dev/sdX /mnt", // Монтирует диск.
+        "umount /mnt", // Размонтирует диск.
+        "fdisk -l", // Показывает разделы дисков.
+        "mkfs.ext4 /dev/sdX", // Создаёт файловую систему ext4.
+        "useradd username", // Создаёт нового пользователя.
+        "passwd username", // Изменяет пароль пользователя.
+        "sudo su", // Переключается на суперпользователя.
+        "visudo", // Редактирует файл sudoers.
+        "apt update && apt upgrade", // Обновляет пакеты в Ubuntu/Debian.
+        "yum update", // Обновляет пакеты в CentOS/RHEL.
+        "dnf install package", // Устанавливает пакет в Fedora.
+        "pacman -Syu", // Обновляет пакеты в Arch Linux.
+        "snap install package", // Устанавливает пакет через Snap.
+        "brew install package", // Устанавливает пакет через Homebrew.
+        "pip install package", // Устанавливает Python-пакет.
+        "npm install package", // Устанавливает Node.js-пакет.
+        "composer require package", // Устанавливает PHP-пакет через Composer.
+        "bundle install", // Устанавливает Ruby-зависимости.
+        "docker build -t image_name .", // Собирает Docker-образ.
+        "docker run -d --name container_name image_name", // Запускает Docker-контейнер.
+        "docker-compose up -d", // Запускает сервисы через docker-compose.
+        "kubectl apply -f deployment.yaml", // Применяет манифест Kubernetes.
+        "kubectl delete pod pod_name", // Удаляет под в Kubernetes.
+        "helm install release_name chart", // Устанавливает Helm-чарт.
+        "vault kv put secret/my-secret key=value", // Хранит секреты в HashiCorp Vault.
+        "consul members", // Показывает членов Consul-кластера.
+        "nomad status", // Показывает статус задач Nomad.
+        "prometheus --config.file=config.yml", // Запускает Prometheus.
+        "grafana-server", // Запускает Grafana.
+        "loki -config.file=config.yml", // Запускает Loki для логов.
+        "jaeger-all-in-one", // Запускает Jaeger для трассировки.
+        "kubectl port-forward pod_name 8080:80", // Пробрасывает порт пода.
+        "ssh-keygen -t rsa -b 4096", // Генерирует SSH-ключ.
+        "ssh-copy-id user@remote", // Копирует SSH-ключ на удалённый сервер.
+        "git clone https://repo-url.git", // Клонирует Git-репозиторий.
+        "git branch -a", // Показывает все ветки в Git.
+        "git checkout -b feature-branch", // Создаёт новую ветку.
+        "git merge feature-branch", // Сливает ветку в текущую.
+        "git rebase main", // Перебазирует коммиты.
+        "git log --oneline", // Показывает историю коммитов.
+        "git stash", // Временно сохраняет изменения.
+        "git reset --hard HEAD", // Откатывает изменения до последнего коммита.
+        "git remote -v", // Показывает удалённые репозитории.
+        "git tag v1.0.0", // Создаёт тег в Git.
+        "git push origin main", // Отправляет изменения в удалённый репозиторий.
+        "git fetch", // Получает изменения из удалённого репозитория.
+        "git diff", // Показывает различия между коммитами.
+        "git cherry-pick commit_hash", // Применяет конкретный коммит.
+        "git bisect start", // Начинает бинарный поиск ошибок.
+        "git blame file.txt", // Показывает, кто изменил строки в файле.
+        "git clean -fd", // Удаляет неотслеживаемые файлы.
+        "git submodule update --init", // Инициализирует подмодули.
+        "git worktree add ../new-worktree main", // Создаёт новое рабочее дерево.
+        "git config --global user.name 'Your Name'", // Устанавливает имя пользователя.
+        "git config --global user.email 'email@example.com'", // Устанавливает email.
+        "git reflog", // Показывает историю всех действий.
+        "git rev-parse HEAD", // Показывает хеш текущего коммита.
+        "git archive --format=zip --output=archive.zip HEAD", // Создаёт архив репозитория.
+        "git shortlog", // Показывает сводку коммитов по авторам.
+        "git verify-commit commit_hash", // Проверяет подпись коммита.
+        "git fsck", // Проверяет целостность репозитория.
+        "aws s3 ls", // Показывает список бакетов S3.
+        "aws ec2 describe-instances", // Показывает экземпляры EC2.
+        "gcloud compute instances list", // Показывает экземпляры Compute Engine в GCP.
+        "az vm list", // Показывает виртуальные машины в Azure.
+        "terraform init", // Инициализирует Terraform.
+        "terraform plan", // Показывает план изменений Terraform.
+        "terraform destroy", // Удаляет инфраструктуру через Terraform.
+        "kubectl get nodes", // Показывает узлы Kubernetes.
+        "kubectl describe pod pod_name", // Показывает детальную информацию о поде.
+        "kubectl logs pod_name", // Просматривает логи пода.
+        "kubectl exec -it pod_name -- bash", // Запускает интерактивную сессию в поде.
+        "helm list", // Показывает установленные Helm-чарты.
+        "vault secrets list", // Показывает секреты в HashiCorp Vault.
+        "packer build template.json", // Собирает образ с помощью Packer.
+        "serverless deploy", // Развертывает приложение с помощью Serverless Framework.
+        "kubectl scale deployment deployment_name --replicas=3", // Масштабирует deployment в Kubernetes.
+        "kubectl rollout status deployment/deployment_name", // Проверяет статус обновления deployment.
+        "kubectl set image deployment/deployment_name container_name=image:tag", // Обновляет образ в deployment.
+        "kubectl create secret generic secret_name --from-literal=key=value", // Создаёт секрет в Kubernetes.
+        "kubectl autoscale deployment deployment_name --cpu-percent=50 --min=1 --max=10", // Настройка автоскейлинга.
+        "docker-compose down", // Останавливает и удаляет контейнеры docker-compose.
+        "docker images", // Показывает список локальных Docker-образов.
+        "docker rm container_name", // Удаляет контейнер.
+        "docker rmi image_name", // Удаляет Docker-образ.
+        "docker network ls", // Показывает сети Docker.
+        "docker volume ls", // Показывает тома Docker.
+        "docker inspect container_name", // Показывает детальную информацию о контейнере.
+        "docker stats", // Показывает использование ресурсов контейнерами.
+        "docker system prune", // Очищает неиспользуемые Docker-ресурсы.
+        "ansible all -m ping", // Проверяет доступность хостов через Ansible.
+        "ansible-playbook --syntax-check playbook.yml", // Проверяет синтаксис playbook.
+        "ansible-vault encrypt file.yml", // Шифрует файл с помощью Ansible Vault.
+        "ansible-vault decrypt file.yml", // Расшифровывает файл с помощью Ansible Vault.
+        "terraform fmt", // Форматирует конфигурационные файлы Terraform.
+        "terraform validate", // Проверяет корректность конфигурации Terraform.
+        "terraform state list", // Показывает список ресурсов в состоянии Terraform.
+        "terraform output", // Показывает выходные значения Terraform.
+        "vault login", // Авторизуется в HashiCorp Vault.
+        "vault secrets enable kv", // Включает KV-движок в Vault.
+        "vault kv get secret/my-secret", // Получает секрет из Vault.
+        "consul kv put key value", // Добавляет ключ-значение в Consul KV.
+        "consul kv get key", // Получает значение из Consul KV.
+        "nomad job run job.hcl", // Запускает задачу в Nomad
+        "aws configure", // Настройка AWS CLI.
+        "aws ec2 start-instances --instance-ids i-1234567890abcdef0", // Запускает EC2-инстанс.
+        "aws s3 cp file.txt s3://bucket-name/", // Копирует файл в S3-бакет.
+        "aws lambda invoke --function-name my-function output.txt", // Вызывает Lambda-функцию.
+        "gcloud auth login", // Авторизуется в Google Cloud SDK.
+        "gcloud config set project PROJECT_ID", // Устанавливает активный проект в GCP.
+        "gcloud app deploy", // Развертывает приложение App Engine.
+        "az login", // Авторизуется в Azure CLI.
+        "az group create --name myResourceGroup --location eastus", // Создаёт группу ресурсов в Azure.
+        "kubectl get services", // Показывает сервисы Kubernetes.
+        "kubectl get deployments", // Показывает deployments в Kubernetes.
+        "kubectl expose deployment my-deployment --type=LoadBalancer --port=80", // Создаёт сервис для deployment.
+        "kubectl delete service my-service", // Удаляет сервис Kubernetes.
+        "helm repo add stable https://charts.helm.sh/stable", // Добавляет репозиторий Helm.
+        "helm repo update", // Обновляет репозитории Helm.
+        "vault secrets enable -path=secret kv", // Включает KV-движок в Vault.
+        "vault kv put secret/my-secret username=admin password=secret", // Добавляет секрет в Vault.
+        "consul agent -dev", // Запускает Consul в режиме разработки.
+        "nomad job run example.nomad", // Запускает задачу Nomad.
+        "nomad node status", // Показывает статус узлов Nomad.
+        "promtool check config prometheus.yml", // Проверяет конфигурацию Prometheus.
+        "grafana-cli plugins install grafana-clock-panel", // Устанавливает плагин Grafana.
+        "loki --config.file=loki-config.yaml", // Запускает Loki с конфигурацией.
+        "jaeger-collector", // Запускает компонент Jaeger Collector.
+        "kubectl create namespace my-namespace", // Создаёт namespace в Kubernetes.
+        "kubectl apply -f ingress.yaml", // Применяет манифест Ingress.
+        "kubectl get ingress", // Показывает ingress-ресурсы.
+        "kubectl describe service my-service", // Показывает детальную информацию о сервисе.
+        "kubectl edit deployment my-deployment", // Редактирует deployment в реальном времени.
+        "kubectl rollout restart deployment my-deployment", // Перезапускает deployment.
+        "kubectl top nodes", // Показывает использование ресурсов узлами Kubernetes.
+        "kubectl top pods", // Показывает использование ресурсов подами Kubernetes.
+        "kubectl get events", // Показывает события Kubernetes.
+        "kubectl get configmaps", // Показывает ConfigMaps в Kubernetes.
+        "kubectl get secrets", // Показывает Secrets в Kubernetes.
+        "kubectl exec -it pod_name -- sh", // Запускает shell в поде.
+        "kubectl cp /local/path pod_name:/remote/path", // Копирует файлы между локальной системой и подом.
+        "docker network create my-network", // Создаёт Docker-сеть.
+        "docker volume create my-volume", // Создаёт Docker-том.
+        "docker inspect network my-network", // Показывает детальную информацию о сети Docker.
+        "docker system df", // Показывает использование дискового пространства Docker.
+        "docker buildx create", // Создаёт новый builder для BuildKit.
+        "docker buildx build --platform linux/amd64,linux/arm64 -t image_name .", // Собирает multi-platform Docker-образ.
+        "docker-compose logs", // Просматривает логи docker-compose.
+        "docker-compose stop", // Останавливает сервисы docker-compose.
+        "docker-compose rm", // Удаляет остановленные контейнеры docker-compose.
+        "ansible-galaxy install role_name", // Устанавливает роль Ansible.
+        "ansible-galaxy init role_name", // Создаёт новую роль Ansible.
+        "terraform show", // Показывает текущее состояние Terraform.
+        "terraform import resource_type.resource_name resource_id", // Импортирует существующий ресурс в Terraform.
+        "terraform workspace new dev", // Создаёт новое рабочее окружение Terraform.
+        "terraform workspace select dev", // Переключается на рабочее окружение Terraform.
+        "packer validate template.json", // Проверяет корректность шаблона Packer.
+        "packer build -var 'key=value' template.json", // Собирает образ с переменными Packer.
+        "serverless invoke -f functionName", // Вызывает функцию Serverless Framework.
+        "serverless deploy function -f functionName", // Развертывает отдельную функцию Serverless Framework.
+        "kubectl autoscale deployment my-deployment --cpu-percent=50 --min=2 --max=10", // Настройка автоскейлинга Kubernetes.
+        "kubectl get horizontalpodautoscalers", // Показывает Horizontal Pod Autoscalers.
+        "kubectl rollout undo deployment/my-deployment", // Отменяет последнее обновление deployment.
+        "kubectl create secret generic my-secret --from-literal=key=value", // Создаёт секрет Kubernetes.
+        "kubectl create configmap my-config --from-literal=key=value", // Создаёт ConfigMap Kubernetes.
+        "kubectl port-forward service/my-service 8080:80", // Пробрасывает порт сервиса Kubernetes.
+        "kubectl explain deployment", // Показывает документацию по ресурсу Kubernetes.
+        "kubectl api-resources", // Показывает доступные API-ресурсы Kubernetes.
+        "kubectl cluster-info", // Показывает информацию о кластере Kubernetes.
+        "kubectl config view", // Показывает текущую конфигурацию kubectl.
+        "kubectl config use-context context_name", // Переключается на контекст Kubernetes.
+        "kubectl config set-context --current --namespace=my-namespace", // Устанавливает namespace для текущего контекста.
+        "kubectl delete namespace my-namespace", // Удаляет namespace Kubernetes.
+        "kubectl create clusterrolebinding my-binding --clusterrole=admin --user=user_name", // Создаёт привязку ролей Kubernetes.
+        "kubectl get roles", // Показывает роли Kubernetes.
+        "kubectl get rolebindings", // Показывает привязки ролей Kubernetes.
+        "kubectl get clusterroles", // Показывает глобальные роли Kubernetes.
+        "kubectl get clusterrolebindings", // Показывает глобальные привязки ролей Kubernetes.
+        "kubectl create serviceaccount my-serviceaccount", // Создаёт ServiceAccount Kubernetes.
+        "kubectl get serviceaccounts", // Показывает ServiceAccounts Kubernetes.
+        "kubectl annotate pod pod_name key=value", // Добавляет аннотацию к поду Kubernetes.
+        "kubectl label pod pod_name key=value", // Добавляет метку к поду Kubernetes.
+        "kubectl delete pod pod_name --grace-period=0 --force", // Принудительно удаляет под Kubernetes.
+        "aws configure list", // Показывает текущую конфигурацию AWS CLI.
+        "aws s3 cp s3://bucket-name/file.txt ./file.txt", // Скачивает файл из S3.
+        "aws ec2 describe-security-groups", // Показывает группы безопасности EC2.
+        "aws lambda list-functions", // Показывает список Lambda-функций.
+        "aws cloudwatch get-metric-statistics --namespace AWS/EC2 --metric-name CPUUtilization", // Получает метрики CloudWatch.
+        "aws iam list-users", // Показывает список IAM-пользователей.
+        "aws rds describe-db-instances", // Показывает экземпляры RDS.
+        "aws elb describe-load-balancers", // Показывает балансировщики нагрузки Elastic Load Balancer.
+        "aws autoscaling describe-auto-scaling-groups", // Показывает группы автоскейлинга.
+        "aws cloudformation describe-stacks", // Показывает стеки CloudFormation.
+        "aws route53 list-hosted-zones", // Показывает зоны Route 53.
+        "aws ecs list-clusters", // Показывает кластеры ECS.
+        "aws eks list-clusters", // Показывает кластеры EKS.
+        "aws ssm start-session --target instance-id", // Запускает сессию SSM для EC2-инстанса.
+        "aws logs filter-log-events --log-group-name group-name", // Фильтрует логи CloudWatch Logs.
+        "gcloud projects list", // Показывает список проектов GCP.
+        "gcloud compute instances list", // Показывает экземпляры Compute Engine.
+        "gcloud storage ls", // Показывает бакеты Cloud Storage.
+        "gcloud functions list", // Показывает список Cloud Functions.
+        "gcloud sql instances list", // Показывает экземпляры Cloud SQL.
+        "gcloud pubsub topics list", // Показывает топики Pub/Sub.
+        "gcloud container clusters list", // Показывает кластеры Kubernetes Engine.
+        "gcloud iam service-accounts list", // Показывает сервисные аккаунты IAM.
+        "gcloud logging read 'resource.type=gce_instance'", // Читает логи Logging.
+        "gcloud builds list", // Показывает сборки Cloud Build.
+        "gcloud run services list", // Показывает сервисы Cloud Run.
+        "gcloud scheduler jobs list", // Показывает задачи Cloud Scheduler.
+        "gcloud dns managed-zones list", // Показывает зоны DNS.
+        "gcloud deployment-manager deployments list", // Показывает развертывания Deployment Manager.
+        "gcloud spanner instances list", // Показывает экземпляры Cloud Spanner.
+        "az account show", // Показывает текущую учетную запись Azure.
+        "az vm list", // Показывает виртуальные машины Azure.
+        "az storage account list", // Показывает учетные записи хранения.
+        "az functionapp list", // Показывает приложения Azure Functions.
+        "az cosmosdb list", // Показывает базы данных Cosmos DB.
+        "az aks list", // Показывает кластеры AKS (Azure Kubernetes Service).
+        "az network vnet list", // Показывает виртуальные сети.
+        "az keyvault list", // Показывает хранилища Key Vault.
+        "az monitor metrics list", // Показывает метрики Monitor.
+        "az appservice plan list", // Показывает планы App Service.
+        "az eventgrid topic list", // Показывает топики Event Grid.
+        "az redis list", // Показывает экземпляры Redis Cache.
+        "az acr list", // Показывает реестры контейнеров ACR.
+        "az cdn profile list", // Показывает профили CDN.
+        "az databricks workspace list", // Показывает рабочие области Databricks.
+        "mysql -u user -p database_name", // Подключается к MySQL.
+        "psql -U user -d database_name", // Подключается к PostgreSQL.
+        "mongo --host hostname", // Подключается к MongoDB.
+        "redis-cli", // Запускает CLI Redis.
+        "cassandra-cli", // Запускает CLI Cassandra.
+        "cockroach sql", // Запускает CLI CockroachDB.
+        "sqlite3 database.db", // Открывает SQLite базу данных.
+        "pg_dump database_name > backup.sql", // Создает дамп PostgreSQL.
+        "mysqldump -u user -p database_name > backup.sql", // Создает дамп MySQL.
+        "mongoexport --db database_name --collection collection_name --out file.json", // Экспортирует данные MongoDB.
+        "redis-cli keys '*'", // Показывает все ключи Redis.
+        "cqlsh -e 'DESCRIBE KEYSPACES'", // Показывает keyspaces Cassandra.
+        "cockroach node status", // Показывает статус узлов CockroachDB.
+        "sqlite3 database.db .dump > backup.sql", // Создает дамп SQLite.
+        "redis-cli flushall", // Очищает все данные Redis.
+        "prometheus --config.file=prometheus.yml", // Запускает Prometheus.
+        "grafana-server", // Запускает Grafana.
+        "loki --config.file=loki-config.yaml", // Запускает Loki.
+        "jaeger-all-in-one", // Запускает Jaeger.
+        "promtool check rules rules.yml", // Проверяет правила Prometheus.
+        "grafana-cli plugins install grafana-piechart-panel", // Устанавливает плагин Grafana.
+        "loki-canary", // Запускает инструмент мониторинга Loki.
+        "jaeger-query", // Запускает компонент Jaeger Query.
+        "prometheus-toolbox", // Запускает инструменты Prometheus.
+        "grafana-cli admin reset-admin-password new_password", // Сбрасывает пароль администратора Grafana.
+        "loki-boltdb-shipper", // Запускает инструмент Loki BoltDB Shipper.
+        "jaeger-collector", // Запускает компонент Jaeger Collector.
+        "prometheus-alertmanager", // Запускает Alertmanager.
+        "grafana-cli plugins update-all", // Обновляет все плагины Grafana.
+        "loki-logcli query '{job=\"example\"}'", // Выполняет запрос к Loki.
+        "jaeger-ingester", // Запускает компонент Jaeger Ingester.
+];
+
+    // Функция для имитации печатания текста
+    function typeWriter(text, element, speed = 50) {
+      let index = 0;
+      const interval = setInterval(() => {
+        if (index < text.length) {
+          element.textContent += text.charAt(index);
+          index++;
+        } else {
+          clearInterval(interval);
+          setTimeout(eraseText, 1000); // Удаление текста после паузы
+        }
+      }, speed);
+
+      function eraseText() {
+        const eraseInterval = setInterval(() => {
+          if (element.textContent.length > 0) {
+            element.textContent = element.textContent.slice(0, -1);
+          } else {
+            clearInterval(eraseInterval);
+            const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+            typeWriter(randomPhrase, element); // Печатаем новую случайную фразу
+          }
+        }, speed);
+      }
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .repo-card, .doc-card {
-    animation: slideUp 0.5s ease-in-out;
-  }
-  
-  /* Стиль для разделителей */
-  hr {
-    border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin: 20px 0;
-  }
-  
-  /* Дополнительные эффекты для футера */
-  footer p {
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-  
-  footer p::before {
-    content: '©';
-    margin-right: 5px;
-  }
-  
-  /* Стиль для прогресс-бара */
-  .progress-bar {
-    background: rgba(255, 255, 255, 0.1);
-    height: 10px;
-    border-radius: 5px;
-    overflow: hidden;
-    margin: 20px 0;
-  }
-  
-  .progress-bar-fill {
-    height: 100%;
-    background: linear-gradient(135deg, #64ffda, #2ec4b6);
-    width: 70%;
-    animation: progress 2s ease-in-out;
-  }
-  
-  @keyframes progress {
-    0% {
-      width: 0%;
-    }
-    100% {
-      width: 70%;
-    }
-  }
-  
-  /* Стиль для выпадающего меню */
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background: rgba(255, 255, 255, 0.1);
-    min-width: 160px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    color: #e0e0e0;
-    padding: 10px;
-    display: block;
-    transition: background 0.3s ease;
-  }
-  
-  .dropdown-content a:hover {
-    background: rgba(255, 255, 255, 0.2);
-  }
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  /* Стиль для чекбоксов */
-  input[type="checkbox"] {
-    appearance: none;
-    width: 18px;
-    height: 18px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  input[type="checkbox"]:checked {
-    background: #64ffda;
-    border-color: #64ffda;
-  }
-  
-  /* Стиль для переключателей */
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 20px;
-  }
-  
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    transition: background 0.3s ease;
-  }
-  
-  .slider:before {
-    content: '';
-    position: absolute;
-    height: 16px;
-    width: 16px;
-    left: 2px;
-    bottom: 2px;
-    background: #e0e0e0;
-    border-radius: 50%;
-    transition: transform 0.3s ease;
-  }
-  
-  input:checked + .slider {
-    background: #64ffda;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(20px);
-  }
-  
-  /* Стиль для вкладок */
-  .tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .tab {
-    padding: 10px 15px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease, color 0.3s ease;
-  }
-  
-  .tab.active {
-    background: #64ffda;
-    color: #1a1a2e;
-  }
-  
-  /* Анимация для текста */
-  @keyframes fadeInText {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .fade-in-text {
-    animation: fadeInText 1s ease-in-out;
-  }
+
+    // Инициализация
+    document.addEventListener("DOMContentLoaded", () => {
+      const terminalText = document.getElementById("terminal-text");
+      const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+      typeWriter(randomPhrase, terminalText);
+    });
+
+  </script>
+
+</body>
+</html>
