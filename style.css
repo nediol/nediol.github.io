@@ -1,357 +1,783 @@
-/* Общие стили */
-:root {
-    /* Цветовая палитра */
-    --primary-color: #2c3e50;
-    --secondary-color: #34495e;
-    --accent-color: #e74c3c;
-    --bg-light: #f4f7fa;
-    --bg-dark: #2d3436;
-    --text-color-light: #333;
-    --text-color-dark: #ecf0f1;
-    --button-bg: #e74c3c;
-    --button-bg-hover: #c0392b;
-    --card-bg-light: #3498db;
-    --card-bg-dark: #2980b9;
-    --border-radius: 8px;
-    --transition-speed: 0.3s;
-    --font-size: 16px;
-}
-
-/* Общие стили */
+/* Общие настройки */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
-
-body {
-    background-color: var(--bg-dark); /* Темная тема по умолчанию */
-    color: var(--text-color-dark); /* Текст светлый на темном фоне */
-    line-height: 1.6;
-    font-size: var(--font-size);
-    font-weight: 400;
-    transition: background-color var(--transition-speed), color var(--transition-speed);
-}
-
-/* Темная тема (для возможных изменений, например, на светлую) */
-body.light-mode {
-    background-color: var(--bg-light);
-    color: var(--text-color-light);
-}
-
-/* Контейнер */
-.container {
-    width: 90%;
+  }
+  
+  body {
+    
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: #e0e0e0;
+    line-height: 2.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 0;
-}
-
-/* Шапка */
-header {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 20px 0;
+    padding: 0 20px;
+  }
+  
+  h1, h2, h3 {
+    font-weight: 500;
+    color: #f0f0f0;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #64ffda;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: #8ae2c9;
+  }
+  
+  .highlight {
+    color: #64ffda;
+  }
+  
+/* Общий стиль для секций */
+.section-container {
+    background: rgba(255, 255, 255, 0.05); /* Полупрозрачный фон */
+    border-radius: 15px; /* Закругленные углы */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Тень для объема */
+    padding: 30px; /* Внутренние отступы */
+    margin-bottom: 40px; /* Отступ между секциями */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Анимация при наведении */
+  }
+  
+  .section-container:hover {
+    transform: translateY(-5px); /* Легкий эффект "подъема" */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Усиленная тень */
+  }
+  
+  /* Стиль для заголовков внутри секций */
+  .section-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #f0f0f0;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-header h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-header .highlight {
-    color: var(--accent-color);
-}
-
-/* Секция с репозиториями */
-.repos {
-    background-color: var(--bg-dark);
-    padding: 50px 0;
-}
-
-.repos h2 {
-    text-align: center;
-    font-size: 32px;
-    margin-bottom: 40px;
-    color: var(--secondary-color);
-}
-
-/* Сетка репозиториев */
-.repo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 0;
-}
-
-/* Карточка репозитория */
-.repo-card {
+    position: relative;
+  }
+  
+  .section-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: #64ffda; /* Цвет подчеркивания */
+  }
+  
+  /* Стиль для командной строки */
+.bash-prompt {
     display: flex;
     align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    color: #64ffda; /* Цвет текста командной строки */
+    margin-top: 10px;
+    user-select: none; /* Для современных браузеров */
+    -webkit-user-select: none; /* Для Safari и старых версий Chrome */
+    -moz-user-select: none; /* Для Firefox */
+    -ms-user-select: none; /* Для Internet Explorer */
+    pointer-events: none; /* Отключает взаимодействие с элементом */
+  }
+  
+  .bash-prompt .prompt {
+    margin-right: 5px;
+  }
+  
+  .bash-prompt .command {
+    margin-right: 5px;
+  }
+  
+  /* Мигающий курсор */
+  .bash-prompt .cursor {
+    display: inline-block;
+    width: 6px;
+    height: 16px;
+    background: #64ffda; /* Цвет курсора */
+    animation: blink 1s infinite;
+  }
+  
+  /* Анимация мигания курсора */
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  /* Header */
+  header {
+    padding: 20px 0;
+    background: linear-gradient(135deg, #16213e, #0f3460);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  header h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+  
+  /* Navigation */
+  nav {
+    background: linear-gradient(135deg, #16213e, #0f3460);
+    padding: 10px 0;
+  }
+  
+  nav ul {
+    display: flex;
     justify-content: center;
-    text-align: center;
-    background-color: var(--card-bg-dark);
-    color: white;
-    padding: 15px;
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 500;
-    transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.repo-card:hover {
-    transform: translateY(-5px);
-    background-color: var(--card-bg-light);
-}
-
-.repo-card:focus {
-    outline: 2px solid var(--accent-color);
-}
-
-/* Секция с документацией */
-.docs {
-    background-color: var(--bg-dark);
-    padding: 50px 0;
-}
-
-.docs h2 {
-    text-align: center;
-    font-size: 32px;
+    gap: 20px;
+    list-style: none;
+  }
+  
+  nav a {
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  nav a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+  }
+  
+  /* Main Content */
+  main {
+    flex: 1;
+    padding: 40px 0;
+  }
+  
+  section {
     margin-bottom: 40px;
-    color: var(--secondary-color);
-}
-
-.doc-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-.doc-grid h3 {
-    font-size: 24px;
+  }
+  
+  .repo-category, .doc-grid {
+    margin-top: 20px;
+  }
+  
+  .repo-category h3, .doc-grid h3 {
+    font-size: 1.5rem;
     margin-bottom: 15px;
-    color: var(--card-bg-dark);
-}
-
-.doc-card {
-    display: block;
+    position: relative;
+  }
+  
+  .repo-category h3::after, .doc-grid h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #64ffda;
+  }
+  
+  .repo-grid, .doc-grid ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+  }
+  
+  .repo-card, .doc-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
     text-align: center;
-    background-color: #16a085;
-    color: white;
-    padding: 20px;
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    font-size: 18px;
-    transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  
+  .repo-card:hover, .doc-card:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+  }
+  
+  /* Footer */
+  footer {
+    background: linear-gradient(135deg, #16213e, #0f3460);
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  
+  footer p {
+    color: #b0b0b0;
+  }
+  
+  /* Анимации */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .repos, .docs {
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .repo-grid, .doc-grid ul {
+      grid-template-columns: 1fr;
+    }
+  }
+
+/* Дополнительные стили для заголовков */
+h1 {
+    letter-spacing: 2px;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    position: relative;
+  }
+  
+  h2::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #64ffda;
+  }
+  
+  /* Стилизация кнопок */
+  button {
+    background: linear-gradient(135deg, #64ffda, #2ec4b6);
+    color: #1a1a2e;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Улучшенные эффекты для карточек */
+  .repo-card, .doc-card {
     position: relative;
     overflow: hidden;
-}
-
-.doc-card:hover {
-    transform: translateY(-10px);
-    background-color: #1abc9c;
-}
-
-.doc-card:focus {
-    outline: 2px solid var(--accent-color);
-}
-
-.doc-card:before {
+  }
+  
+  .repo-card::before, .doc-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+  }
+  
+  .repo-card:hover::before, .doc-card:hover::before {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+  
+  /* Анимация появления для ссылок */
+  a {
+    position: relative;
+  }
+  
+  a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #64ffda;
+    transition: width 0.3s ease;
+  }
+  
+  a:hover::after {
+    width: 100%;
+  }
+  
+  /* Дополнительные анимации */
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+  
+  .highlight {
+    animation: pulse 2s infinite;
+  }
+  
+  /* Стиль для таблиц (если понадобится) */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  th {
+    background: rgba(255, 255, 255, 0.1);
+    color: #64ffda;
+    font-weight: 500;
+  }
+  
+  tr:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Улучшенные эффекты для футера */
+  footer p {
+    position: relative;
+  }
+  
+  footer p::after {
+    content: '✨';
+    position: absolute;
+    right: -20px;
+    animation: float 3s infinite ease-in-out;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  /* Стиль для блоков с кодом */
+  pre {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    color: #64ffda;
+  }
+  
+  code {
+    color: #f0f0f0;
+  }
+  
+  /* Дополнительные медиа-запросы */
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+  
+    h2 {
+      font-size: 1.5rem;
+    }
+  
+    nav a {
+      font-size: 0.9rem;
+      padding: 8px 12px;
+    }
+  
+    .repo-card, .doc-card {
+      padding: 10px;
+    }
+  }
+  
+  /* Эффекты для изображений (если будут добавлены) */
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Стиль для форм (если понадобится) */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  input, textarea, select {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    color: #e0e0e0;
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+  
+  input:focus, textarea:focus, select:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #64ffda;
+    outline: none;
+  }
+  
+  /* Дополнительные микровзаимодействия */
+  .doc-grid ul li {
+    position: relative;
+  }
+  
+  .doc-grid ul li::before {
+    content: '🔗';
+    position: absolute;
+    left: -20px;
     opacity: 0;
-    transition: opacity var(--transition-speed) ease;
-}
-
-.doc-card:hover:before {
+    transition: opacity 0.3s ease;
+  }
+  
+  .doc-grid ul li:hover::before {
     opacity: 1;
-}
+  }
+  
+  /* Анимация загрузки */
+  .loader {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #64ffda;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 
-/* Стили для кнопок */
-button {
-    padding: 10px 20px;
-    background-color: var(--button-bg);
-    color: white;
+/* Дополнительные эффекты для заголовков */
+h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  
+  h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background: #64ffda;
+    transition: width 0.3s ease;
+  }
+  
+  h3:hover::after {
+    width: 60px;
+  }
+  
+  /* Стиль для подсветки текста */
+  .highlight-text {
+    background: linear-gradient(135deg, #64ffda, #2ec4b6);
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+  }
+  
+  /* Эффекты для блоков с цитатами */
+  blockquote {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid #64ffda;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    position: relative;
+  }
+  
+  blockquote::before {
+    content: '“';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 2rem;
+    color: #64ffda;
+    opacity: 0.5;
+  }
+  
+  blockquote p {
+    font-style: italic;
+    color: #b0b0b0;
+  }
+  
+  /* Стиль для тегов */
+  .tag {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin: 5px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .tag:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+  }
+  
+  /* Улучшенные эффекты для навигации */
+  nav ul li {
+    position: relative;
+  }
+  
+  nav ul li::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #64ffda;
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+  
+  nav ul li:hover::after {
+    width: 100%;
+    left: 0;
+  }
+  
+  /* Анимация для карточек */
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .repo-card, .doc-card {
+    animation: slideUp 0.5s ease-in-out;
+  }
+  
+  /* Стиль для разделителей */
+  hr {
     border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 20px 0;
+  }
+  
+  /* Дополнительные эффекты для футера */
+  footer p {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  
+  footer p::before {
+    content: '©';
+    margin-right: 5px;
+  }
+  
+  /* Стиль для прогресс-бара */
+  .progress-bar {
+    background: rgba(255, 255, 255, 0.1);
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+  
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #64ffda, #2ec4b6);
+    width: 70%;
+    animation: progress 2s ease-in-out;
+  }
+  
+  @keyframes progress {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 70%;
+    }
+  }
+  
+  /* Стиль для выпадающего меню */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    min-width: 160px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: #e0e0e0;
+    padding: 10px;
+    display: block;
+    transition: background 0.3s ease;
+  }
+  
+  .dropdown-content a:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Стиль для чекбоксов */
+  input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  input[type="checkbox"]:checked {
+    background: #64ffda;
+    border-color: #64ffda;
+  }
+  
+  /* Стиль для переключателей */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    transition: background 0.3s ease;
+  }
+  
+  .slider:before {
+    content: '';
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background: #e0e0e0;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+  }
+  
+  input:checked + .slider {
+    background: #64ffda;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(20px);
+  }
+  
+  /* Стиль для вкладок */
+  .tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .tab {
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
-}
-
-button:hover {
-    background-color: var(--button-bg-hover);
-    transform: translateY(-3px);
-}
-
-button:focus {
-    outline: 2px solid var(--accent-color);
-}
-
-/* Стили для форм */
-input,
-textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-}
-
-input:focus,
-textarea:focus {
-    border-color: var(--accent-color);
-    outline: none;
-}
-
-/* Навигация */
-nav {
-    background-color: var(--primary-color);
-    padding: 10px 0;
-}
-
-nav ul {
-    list-style-type: none;
-    text-align: center;
-}
-
-nav ul li {
-    display: inline-block;
-    margin: 0 20px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    transition: color var(--transition-speed) ease;
-}
-
-nav ul li a:hover {
-    color: var(--accent-color);
-}
-
-nav ul li a:focus {
-    outline: 2px solid var(--accent-color);
-}
-
-/* Анимации */
-@keyframes fadeIn {
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  .tab.active {
+    background: #64ffda;
+    color: #1a1a2e;
+  }
+  
+  /* Анимация для текста */
+  @keyframes fadeInText {
     from {
-        opacity: 0;
+      opacity: 0;
+      transform: translateY(10px);
     }
     to {
-        opacity: 1;
+      opacity: 1;
+      transform: translateY(0);
     }
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateX(-100%);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-
-header {
-    animation: fadeIn 1s ease-in-out;
-}
-
-.repos,
-.docs {
-    animation: slideIn 1s ease-in-out;
-}
-
-/* Мобильная версия */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 28px;
-    }
-
-    .repo-card,
-    .doc-card,
-    .image-card {
-        padding: 15px;
-        font-size: 16px;
-    }
-
-    .repo-grid,
-    .doc-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 24px;
-    }
-
-    .repo-card,
-    .doc-card,
-    .image-card {
-        padding: 12px;
-        font-size: 14px;
-    }
-
-    .repo-grid,
-    .doc-grid {
-        grid-template-columns: 1fr;
-    }
-
-    nav ul li {
-        display: block;
-        margin: 10px 0;
-    }
-}
-
-/* Стили для печатной версии */
-@media print {
-    body {
-        font-size: 12px;
-        color: black;
-        background-color: white;
-    }
-
-    header,
-    footer {
-        display: none;
-    }
-
-    .repo-card,
-    .doc-card {
-        background-color: transparent;
-        color: black;
-        box-shadow: none;
-        border: 1px solid #ccc;
-    }
-
-    .repo-card:hover,
-    .doc-card:hover {
-        background-color: transparent;
-        transform: none;
-    }
-
-    .repo-grid,
-    .doc-grid {
-        display: block;
-    }
-
-    .repo-card,
-    .doc-card {
-        margin-bottom: 10px;
-    }
-}
+  }
+  
+  .fade-in-text {
+    animation: fadeInText 1s ease-in-out;
+  }
